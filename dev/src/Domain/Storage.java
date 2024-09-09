@@ -16,7 +16,7 @@ public class Storage {
         this.addItemStack(itemStack);
     }
 
-    private void addItemStack(ItemStack itemStack) {
+    public void addItemStack(ItemStack itemStack) {
         this.inventory.add(itemStack);
     }
 

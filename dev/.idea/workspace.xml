@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f9939b3-14fe-4652-bcc2-95a0aac728aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Domain/ItemStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Domain/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/dev_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Domain/Shelf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Domain/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/ItemStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/ItemStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Storage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

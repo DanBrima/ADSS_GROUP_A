@@ -21,8 +21,8 @@ public class ItemStack {
         this.addItem(item);
     }
 
-    // Add item if of the right typet
-    private void addItem(ItemInstance item) {
+    // Add item if of the right type
+    public void addItem(ItemInstance item) {
         if (item.getItemType().getBARCODE() != this.itemType.getBARCODE()) {
             throw new RuntimeException("The item " + item.getItemType() + " with barcode: " + item.getItemType().getBARCODE()
                     + " doesn't fit the barcode of type " + this.itemType.getName() + " which is: " + this.itemType.getBARCODE());
