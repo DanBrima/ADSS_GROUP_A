@@ -1,5 +1,11 @@
 package domain;
 
+import presentation.IO;
+
 public enum WeekDay {
-    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
+
+    public static WeekDay getWeekDayFromIO(IO io) {
+        return valueOf(io.readString("Enter the week day (SUNDAY/MONDAY/TUESDAY/WEDNESDAY/THURSDAY/FRIDAY/SATURDAY):"));
+    }
 }

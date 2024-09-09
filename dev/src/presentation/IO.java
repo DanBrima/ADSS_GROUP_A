@@ -11,9 +11,11 @@ abstract public class IO {
         instance = io;
     }
 
-    abstract void print(String message);
+    public abstract void print(String message);
 
-    abstract String readString(String prompt);
+    public abstract String readString(String prompt);
 
-    abstract int readInt(String prompt);
+    public abstract int readInt(String prompt);
+
+//    public abstract boolean readBoolean(String prompt);
 }

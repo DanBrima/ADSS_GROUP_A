@@ -6,17 +6,23 @@ public class ConsoleIO extends IO {
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    void print(String message) {
+    public void print(String message) {
         System.out.println(message);
     }
 
     @Override
-    String readString(String prompt) {
+    public String readString(String prompt) {
+        System.out.println(prompt);
         return scanner.nextLine();
     }
 
     @Override
-    int readInt(String prompt) {
-        return Integer.parseInt(scanner.nextLine());
+    public int readInt(String prompt) {
+        return Integer.parseInt(readString(prompt));
+    }
+
+    @Override
+    public boolean readBoolean(String prompt) {
+        return Boolean.parseBoolean(readString(prompt));
     }
 }
