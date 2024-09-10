@@ -2,6 +2,7 @@ package domain;
 
 import presentation.IO;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,13 +16,13 @@ public class Supplier {
     private List<Contact> contacts;
     private List<Contract> contracts;
 
-    protected Supplier(boolean needsPickup, String activeAccount, int bankAccount, PaymentOption paymentOption, List<Contact> contacts, List<Contract> contracts) {
+    protected Supplier(boolean needsPickup, String activeAccount, int bankAccount, PaymentOption paymentOption, List<Contact> contacts) {
         this.needsPickup = needsPickup;
         this.activeAccount = activeAccount;
         this.bankAccount = bankAccount;
         this.paymentOption = paymentOption;
         this.contacts = contacts;
-        this.contracts = contracts;
+        this.contracts = new ArrayList<>();
     }
 
     protected static Supplier getSupplierFromIO(IO io) {
@@ -32,9 +33,11 @@ public class Supplier {
         int contactCount = io.readInt("Enter the number of contacts:");
         List<Contact> contacts = Stream.generate(() -> Contact.getContactFromIO(io)).limit(contactCount).toList();
         int contractCount = io.readInt("Enter the number of contracts:");
-        List<Contract> contracts = Stream.generate(() -> Contract.getContractFromIO(io)).limit(contractCount).toList();
 
-        return new Supplier(needsPickup, activeAccount, bankAccount, paymentOption, contacts, contracts);
+        Supplier supplier = new Supplier(needsPickup, activeAccount, bankAccount, paymentOption, contacts);
+        Stream.generate(() -> Contract.getContractFromIO(io)).limit(contractCount).forEach(supplier::addContract);
+
+        return supplier;
     }
 
     public List<ProductInContract> getAllProductsInContracts() {
@@ -43,8 +46,8 @@ public class Supplier {
                 .collect(Collectors.toList());
     }
 
-    public void addContractFromIO(IO io) {
-        this.contracts.add(Contract.getContractFromIO(io));
+    public void addContract(Contract contract) {
+        this.contracts.add(contract);
     }
 
     public boolean needsPickup() {

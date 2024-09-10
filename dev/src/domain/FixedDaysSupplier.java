@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 public class FixedDaysSupplier extends Supplier {
     private List<WeekDay> arrivalDays;
 
-    public FixedDaysSupplier(boolean needsPickup, String activeAccount, int bankAccount, PaymentOption paymentOption, List<Contact> contacts, List<Contract> contracts, List<WeekDay> arrivalDays) {
-        super(needsPickup, activeAccount, bankAccount, paymentOption, contacts, contracts);
+    public FixedDaysSupplier(boolean needsPickup, String activeAccount, int bankAccount, PaymentOption paymentOption, List<Contact> contacts, List<WeekDay> arrivalDays) {
+        super(needsPickup, activeAccount, bankAccount, paymentOption, contacts);
         this.arrivalDays = arrivalDays;
     }
 
@@ -18,6 +18,6 @@ public class FixedDaysSupplier extends Supplier {
         int arrivalDayCount = io.readInt("Enter the number of arrival days:");
         List<WeekDay> arrivalDays = Stream.generate(() -> WeekDay.getWeekDayFromIO(io)).limit(arrivalDayCount).toList();
 
-        return new FixedDaysSupplier(supplier.needsPickup(), supplier.activeAccount(), supplier.bankAccount(), supplier.paymentOption(), supplier.contacts(), supplier.contracts(), arrivalDays);
+        return new FixedDaysSupplier(supplier.needsPickup(), supplier.activeAccount(), supplier.bankAccount(), supplier.paymentOption(), supplier.contacts(), arrivalDays);
     }
 }
