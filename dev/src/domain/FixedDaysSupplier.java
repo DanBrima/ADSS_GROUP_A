@@ -18,6 +18,6 @@ public class FixedDaysSupplier extends Supplier {
         int arrivalDayCount = io.readInt("Enter the number of arrival days:");
         List<WeekDay> arrivalDays = Stream.generate(() -> WeekDay.getWeekDayFromIO(io)).limit(arrivalDayCount).toList();
 
-        return new FixedDaysSupplier(supplier.needsPickup, supplier.activeAccount, supplier.bankAccount, supplier.paymentOption, supplier.contacts, supplier.contracts, arrivalDays);
+        return new FixedDaysSupplier(supplier.needsPickup(), supplier.activeAccount(), supplier.bankAccount(), supplier.paymentOption(), supplier.contacts(), supplier.contracts(), arrivalDays);
     }
 }

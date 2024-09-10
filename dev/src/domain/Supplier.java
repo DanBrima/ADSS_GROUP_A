@@ -2,7 +2,9 @@ package domain;
 
 import presentation.IO;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Supplier {
@@ -33,5 +35,39 @@ public class Supplier {
         List<Contract> contracts = Stream.generate(() -> Contract.getContractFromIO(io)).limit(contractCount).toList();
 
         return new Supplier(needsPickup, activeAccount, bankAccount, paymentOption, contacts, contracts);
+    }
+
+    public List<ProductInContract> getAllProductsInContracts() {
+        return contracts.stream()
+                .flatMap(contract -> contract.products().stream())
+                .collect(Collectors.toList());
+    }
+
+    public void addContractFromIO(IO io) {
+        this.contracts.add(Contract.getContractFromIO(io));
+    }
+
+    public boolean needsPickup() {
+        return this.needsPickup;
+    }
+
+    public String activeAccount() {
+        return this.activeAccount;
+    }
+
+    public int bankAccount() {
+        return this.bankAccount;
+    }
+
+    public PaymentOption paymentOption() {
+        return this.paymentOption;
+    }
+
+    public List<Contact> contacts() {
+        return Collections.unmodifiableList(this.contacts);
+    }
+
+    public List<Contract> contracts() {
+        return Collections.unmodifiableList(this.contracts);
     }
 }
