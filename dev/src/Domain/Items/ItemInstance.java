@@ -1,4 +1,4 @@
-package Domain;
+package Domain.Items;
 
 import java.util.UUID;
 

@@ -1,4 +1,6 @@
-package Domain;
+package Domain.Items;
+
+import Domain.Categories.SubSubCategory;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -10,17 +12,18 @@ public class Item {
     private BigDecimal price;
     private String supplier;
 
-    //TODO: add SubSubCategory
+    private SubSubCategory category;
     private BigDecimal supplierCost;
     private int requiredAmount;
 
-    public Item(String name, BigDecimal price, String supplier, BigDecimal supplierCost, int requiredAmount) {
+    public Item(String name, BigDecimal price, String supplier, BigDecimal supplierCost, int requiredAmount, SubSubCategory category) {
         this.BARCODE = UUID.randomUUID();
         this.name = name;
         this.price = price;
         this.supplier = supplier;
         this.supplierCost = supplierCost;
         this.requiredAmount = requiredAmount;
+        this.category = category;
     }
 
     public UUID getBARCODE() {
@@ -65,5 +68,9 @@ public class Item {
 
     public void setRequiredAmount(int requiredAmount) {
         this.requiredAmount = requiredAmount;
+    }
+
+    public SubSubCategory getCategory() {
+        return category;
     }
 }
