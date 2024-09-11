@@ -25,6 +25,7 @@ public class Supplier {
         this.contracts = new ArrayList<>();
     }
 
+    // creates supplier without contracts
     protected static Supplier getSupplierFromIO(IO io) {
         boolean needsPickup = "yes".equals(io.readString("Does the supplier need pickup (type yes/no)?"));
         String activeAccount = io.readString("Enter the supplier's active account:");
@@ -32,12 +33,8 @@ public class Supplier {
         PaymentOption paymentOption = PaymentOption.getPaymentOptionFromIO(io);
         int contactCount = io.readInt("Enter the number of contacts:");
         List<Contact> contacts = Stream.generate(() -> Contact.getContactFromIO(io)).limit(contactCount).toList();
-        int contractCount = io.readInt("Enter the number of contracts:");
 
-        Supplier supplier = new Supplier(needsPickup, activeAccount, bankAccount, paymentOption, contacts);
-        Stream.generate(() -> Contract.getContractFromIO(io)).limit(contractCount).forEach(supplier::addContract);
-
-        return supplier;
+        return new Supplier(needsPickup, activeAccount, bankAccount, paymentOption, contacts);
     }
 
     public List<ProductInContract> getAllProductsInContracts() {

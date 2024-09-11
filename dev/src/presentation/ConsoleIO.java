@@ -20,9 +20,4 @@ public class ConsoleIO extends IO {
     public int readInt(String prompt) {
         return Integer.parseInt(readString(prompt));
     }
-
-    @Override
-    public boolean readBoolean(String prompt) {
-        return Boolean.parseBoolean(readString(prompt));
-    }
 }
