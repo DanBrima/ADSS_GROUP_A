@@ -52,7 +52,7 @@ public class Test {
         shufersal.addContract(shufersalDiary);
     }
 
-    private static void Test() {
-
+    private static void test_SameProductMultipleSuppliers() {
+        initializeObjects();
     }
 }

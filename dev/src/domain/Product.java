@@ -12,7 +12,7 @@ public class Product {
     }
 
     public static Product getProductFromIO(IO io) {
-        String name = io.readString("Enter the product name:");
+        String name = io.readString("Enter the name of the product:");
         Manufacturer manufacturer = Manufacturer.getManufacturerFromIO(io);
 
         return new Product(name, manufacturer);
