@@ -1,4 +1,4 @@
-package Domain;
+package Domain.Items;
 
 import java.math.BigDecimal;
 import java.util.UUID;
