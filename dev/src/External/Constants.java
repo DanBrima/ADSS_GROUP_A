@@ -12,4 +12,6 @@ public class Constants {
     public static final int DEAL_HISTORY_INDEX = 3;
     public static final String DISCOUNTS_HISTORY = "display discount history";
     public static final int DISCOUNTS_HISTORY_INDEX = 4;
+    public static final int USER_NO_INPUT = -1;
+
 }
