@@ -38,7 +38,7 @@ public class ItemStack {
         return itemsList;
     }
 
-    public String getLocation() {
+    public String getLocationDetails() {
         return stackLocation.toString();
     }
 

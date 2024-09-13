@@ -40,6 +40,8 @@ public class Main {
         shelf3.addItemStack(new ItemStack(watermelonItem, 10)); // 10 watermelons
 
         Storage storage = new Storage();
+        ItemStack defectiveItems = new ItemStack(mangoItem, 5);
+        storage.addDefectiveItemStack(defectiveItems);
 
         CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), storage, store);
         cashierDesk.turnOn();
