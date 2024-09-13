@@ -66,7 +66,8 @@ public class CashierDesk {
                     break;
                 }
                 case Constants.MISSING_ITEMS_RECORD_INDEX: {
-                    //TODO: create this screen
+                    MissingItemsScreen missingItemsScreen = new MissingItemsScreen(this.out, this.in, this.storeRef, this.storageRef);
+                    missingItemsScreen.handleMsg();
                     break;
                 }
                 case Constants.DISCOUNTS_HISTORY_INDEX: {

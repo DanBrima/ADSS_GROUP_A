@@ -20,7 +20,7 @@ public class StoreAmountScreen extends Screen {
     @Override
     public int handleMsg() {
         for (int shelfIndex = 0; shelfIndex < this.storeRef.getShelves().size(); shelfIndex++) {
-            this.out.print("\nShelf number #" + shelfIndex);
+            this.out.print("\nShelf number #" + (shelfIndex + 1));
             this.displayShelf(this.storeRef.getShelves().get(shelfIndex));
         }
 
@@ -36,7 +36,7 @@ public class StoreAmountScreen extends Screen {
         this.out.format("+-------------+--------+%n");
         for (int itemStackIndex = 0; itemStackIndex < shelf.getItemsOnShelf().size(); itemStackIndex++) {
             ItemStack itemStack = shelf.getItemsOnShelf().get(itemStackIndex);
-            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemsList().size());
+            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemSize());
         }
         this.out.format("+-------------+--------+%n");
         this.out.println();

@@ -39,7 +39,17 @@ public class Main {
         shelf3.addItemStack(new ItemStack(new ItemInstance(grapesItem), 50));  // 50 grapes
         shelf3.addItemStack(new ItemStack(new ItemInstance(watermelonItem), 10)); // 10 watermelons
         store.addShelf(shelf3);
+
+
         Storage storage = new Storage();
+
+        storage.addItemStack(new ItemStack(new ItemInstance(grapesItem), 75));
+        storage.addItemStack(new ItemStack(new ItemInstance(appleItem), 50));
+        storage.addItemStack(new ItemStack(new ItemInstance(bananaItem), 30));
+        storage.addItemStack(new ItemStack(new ItemInstance(orangeItem), 40));
+        storage.addItemStack(new ItemStack(new ItemInstance(mangoItem), 25));
+        storage.addItemStack(new ItemStack(new ItemInstance(watermelonItem), 10));
+
 
         CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), storage, store);
         cashierDesk.turnOn();

@@ -39,6 +39,10 @@ public class ItemStack {
         }
     }
 
+    public int getItemSize() {
+        return this.itemsList.size();
+    }
+
     public Item getItemType() {
         return itemType;
     }
@@ -46,5 +50,4 @@ public class ItemStack {
     public ArrayList<ItemInstance> getItemsList() {
         return itemsList;
     }
-
 }
