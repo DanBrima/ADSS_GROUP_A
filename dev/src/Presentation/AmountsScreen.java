@@ -12,15 +12,14 @@ public class AmountsScreen extends Screen {
 
     @Override
     public int handleMsg() {
-        this.out.print(Constants.DISPLAY_STORAGE_ITEMS_INDEX + ". ");
-        this.out.println(Constants.DISPLAY_STORAGE_ITEMS);
-
         this.out.print(Constants.DISPLAY_STORE_ITEMS_INDEX + ". ");
         this.out.println(Constants.DISPLAY_STORE_ITEMS);
 
+        this.out.print(Constants.DISPLAY_STORAGE_ITEMS_INDEX + ". ");
+        this.out.println(Constants.DISPLAY_STORAGE_ITEMS);
+
         this.out.print("\n" + Constants.USER_INPUT);
         int userInput = this.in.nextInt();
-        this.in.close();
         return userInput;
     }
 }

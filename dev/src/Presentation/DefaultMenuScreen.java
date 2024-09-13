@@ -31,7 +31,6 @@ public class DefaultMenuScreen extends Screen {
 
         this.out.print("\n" + Constants.USER_INPUT);
         int userInput = this.in.nextInt();
-        this.in.close();
         return userInput;
     }
 }
