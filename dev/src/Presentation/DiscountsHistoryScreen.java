@@ -7,19 +7,16 @@ import External.Constants;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class DiscountsHistoryScreen implements MenuScreen {
-
-    private final PrintStream out;
-    private final Scanner in;
+public class DiscountsHistoryScreen extends Screen {
 
     private final DiscountsHistory discountsHistory;
 
     public DiscountsHistoryScreen(PrintStream out, Scanner in, DiscountsHistory discountsHistory) {
-        this.out = out;
-        this.in = in;
+        super(out, in);
         this.discountsHistory = discountsHistory;
     }
 
+    @Override
     public int handleMsg() {
         String LEFT_ALIGN_FORMAT = "| %-12s | %-28s | %-28s |%n";
 

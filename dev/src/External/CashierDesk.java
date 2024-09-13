@@ -3,6 +3,8 @@ package External;
 import Domain.Discounts.DiscountsHistory;
 import Domain.Discounts.ItemDiscount;
 import Domain.Items.Item;
+import Domain.Storage;
+import Domain.Store;
 import Presentation.DefaultMenuScreen;
 import Presentation.DiscountsHistoryScreen;
 
@@ -15,10 +17,14 @@ public class CashierDesk {
     private final PrintStream out;
     private final Scanner in;
 
-    public CashierDesk(PrintStream out, Scanner in) {
-        this.in = in;
-        this.out = out;
+    private Storage storageRef;
+    private Store storeRef;
 
+    public CashierDesk(PrintStream out, Scanner in, Storage storageRef, Store storeRef) {
+        this.out = out;
+        this.in = in;
+        this.storageRef = storageRef;
+        this.storeRef = storeRef;
     }
 
     public void turnOn() throws Exception {

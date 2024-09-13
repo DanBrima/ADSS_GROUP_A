@@ -3,16 +3,13 @@ import External.Constants;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class DefaultMenuScreen implements MenuScreen {
-
-    private final PrintStream out;
-    private final Scanner in;
+public class DefaultMenuScreen extends Screen {
 
     public DefaultMenuScreen(PrintStream out, Scanner in) {
-        this.out = out;
-        this.in = in;
+        super(out, in);
     }
 
+    @Override
     public int handleMsg() {
         this.out.println(Constants.DEFAULT_MSG);
 
@@ -27,6 +24,10 @@ public class DefaultMenuScreen implements MenuScreen {
 
         this.out.print(Constants.DISCOUNTS_HISTORY_INDEX + ". ");
         this.out.println(Constants.DISCOUNTS_HISTORY);
+
+        this.out.print(Constants.TURN_OFF_INDEX + ". ");
+        this.out.println(Constants.TURN_OFF);
+
 
         this.out.print("\n" + Constants.USER_INPUT);
         int userInput = this.in.nextInt();
