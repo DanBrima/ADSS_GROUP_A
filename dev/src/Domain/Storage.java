@@ -1,6 +1,7 @@
 package Domain;
 
 import Domain.Items.ItemStack;
+import Domain.Items.StackLocation;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class Storage {
 
     public void addItemStack(ItemStack itemStack) {
         this.inventory.add(itemStack);
+        itemStack.setLocation(new StackLocation(this.inventory.size() -1));
     }
 
     public ArrayList<ItemStack> getInventory() {
