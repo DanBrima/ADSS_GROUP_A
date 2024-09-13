@@ -1,7 +1,5 @@
 package Domain;
 
-import Domain.Items.ItemStack;
-
 import java.util.ArrayList;
 
 public class Store {
@@ -19,7 +17,9 @@ public class Store {
     }
 
     public void addShelf(Shelf shelf) {
-        this.shelves.add(new Shelf(shelf));
+        int shelfIndex = this.shelves.size();
+        shelf.setShelfId(shelfIndex);
+        this.shelves.add(shelf);
     }
 
     public ArrayList<Shelf> getShelves() {
