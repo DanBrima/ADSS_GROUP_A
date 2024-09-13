@@ -21,6 +21,14 @@ public class ItemStack {
         this.addItem(item);
     }
 
+    public ItemStack(ItemInstance item, int amount) {
+        this.itemType = item.getItemType();
+        this.itemsList = new ArrayList<ItemInstance>();
+        for (int amountIndex = 0; amountIndex < amount; amountIndex++) {
+            this.addItem(item);
+        }
+    }
+
     // Add item if of the right type
     public void addItem(ItemInstance item) {
         if (item.getItemType().getBARCODE() != this.itemType.getBARCODE()) {
@@ -30,4 +38,13 @@ public class ItemStack {
             this.itemsList.add(item);
         }
     }
+
+    public Item getItemType() {
+        return itemType;
+    }
+
+    public ArrayList<ItemInstance> getItemsList() {
+        return itemsList;
+    }
+
 }

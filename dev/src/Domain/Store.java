@@ -22,7 +22,7 @@ public class Store {
         this.shelves.add(new Shelf(shelf));
     }
 
-    public ArrayList<ItemStack> getShelves() {
-        return (ArrayList<ItemStack>) shelves.clone();
+    public ArrayList<Shelf> getShelves() {
+        return (ArrayList<Shelf>) shelves.clone();
     }
 }

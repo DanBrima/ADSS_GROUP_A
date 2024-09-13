@@ -14,11 +14,12 @@ public class Constants {
     public static final int DISCOUNTS_HISTORY_INDEX = 4;
     public static final String TURN_OFF = "turn off";
     public static final int TURN_OFF_INDEX = 5;
-
     public static final String DISPLAY_STORE_ITEMS = "display items in store";
     public static final int DISPLAY_STORE_ITEMS_INDEX = 1;
     public static final String DISPLAY_STORAGE_ITEMS = "display items in storage";
     public static final int DISPLAY_STORAGE_ITEMS_INDEX = 2;
+    public static final String INVALID_INPUT = "invalid input";
+    public static final String GOODBYE_MSG = "Turning off... \nErasing all data... \nSuccess!";
     public static final int USER_NO_INPUT = -1;
 
 }
