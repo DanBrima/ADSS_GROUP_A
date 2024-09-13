@@ -25,9 +25,11 @@ public class DefaultMenuScreen extends Screen {
         this.out.print(Constants.DISCOUNTS_HISTORY_INDEX + ". ");
         this.out.println(Constants.DISCOUNTS_HISTORY);
 
+        this.out.print(Constants.DISPLAY_DEFECTIVE_ITEMS_INDEX + ". ");
+        this.out.println(Constants.DISPLAY_DEFECTIVE_ITEMS);
+
         this.out.print(Constants.TURN_OFF_INDEX + ". ");
         this.out.println(Constants.TURN_OFF);
-
 
         this.out.print("\n" + Constants.USER_INPUT);
         int userInput = this.in.nextInt();

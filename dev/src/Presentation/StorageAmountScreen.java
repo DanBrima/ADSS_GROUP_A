@@ -1,7 +1,6 @@
 package Presentation;
 
 import Domain.Items.ItemStack;
-import Domain.Shelf;
 import Domain.Storage;
 import External.Constants;
 
@@ -27,7 +26,7 @@ public class StorageAmountScreen extends Screen{
         this.out.format("+--------+----------+%n");
         for (int itemStackIndex = 0; itemStackIndex < this.storageRef.getInventory().size(); itemStackIndex++) {
             ItemStack itemStack = this.storageRef.getInventory().get(itemStackIndex);
-            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType(), itemStack.getItemsList().size());
+            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemsList().size());
         }
         this.out.format("+--------+----------+%n");
         this.out.println();
