@@ -16,9 +16,9 @@ public class ItemStack {
         this.addItem(item);
     }
 
-    public ItemStack(Item item, int count) {
+    public ItemStack(Item item, int amount) {
         this.itemType = item;
-        this.itemCount = count;
+        this.itemCount = amount;
     }
 
     // Add item if of the right type
