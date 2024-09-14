@@ -36,7 +36,7 @@ public class Store {
         for (Shelf shelf : this.getShelves()) {
             for (ItemStack itemStack : shelf.getItemsOnShelf()) {
                 if (itemStack.getItemType().getBARCODE() == wantedItem.getBARCODE())
-                    amount += itemStack.getItemSize();
+                    amount += itemStack.getItemCount();
             }
         }
 
@@ -55,9 +55,7 @@ public class Store {
                 // If the item is already in the map, update the quantity
                 if (itemMap.containsKey(currentBarcode)) {
                     ItemStack existingItem = itemMap.get(currentBarcode);
-                    for (Item itemInstance : itemStack.getItemsList()) {
-                        existingItem.addItem(itemInstance);
-                    }
+                    existingItem.addItems(currentBarcode, itemStack.getItemCount());
                 } else {
                     // Otherwise, add the new item with its quantity
                     itemMap.put(currentBarcode, itemStack);

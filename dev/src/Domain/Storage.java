@@ -61,14 +61,12 @@ public class Storage {
         for (ItemStack itemStack : this.inventory) {
             Item currentItem = itemStack.getItemType();
             UUID currentBarcode = currentItem.getBARCODE();
-            int quantity = itemStack.getItemSize();
+            int quantity = itemStack.getItemCount();
 
             // If the item is already in the map, update the quantity
             if (itemMap.containsKey(currentBarcode)) {
                 ItemStack existingItemStack = itemMap.get(currentBarcode);
-                for (Item itemInstance : itemStack.getItemsList()) {
-                    existingItemStack.addItem(itemInstance);
-                }
+                existingItemStack.addItems(currentBarcode, itemStack.getItemCount());
             } else {
                 // Otherwise, add the new item stack
                 ItemStack newItemStack = new ItemStack(currentItem, quantity);

@@ -36,7 +36,7 @@ public class StoreAmountScreen extends Screen {
         this.out.format("+-------------+--------+%n");
         for (int itemStackIndex = 0; itemStackIndex < shelf.getItemsOnShelf().size(); itemStackIndex++) {
             ItemStack itemStack = shelf.getItemsOnShelf().get(itemStackIndex);
-            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemSize());
+            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemCount());
         }
         this.out.format("+-------------+--------+%n");
         this.out.println();
