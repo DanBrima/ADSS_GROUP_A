@@ -4,6 +4,7 @@ WHAT I NEED TO DO IN THIS PAGE IS INCLUDE OUR "SCREENS" INCLUDING SUPPLIERS AND 
 
 package External;
 
+import Domain.Contract;
 import Domain.Store;
 import Domain.Supplier;
 import Presentation.*;
@@ -27,6 +28,7 @@ public class CashierDesk {
     }
 
     public void turnOn() throws Exception {
+        ConsoleIO io = new ConsoleIO();
         this.isActivated = true;
 
         while (this.isActivated) {
@@ -45,23 +47,28 @@ public class CashierDesk {
                     }
                     Supplier supplier = storeRef.getSuppliers().get(userInput);
 
-                    // TODO display the supplier card with the related supplier ? then switch for contract add
                     SupplierCardScreen supplierCardScreen = new SupplierCardScreen(this.out, this.in, supplier);
                     userInput = supplierCardScreen.handleMsg();
 
-                    // Validate input
-                    if(userInput >= supplier.contracts().size() || userInput < 0){
+                    int size = supplier.contracts().size();
+                    if(userInput >= size + 2 || userInput < 0) {
                         this.out.println(Constants.INVALID_INPUT);
+                    } else if (userInput == size) {
+                        supplier.addContract(Contract.getContractFromIO(io, supplier));
+                    } else if (userInput == size + 1){
                         break;
                     }
                     ContractScreen contractScreen = new ContractScreen(this.out, this.in, supplier, userInput);
                     contractScreen.handleMsg();
                     break;
                 }
-//  Day 1 requirement do not include data manipulations
-//                case Constants.ADD_SUPPLIER_INDEX: {
-//                    break;
-//                }
+
+                //  Day 1 requirement do not include data manipulations
+                case Constants.ADD_SUPPLIER_INDEX: {
+                    storeRef.addSupplier(io);
+                    break;
+                }
+
                 case Constants.TURN_OFF_INDEX: {
                     this.turnOff();
                     break;

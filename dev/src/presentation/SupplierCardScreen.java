@@ -39,27 +39,23 @@ public class SupplierCardScreen extends Screen {
         else if (supplier instanceof FixedDaysSupplier){
             this.out.format(LEFT_ALIGN_FORMAT1, "Fixed days delivery: ", ((FixedDaysSupplier) supplier).getArrivalDays());
         }
-//
-//        this.out.format(LEFT_ALIGN_FORMAT1, "Delivery time", (supplier instanceof InPlaceSupplier) ? "In Place Order" : "Fixed Days");
         this.out.format("+-------------------------------------+%n");
 
         this.out.println(Constants.DISPLAY_CONTRACTS);
 
-        String LEFT_ALIGN_FORMAT2 = "| %-15s |%n";
-
-        this.out.format("+-----------------+%n");
-        this.out.format("| Contract Number |%n");
-        this.out.format("+-----------------+%n");
-        for (int conIndex = 0; conIndex < this.supplier.contracts().size(); conIndex++) {
+        String LEFT_ALIGN_FORMAT2 = "%s. display contract %<s %n";
+        int conIndex = 0;
+        for (conIndex = 0; conIndex < this.supplier.contracts().size(); conIndex++) {
             Contract contract = this.supplier.contracts().get(conIndex);
             // TODO replace contract "products" contract name...
             this.out.format(LEFT_ALIGN_FORMAT2, conIndex);
         }
-        this.out.format("+------------------+%n");
 
-//        Day 1 requirement do not include data manipulations
-//        this.out.print(Constants.ADD_CONTRACT_INDEX + ". ");
-//        this.out.println(Constants.ADD_CONTRACT);
+//        Day 1 requirements do not include data manipulations
+        this.out.print(conIndex + ". ");
+        this.out.println(Constants.ADD_CONTRACT);
+
+        this.out.format((conIndex+1) + ". return");
 
         this.out.print("\n" + Constants.USER_INPUT);
         int userInput = this.in.nextInt();

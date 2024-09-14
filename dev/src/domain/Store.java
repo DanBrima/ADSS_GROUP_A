@@ -1,5 +1,7 @@
 package Domain;
 
+import Presentation.IO;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,8 +24,12 @@ public class Store {
         int supplierIndex = this.suppliers.size();
 
 	// Do we want to maintain a suppliers IDs?
-        //shelf.setShelfId(shelfIndex);
+        //shelf.setSupplierId(supplierIndex);
         this.suppliers.add(supplier);
+    }
+
+    public void addSupplier(IO io) {
+        this.suppliers.add(Supplier.getSupplierFromIO(io));
     }
 
     public List<Supplier> getSuppliers() {
