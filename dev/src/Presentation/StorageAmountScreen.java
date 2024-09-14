@@ -1,7 +1,6 @@
 package Presentation;
 
 import Domain.Items.ItemStack;
-import Domain.Shelf;
 import Domain.Storage;
 import External.Constants;
 

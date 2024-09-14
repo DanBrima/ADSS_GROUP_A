@@ -1,7 +1,6 @@
 package Domain;
 
 import Domain.Items.Item;
-import Domain.Items.ItemInstance;
 import Domain.Items.ItemStack;
 
 import java.util.ArrayList;
@@ -23,7 +22,9 @@ public class Store {
     }
 
     public void addShelf(Shelf shelf) {
-        this.shelves.add(new Shelf(shelf));
+        int shelfIndex = this.shelves.size();
+        shelf.setShelfId(shelfIndex);
+        this.shelves.add(shelf);
     }
 
     public ArrayList<Shelf> getShelves() {
@@ -32,7 +33,6 @@ public class Store {
 
     public int getSpecificItemAmount(Item wantedItem) {
         int amount = 0;
-        //TODO: add condition if defected or address it somehow else
         for (Shelf shelf : this.getShelves()) {
             for (ItemStack itemStack : shelf.getItemsOnShelf()) {
                 if (itemStack.getItemType().getBARCODE() == wantedItem.getBARCODE())
@@ -55,7 +55,7 @@ public class Store {
                 // If the item is already in the map, update the quantity
                 if (itemMap.containsKey(currentBarcode)) {
                     ItemStack existingItem = itemMap.get(currentBarcode);
-                    for (ItemInstance itemInstance : itemStack.getItemsList()) {
+                    for (Item itemInstance : itemStack.getItemsList()) {
                         existingItem.addItem(itemInstance);
                     }
                 } else {

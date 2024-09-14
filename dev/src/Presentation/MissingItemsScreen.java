@@ -1,7 +1,6 @@
 package Presentation;
 
 import Domain.Items.Item;
-import Domain.Items.ItemInstance;
 import Domain.Items.ItemStack;
 import Domain.Storage;
 import Domain.Store;
@@ -41,7 +40,7 @@ public class MissingItemsScreen extends Screen {
         }
 
         this.out.println();
-        
+
         return Constants.USER_NO_INPUT;
 
     }
@@ -57,7 +56,7 @@ public class MissingItemsScreen extends Screen {
 
             if (itemMap.containsKey(currentBarcode)) {
                 ItemStack existingItemStack = itemMap.get(currentBarcode);
-                for (ItemInstance itemInstance : itemStack.getItemsList()) {
+                for (Item itemInstance : itemStack.getItemsList()) {
                     existingItemStack.addItem(itemInstance);
                 }
             } else {
@@ -72,7 +71,7 @@ public class MissingItemsScreen extends Screen {
 
             if (itemMap.containsKey(currentBarcode)) {
                 ItemStack existingItemStack = itemMap.get(currentBarcode);
-                for (ItemInstance itemInstance : itemStack.getItemsList()) {
+                for (Item itemInstance : itemStack.getItemsList()) {
                     existingItemStack.addItem(itemInstance);
                 }
             } else {

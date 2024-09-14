@@ -6,37 +6,28 @@ public class ItemStack {
 
     private Item itemType;
 
-    private ArrayList<ItemInstance> itemsList;
+    private ArrayList<Item> itemsList;
 
-    // Constructor for empty stack of certain type
-    public ItemStack(Item itemType) {
-        this.itemType = itemType;
-        this.itemsList = new ArrayList<ItemInstance>();
-    }
+    private StackLocation stackLocation;
 
     // Constructor for a new stack from one item
-    public ItemStack(ItemInstance item) {
-        this.itemType = item.getItemType();
-        this.itemsList = new ArrayList<ItemInstance>();
+    public ItemStack(Item item) {
+        this.itemType = item;
+        this.itemsList = new ArrayList<Item>();
         this.addItem(item);
     }
 
-    public ItemStack(ItemInstance item, int amount) {
-        this.itemType = item.getItemType();
-        this.itemsList = new ArrayList<ItemInstance>();
+    public ItemStack(Item item, int amount) {
+        this.itemType = item;
+        this.itemsList = new ArrayList<Item>();
         for (int amountIndex = 0; amountIndex < amount; amountIndex++) {
             this.addItem(item);
         }
     }
 
     // Add item if of the right type
-    public void addItem(ItemInstance item) {
-        if (item.getItemType().getBARCODE() != this.itemType.getBARCODE()) {
-            throw new RuntimeException("The item " + item.getItemType() + " with barcode: " + item.getItemType().getBARCODE()
-                    + " doesn't fit the barcode of type " + this.itemType.getName() + " which is: " + this.itemType.getBARCODE());
-        } else {
-            this.itemsList.add(item);
-        }
+    public void addItem(Item item) {
+        this.itemsList.add(item);
     }
 
     public int getItemSize() {
@@ -47,7 +38,16 @@ public class ItemStack {
         return itemType;
     }
 
-    public ArrayList<ItemInstance> getItemsList() {
+    public ArrayList<Item> getItemsList() {
         return itemsList;
     }
+
+    public String getLocationDetails() {
+        return stackLocation.toString();
+    }
+
+    public void setLocation(StackLocation stackLocation) {
+        this.stackLocation = stackLocation;
+    }
+
 }

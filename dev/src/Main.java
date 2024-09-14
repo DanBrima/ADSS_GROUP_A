@@ -1,5 +1,4 @@
 import Domain.Items.Item;
-import Domain.Items.ItemInstance;
 import Domain.Items.ItemStack;
 import Domain.Shelf;
 import Domain.Storage;
@@ -24,31 +23,32 @@ public class Main {
 
         // Create the first shelf with apple and banana with specific quantities
         Shelf shelf1 = new Shelf();
-        shelf1.addItemStack(new ItemStack(new ItemInstance(appleItem), 25));  // 25 apples
-        shelf1.addItemStack(new ItemStack(new ItemInstance(bananaItem), 45)); // 45 bananas
         store.addShelf(shelf1);
+        shelf1.addItemStack(new ItemStack(appleItem, 25));  // 25 apples
+        shelf1.addItemStack(new ItemStack(bananaItem, 45)); // 45 bananas
 
         // Create the second shelf with orange and mango with specific quantities
         Shelf shelf2 = new Shelf();
-        shelf2.addItemStack(new ItemStack(new ItemInstance(orangeItem), 30)); // 30 oranges
-        shelf2.addItemStack(new ItemStack(new ItemInstance(mangoItem), 20));  // 20 mangoes
         store.addShelf(shelf2);
+        shelf2.addItemStack(new ItemStack(orangeItem, 30)); // 30 oranges
+        shelf2.addItemStack(new ItemStack(mangoItem, 20));  // 20 mangoes
 
         // Create the third shelf with grapes and watermelon with specific quantities
         Shelf shelf3 = new Shelf();
-        shelf3.addItemStack(new ItemStack(new ItemInstance(grapesItem), 50));  // 50 grapes
-        shelf3.addItemStack(new ItemStack(new ItemInstance(watermelonItem), 10)); // 10 watermelons
         store.addShelf(shelf3);
-
+        shelf3.addItemStack(new ItemStack(grapesItem, 50));  // 50 grapes
+        shelf3.addItemStack(new ItemStack(watermelonItem, 10)); // 10 watermelons
 
         Storage storage = new Storage();
+        ItemStack defectiveItems = new ItemStack(mangoItem, 5);
+        storage.addDefectiveItemStack(defectiveItems);
 
-        storage.addItemStack(new ItemStack(new ItemInstance(grapesItem), 75));
-        storage.addItemStack(new ItemStack(new ItemInstance(appleItem), 50));
-        storage.addItemStack(new ItemStack(new ItemInstance(bananaItem), 30));
-        storage.addItemStack(new ItemStack(new ItemInstance(orangeItem), 40));
-        storage.addItemStack(new ItemStack(new ItemInstance(mangoItem), 25));
-        storage.addItemStack(new ItemStack(new ItemInstance(watermelonItem), 10));
+        storage.addItemStack(new ItemStack(grapesItem, 75));
+        storage.addItemStack(new ItemStack(appleItem, 50));
+        storage.addItemStack(new ItemStack(bananaItem, 30));
+        storage.addItemStack(new ItemStack(orangeItem, 40));
+        storage.addItemStack(new ItemStack(mangoItem, 25));
+        storage.addItemStack(new ItemStack(watermelonItem, 10));
 
 
         CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), storage, store);

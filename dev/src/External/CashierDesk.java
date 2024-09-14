@@ -75,6 +75,11 @@ public class CashierDesk {
                     discountsHistoryScreen.handleMsg();
                     break;
                 }
+                case Constants.DISPLAY_DEFECTIVE_ITEMS_INDEX: {
+                    DefectiveItemsScreen defectiveItemsScreen = new DefectiveItemsScreen(this.out, this.in, this.storageRef);
+                    defectiveItemsScreen.handleMsg();
+                    break;
+                }
                 case Constants.TURN_OFF_INDEX: {
                     this.turnOff();
                     break;
