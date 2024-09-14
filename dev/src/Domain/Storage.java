@@ -41,6 +41,17 @@ public class Storage {
         return (ArrayList<ItemStack>) inventory.clone();
     }
 
+    public ItemStack pullItemsStack(String itemName) {
+        for (int i = 0; i < this.inventory.size(); i++) {
+            ItemStack itemStack = this.inventory.get(i);
+            if (itemStack.getItemType().getName().equals(itemName)) {
+                return this.inventory.remove(i);
+            }
+        }
+
+        return null;
+    }
+
     public ArrayList<ItemStack> getAllUniqueItems() {
 
         //TODO: add condition if defected or address it somehow else

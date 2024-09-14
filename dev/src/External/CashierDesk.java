@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class CashierDesk {
     private final PrintStream out;
     private final Scanner in;
-
     private Boolean isActivated = false;
     private Storage storageRef;
     private Store storeRef;
@@ -29,7 +28,6 @@ public class CashierDesk {
 
     public void turnOn() throws Exception {
         this.isActivated = true;
-        //TODO: maybe there is some default values to generate here (like history or something)
         DiscountsHistory discountsHistory = new DiscountsHistory();
         discountsHistory.discountList.add(new ItemDiscount(10, new Date(), new Date(),
                 new Item("test", new BigDecimal(10), "more test", new BigDecimal(100), 10, null)));
@@ -82,6 +80,11 @@ public class CashierDesk {
                 }
                 case Constants.TURN_OFF_INDEX: {
                     this.turnOff();
+                    break;
+                }
+                case Constants.TRANSFER_ITEMS_INDEX: {
+                    TransferItemsScreen transferItemsScreen = new TransferItemsScreen(this.out, this.in, this.storeRef, this.storageRef);
+                    transferItemsScreen.handleMsg();
                     break;
                 }
                 default: {

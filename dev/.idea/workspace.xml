@@ -4,83 +4,74 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f9939b3-14fe-4652-bcc2-95a0aac728aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/libraries/adss_v0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ADSS_GROUP_A.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/External/CashierDesk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presentation/MenuAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presentation/MenuDefault.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+    <list default="true" id="48ebad58-578e-431a-91cf-ddc0c302b88a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Presentation/TransferItemsScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/adss_v0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADSS_GROUP_A.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/External/example.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/example.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/External/CashierDesk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/External/CashierDesk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/External/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/External/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/AmountsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/AmountsScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/DefaultMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DefaultMenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Data/example.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Categories/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Categories/SubCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Categories/SubSubCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/CategoryDiscount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/Discount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/DiscountsHistory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/ItemDiscount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Items/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Items/ItemStack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Items/StackLocation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Shelf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Storage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Store.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/External/CashierDesk.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/External/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/AmountsScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/DefaultMenuScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/DefectiveItemsScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/DiscountsHistoryScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/MissingItemsScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/Screen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/StorageAmountScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/StoreAmountScreen.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2lqN7fn80Pm1l3HZqetFVNc15P1" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2m45AkfyykbdukkquWsfGg1O9WP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "feature-ui",
-    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/idana/OneDrive/Desktop/ADSS_GROUP_A"
+    "last_opened_file_path": "C:/Users/idana/OneDrive/Desktop/ADSS_GROUP_A/dev"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Presentation" />
-      <recent name="External" />
-      <recent name="Domain" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="dev" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="dev" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -91,15 +82,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5f9939b3-14fe-4652-bcc2-95a0aac728aa" name="Changes" comment="" />
-      <created>1725903480899</created>
+      <changelist id="48ebad58-578e-431a-91cf-ddc0c302b88a" name="Changes" comment="" />
+      <created>1726322866970</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1725903480899</updated>
+      <updated>1726322866970</updated>
     </task>
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
