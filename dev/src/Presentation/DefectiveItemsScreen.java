@@ -18,7 +18,7 @@ public class DefectiveItemsScreen extends Screen{
 
     @Override
     public int handleMsg() {
-        String LEFT_ALIGN_FORMAT = "| %-6s | %-6s |%n";
+        String LEFT_ALIGN_FORMAT = "| %-6s | %-8s |%n";
 
         this.out.println();
         this.out.format("+--------+----------+%n");

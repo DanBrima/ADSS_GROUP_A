@@ -43,6 +43,14 @@ public class Main {
         ItemStack defectiveItems = new ItemStack(mangoItem, 5);
         storage.addDefectiveItemStack(defectiveItems);
 
+        storage.addItemStack(new ItemStack(grapesItem, 75));
+        storage.addItemStack(new ItemStack(appleItem, 50));
+        storage.addItemStack(new ItemStack(bananaItem, 30));
+        storage.addItemStack(new ItemStack(orangeItem, 40));
+        storage.addItemStack(new ItemStack(mangoItem, 25));
+        storage.addItemStack(new ItemStack(watermelonItem, 10));
+
+
         CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), storage, store);
         cashierDesk.turnOn();
     }

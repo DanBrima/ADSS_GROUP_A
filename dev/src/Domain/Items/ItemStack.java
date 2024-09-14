@@ -30,6 +30,10 @@ public class ItemStack {
         this.itemsList.add(item);
     }
 
+    public int getItemSize() {
+        return this.itemsList.size();
+    }
+
     public Item getItemType() {
         return itemType;
     }
@@ -45,4 +49,5 @@ public class ItemStack {
     public void setLocation(StackLocation stackLocation) {
         this.stackLocation = stackLocation;
     }
+
 }
