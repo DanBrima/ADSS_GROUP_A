@@ -1,5 +1,6 @@
 package Service;
 
+import Domain.Items.Item;
 import Domain.Items.ItemStack;
 import Domain.Storage;
 import Domain.Store;
@@ -22,5 +23,9 @@ public class ItemService {
         }
 
         this.storageRef.addDefectiveItemStack(new ItemStack(itemStack.getItemType(), amount));
+    }
+
+    public void addNewSupplyToStorage (Item item, int amount) {
+        this.storageRef.addItemStack(new ItemStack(item, amount));
     }
 }
