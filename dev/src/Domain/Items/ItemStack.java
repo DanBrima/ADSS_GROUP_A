@@ -36,7 +36,7 @@ public class ItemStack {
 
     public void addItems(UUID barcode, int amount) {
         if (barcode == this.itemType.getBARCODE()) {
-            this.itemCount++;
+            this.itemCount+=amount;
         }
     }
 
@@ -48,8 +48,12 @@ public class ItemStack {
         return this.itemCount;
     }
 
-    public String getLocationDetails() {
-        return stackLocation.toString();
+    public void setItemCount(int itemCount) {
+        this.itemCount = itemCount;
+    }
+
+    public StackLocation getStackLocation() {
+        return stackLocation;
     }
 
     public void setLocation(StackLocation stackLocation) {

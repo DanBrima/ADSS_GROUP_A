@@ -65,8 +65,7 @@ public class ItemPriceHistoryScreen extends Screen {
     }
 
     private ItemPriceHistory getItemHistory(String itemName) {
-        for (int i = 0; i < this.allExistingItemsOnStore.size(); i++) {
-            ItemStack itemStack = this.allExistingItemsOnStore.get(i);
+        for (ItemStack itemStack : this.allExistingItemsOnStore) {
             if (itemStack.getItemType().getName().equals(itemName)) {
                 return itemStack.getItemType().getItemPriceHistory();
             }
