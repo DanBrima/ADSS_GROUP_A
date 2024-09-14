@@ -1,6 +1,6 @@
-package domain;
+package Domain;
 
-import presentation.IO;
+import Presentation.IO;
 
 public enum PaymentOption {
     CASH, CREDIT_CARD;

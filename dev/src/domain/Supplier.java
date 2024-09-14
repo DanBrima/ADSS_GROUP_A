@@ -1,6 +1,6 @@
-package domain;
+package Domain;
 
-import presentation.IO;
+import Presentation.IO;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,6 +40,7 @@ public class Supplier {
     public List<ProductInContract> getAllProductsInContracts() {
         return contracts.stream()
                 .flatMap(contract -> contract.products().stream())
+                .distinct()
                 .collect(Collectors.toList());
     }
 

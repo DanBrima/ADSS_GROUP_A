@@ -1,6 +1,6 @@
-package domain;
+package Domain;
 
-import presentation.IO;
+import Presentation.IO;
 
 import java.util.List;
 
@@ -17,5 +17,11 @@ public class InPlaceSupplier extends Supplier {
         int deliveryDays = io.readInt("Enter the delivery days in hours:");
 
         return new InPlaceSupplier(supplier.needsPickup(), supplier.activeAccount(), supplier.bankAccount(), supplier.paymentOption(), supplier.contacts(), deliveryDays);
+    }
+    public int getDeliveryDays(){
+        return deliveryDays;
+    }
+    public void setDeliveryDays(int deliveryDays){
+        this.deliveryDays = deliveryDays;
     }
 }

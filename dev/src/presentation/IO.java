@@ -1,4 +1,4 @@
-package presentation;
+package Presentation;
 
 abstract public class IO {
     private static IO instance;

@@ -1,7 +1,8 @@
-package tests;
+package Tests;
 
-import domain.*;
+import Domain.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
@@ -25,34 +26,107 @@ public class Test {
         dan = new Contact("Dan", "0585979676");
         ban = new Contact("Ban", "0586979676");
         tnuva = new Manufacturer("Tnuva");
-        milk = new Product("Milk", tnuva);
-        shoko = new Product("Shoko", tnuva);
-        cheese = new Product("Cheese", tnuva);
+        milk = new Product("Milk", 10, tnuva);
+        shoko = new Product("Shoko", 10, tnuva);
+        cheese = new Product("Cheese", 10, tnuva);
         osem = new Manufacturer("Osem");
-        bisli = new Product("Bisli", osem);
-        bamba = new Product("Bamba", osem);
-        waffle = new Product("Waffle", osem);
+        bisli = new Product("Bisli", 10, osem);
+        bamba = new Product("Bamba", 10, osem);
+        waffle = new Product("Waffle", 10, osem);
         biko = new InPlaceSupplier(true, "biko", 123456,
                 PaymentOption.CASH, List.of(dan, ban), 5);
         shufersal = new FixedDaysSupplier(false, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), List.of(WeekDay.MONDAY, WeekDay.TUESDAY));
-        bikoDiary = new Contract(10, biko,
+    }
+
+    // Dan create this as private and not public ? Why ?
+    // We can also do the test functions boolean instead of void
+    public void test_SameProductMultipleSuppliers() {
+        initializeObjects();
+        bikoDiary = new Contract(100, biko,
                 List.of(new ProductInContract(milk, 5, 25),
-                        new ProductInContract(shoko, 10, 20),
-                        new ProductInContract(cheese, 30, 30)));
-        bikoOsem = new Contract(10, biko,
+                        new ProductInContract(shoko, 10, 20)));
+        bikoOsem = new Contract(100, biko,
                 List.of(new ProductInContract(bisli, 5, 25),
                         new ProductInContract(bamba, 10, 20),
                         new ProductInContract(waffle, 30, 30)));
         shufersalDiary = new Contract(15, shufersal,
                 List.of(new ProductInContract(milk, 10, 10),
-                        new ProductInContract(cheese, 40, 10)));
+                        new ProductInContract(shoko, 15, 10)));
         biko.addContract(bikoDiary);
-        biko.addContract(bikoOsem);
         shufersal.addContract(shufersalDiary);
     }
 
-    private static void test_SameProductMultipleSuppliers() {
+    public void test_SameSupplierMultipleContracts(){
         initializeObjects();
+        bikoDiary = new Contract(100, biko,
+                List.of(new ProductInContract(milk, 5, 25),
+                        new ProductInContract(shoko, 10, 20)));
+        bikoOsem = new Contract(100, biko,
+                List.of(new ProductInContract(bisli, 5, 25),
+                        new ProductInContract(bamba, 10, 20),
+                        new ProductInContract(waffle, 30, 30)));
+        biko.addContract(bikoDiary);
+        biko.addContract(bikoOsem);
+
+        assert biko.contracts().size() == 2;
+    }
+
+    public void test_ContractWithDiscount(){
+        initializeObjects();
+        bikoOsem = new Contract(10, biko,
+                List.of(new ProductInContract(bisli, 5, 25),
+                        new ProductInContract(bamba, 10, 20),
+                        new ProductInContract(waffle, 30, 30)));
+        assert biko.contracts().get(0).isDiscount();
+    }
+
+    public void test_EmptyContract(){
+        initializeObjects();
+        List list = List.of();
+        int size = biko.getAllProductsInContracts().size();
+        bikoOsem = new Contract(10, biko, List.of());
+        biko.addContract(bikoOsem);
+        assert biko.getAllProductsInContracts().size() == size;
+    }
+
+    public void test_SameSupplierProduct(){
+        initializeObjects();
+        Contract bikoOsem1 = new Contract(100, biko,
+                List.of(new ProductInContract(bisli, 5, 25),
+                        new ProductInContract(bamba, 10, 20),
+                        new ProductInContract(waffle, 30, 30)));
+        Contract bikoOsem2 = new Contract(100, biko,
+                List.of(new ProductInContract(bisli, 5, 25),
+                        new ProductInContract(bamba, 10, 20),
+                        new ProductInContract(waffle, 30, 30)));
+        biko.addContract(bikoOsem1);
+        biko.addContract(bikoOsem2);
+        // Needs to be 6 items (even if the products are the same)
+        assert biko.getAllProductsInContracts().size() == 6;
+    }
+
+    public void test_SameNameSuppliers(){
+        initializeObjects();
+        Supplier shufersal2 = new FixedDaysSupplier(false, "shufersal", 123456,
+                PaymentOption.CREDIT_CARD, List.of(ban), List.of(WeekDay.MONDAY, WeekDay.TUESDAY));
+        assert shufersal2.activeAccount() == shufersal.activeAccount();
+    }
+
+    // Always with discount
+    public void test_ZeroWholesaleThreshold(){
+        initializeObjects();
+        bikoOsem = new Contract(0, biko,
+                List.of(new ProductInContract(bisli, 5, 25),
+                        new ProductInContract(bamba, 10, 20),
+                        new ProductInContract(waffle, 30, 30)));
+        biko.addContract(bikoOsem);
+        assert biko.contracts().get(0).isDiscount();
+    }
+
+    public void test_NoDeliveryDays(){
+        initializeObjects();
+        shufersal = new FixedDaysSupplier(false, "shufersal", 123456,
+                PaymentOption.CREDIT_CARD, List.of(ban), List.of());
     }
 }

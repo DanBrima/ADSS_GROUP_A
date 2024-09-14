@@ -1,6 +1,6 @@
-package domain;
+package Domain;
 
-import presentation.IO;
+import Presentation.IO;
 
 public class Manufacturer {
     private String name;
@@ -13,5 +13,10 @@ public class Manufacturer {
         String name = io.readString("Enter the manufacturer name:");
         
         return new Manufacturer(name);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

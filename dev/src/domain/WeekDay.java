@@ -1,6 +1,6 @@
-package domain;
+package Domain;
 
-import presentation.IO;
+import Presentation.IO;
 
 public enum WeekDay {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;

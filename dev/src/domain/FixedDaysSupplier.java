@@ -1,6 +1,6 @@
-package domain;
+package Domain;
 
-import presentation.IO;
+import Presentation.IO;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -19,5 +19,12 @@ public class FixedDaysSupplier extends Supplier {
         List<WeekDay> arrivalDays = Stream.generate(() -> WeekDay.getWeekDayFromIO(io)).limit(arrivalDayCount).toList();
 
         return new FixedDaysSupplier(supplier.needsPickup(), supplier.activeAccount(), supplier.bankAccount(), supplier.paymentOption(), supplier.contacts(), arrivalDays);
+    }
+
+    public List<WeekDay> getArrivalDays() {
+        return arrivalDays;
+    }
+    public void setArrivalDays(List<WeekDay> arrivalDays){
+        this.arrivalDays = arrivalDays;
     }
 }
