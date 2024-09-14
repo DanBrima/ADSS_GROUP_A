@@ -19,7 +19,7 @@ public class AmountsScreen extends Screen {
         this.out.println(Constants.DISPLAY_STORAGE_ITEMS);
 
         this.out.print("\n" + Constants.USER_INPUT);
-        int userInput = this.in.nextInt();
+        int userInput = Integer.parseInt(this.in.nextLine());
         return userInput;
     }
 }
