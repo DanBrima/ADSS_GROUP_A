@@ -1,45 +1,51 @@
 package Domain.Items;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ItemStack {
 
     private Item itemType;
-
-    private ArrayList<Item> itemsList;
+    private int itemCount;
 
     private StackLocation stackLocation;
 
     // Constructor for a new stack from one item
     public ItemStack(Item item) {
         this.itemType = item;
-        this.itemsList = new ArrayList<Item>();
         this.addItem(item);
     }
 
-    public ItemStack(Item item, int amount) {
+    public ItemStack(Item item, int count) {
         this.itemType = item;
-        this.itemsList = new ArrayList<Item>();
-        for (int amountIndex = 0; amountIndex < amount; amountIndex++) {
-            this.addItem(item);
-        }
+        this.itemCount = count;
     }
 
     // Add item if of the right type
     public void addItem(Item item) {
-        this.itemsList.add(item);
+        if (item.getBARCODE() == this.itemType.getBARCODE()) {
+            this.itemCount++;
+        }
     }
 
-    public int getItemSize() {
-        return this.itemsList.size();
+    public void addItem(UUID barcode) {
+        if (barcode == this.itemType.getBARCODE()) {
+            this.itemCount++;
+        }
+    }
+
+    public void addItems(UUID barcode, int amount) {
+        if (barcode == this.itemType.getBARCODE()) {
+            this.itemCount++;
+        }
     }
 
     public Item getItemType() {
-        return itemType;
+        return this.itemType;
     }
 
-    public ArrayList<Item> getItemsList() {
-        return itemsList;
+    public int getItemCount() {
+        return this.itemCount;
     }
 
     public String getLocationDetails() {

@@ -12,7 +12,7 @@ public class StackLocation {
     }
 
     public StackLocation(int itemStackIndex) {
-        this.place = "Store";
+        this.place = "Storage";
         this.itemStackIndex = itemStackIndex;
     }
 
