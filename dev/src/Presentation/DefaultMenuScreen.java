@@ -31,6 +31,9 @@ public class DefaultMenuScreen extends Screen {
         this.out.print(Constants.TRANSFER_ITEMS_INDEX + ". ");
         this.out.println(Constants.TRANSFER_ITEMS);
 
+        this.out.print(Constants.ITEM_PRICE_HISTORY_INDEX + ". ");
+        this.out.println(Constants.ITEM_PRICE_HISTORY);
+
         this.out.print(Constants.TURN_OFF_INDEX + ". ");
         this.out.println(Constants.TURN_OFF);
 

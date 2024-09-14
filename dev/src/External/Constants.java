@@ -15,7 +15,7 @@ public class Constants {
     public static final String DISPLAY_DEFECTIVE_ITEMS = "display defective item";
     public static final int DISPLAY_DEFECTIVE_ITEMS_INDEX = 5;
     public static final String TURN_OFF = "turn off";
-    public static final int TURN_OFF_INDEX = 7;
+    public static final int TURN_OFF_INDEX = 8;
     public static final String DISPLAY_STORE_ITEMS = "display items in store";
     public static final int DISPLAY_STORE_ITEMS_INDEX = 1;
     public static final String DISPLAY_STORAGE_ITEMS = "display items in storage";
@@ -29,6 +29,8 @@ public class Constants {
     public static final String NO_ITEMS_IN_STORAGE = "There aren't items of this type in the storage";
     public static final String INVALID_INPUT = "invalid input";
     public static final String GOODBYE_MSG = "Turning off... \nErasing all data... \nSuccess!";
+    public static final String ITEM_PRICE_HISTORY = "display item price history";
+    public static final int ITEM_PRICE_HISTORY_INDEX = 7;
     public static final int USER_NO_INPUT = -1;
 
 }
