@@ -2,8 +2,11 @@ package Service;
 
 import Domain.Items.Item;
 import Domain.Items.ItemStack;
+import Domain.Shelf;
 import Domain.Storage;
 import Domain.Store;
+
+import java.util.ArrayList;
 
 public class ItemService {
     private Storage storageRef;
@@ -12,6 +15,22 @@ public class ItemService {
     public ItemService(Storage storageRef, Store storeRef) {
         this.storageRef = storageRef;
         this.storeRef = storeRef;
+    }
+
+    public ArrayList<ItemStack> getAllUniqueItemsFromStorage() {
+        return ItemStackService.combineUniqueItems(this.storageRef.getInventory(), this.storageRef.getDefectiveItems());
+    }
+
+    public ArrayList<ItemStack> getAllUniqueItemsFromStore() {
+        return ItemStackService.getAllUniqueItemsFromStore(this.storeRef.getShelves());
+    }
+
+    public ArrayList<ItemStack> getAllUniqueItems() {
+        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStorage(), getAllUniqueItemsFromStore());
+    }
+
+    public ArrayList<ItemStack> getAllUniqueItemsWithoutDefective() {
+        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStore(), this.storageRef.getInventory());
     }
 
     public void reportDefectItem (ItemStack itemStack, int amount) {

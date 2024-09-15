@@ -6,7 +6,8 @@ import Domain.Items.ItemStack;
 import Domain.Storage;
 import Domain.Store;
 import External.Constants;
-import Service.ItemsService;
+import Service.ItemService;
+import Service.ItemStackService;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -15,21 +16,23 @@ import java.util.Scanner;
 public class ItemPriceHistoryScreen extends Screen {
     private Store storeRef;
     private Storage storageRef;
+    private ItemService itemService;
 
     private ArrayList<ItemStack> allExistingItemsOnStore;
 
-    public ItemPriceHistoryScreen(PrintStream out, Scanner in, Store storeRef, Storage storageRef) {
+    public ItemPriceHistoryScreen(PrintStream out, Scanner in, Store storeRef, Storage storageRef, ItemService itemService) {
         super(out, in);
         this.storeRef = storeRef;
         this.storageRef = storageRef;
-        this.allExistingItemsOnStore = new ArrayList<>(
-                ItemsService.combineUniqueItems(this.storeRef.getAllUniqueItems(), this.storageRef.getAllUniqueItems()));
+        this.itemService = itemService;
+
+        this.allExistingItemsOnStore = itemService.getAllUniqueItemsWithoutDefective();
     }
 
     @Override
     public int handleMsg() {
         this.displayItems();
-        this.out.println(Constants.ITEM_PRICE_HISTORY_INDEX);
+        this.out.println(Constants.ITEM_PRICE_HISTORY);
         this.out.print(Constants.ENTER_ITEM);
         String userInput = this.in.nextLine();
         this.out.println();
