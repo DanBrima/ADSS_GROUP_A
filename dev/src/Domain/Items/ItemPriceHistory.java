@@ -25,4 +25,12 @@ public class ItemPriceHistory {
     public ArrayList<ItemPrice> getItemPricesHistory() {
         return itemPricesHistory;
     }
+
+    public BigDecimal getCurrentPrice(){
+        return this.itemPricesHistory.get(this.itemPricesHistory.size()-1).getStorePrice();
+    }
+
+    public BigDecimal getCurrentCost(){
+        return this.itemPricesHistory.get(this.itemPricesHistory.size()-1).getSupplierCost();
+    }
 }

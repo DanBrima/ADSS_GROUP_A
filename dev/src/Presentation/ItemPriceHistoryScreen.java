@@ -56,6 +56,7 @@ public class ItemPriceHistoryScreen extends Screen {
         String LEFT_ALIGN_FORMAT = "| %-11s |%n";
 
         this.out.println();
+        this.out.println("Please choose item to display from the following items");
         this.out.format("+-------------+%n");
         this.out.format("| Item        |%n");
         this.out.format("+-------------+%n");
@@ -78,19 +79,19 @@ public class ItemPriceHistoryScreen extends Screen {
     }
 
     public int displayHistory(String itemName, ItemPriceHistory itemHistory) {
-        String LEFT_ALIGN_FORMAT = "| %-12s | %-12s | %-12s | %-28s |%n";
+        String LEFT_ALIGN_FORMAT = "| %-12s | %-14s | %-14s | %-30s |%n";
 
         this.out.println();
-        this.out.format("+--------------+------------------------------+------------------------------+%n");
-        this.out.format("| Item Name   | Store Price    |Supplier Cost   | Update Date                     |%n");
-        this.out.format("+--------------+------------------------------+------------------------------+%n");
+        this.out.format("+--------------+----------------+----------------+--------------------------------+%n");
+        this.out.format("| Item Name    | Store Price    |Supplier Cost   | Update Date                    |%n");
+        this.out.format("+--------------+----------------+----------------+--------------------------------+%n");
         for (int discountIndex = 0; discountIndex < itemHistory.getItemPricesHistory().size(); discountIndex++) {
             ItemPrice itemPrice = itemHistory.getItemPricesHistory().get(discountIndex);
             this.out.format(LEFT_ALIGN_FORMAT,
                     itemName, itemPrice.getStorePrice(), itemPrice.getSupplierCost(), itemPrice.getUpdateDate());
         }
 
-        this.out.format("+--------------+--------------+--------------+------------------------------+%n");
+        this.out.format("+--------------+----------------+----------------+--------------------------------+%n");
         this.out.println();
 
         return Constants.USER_NO_INPUT;

@@ -9,21 +9,17 @@ public class Item {
 
     private final UUID BARCODE;
     private String name;
-    private BigDecimal price;
     private String supplier;
 
     private SubSubCategory category;
-    private BigDecimal supplierCost;
     private int requiredAmount;
 
-    private ItemPriceHistory itemPriceHistory;
+    private final ItemPriceHistory itemPriceHistory;
 
     public Item(String name, BigDecimal price, String supplier, BigDecimal supplierCost, int requiredAmount, SubSubCategory category) {
         this.BARCODE = UUID.randomUUID();
         this.name = name;
-        this.price = price;
         this.supplier = supplier;
-        this.supplierCost = supplierCost;
         this.requiredAmount = requiredAmount;
         this.category = category;
         this.itemPriceHistory = new ItemPriceHistory(price, supplierCost);
@@ -42,11 +38,10 @@ public class Item {
     }
 
     public BigDecimal getPrice() {
-        return price;
+        return this.itemPriceHistory.getCurrentPrice();
     }
 
     public void setPrice(BigDecimal price) {
-        this.price = price;
         this.itemPriceHistory.addStorePriceToHistory(price);
     }
 
@@ -59,11 +54,10 @@ public class Item {
     }
 
     public BigDecimal getSupplierCost() {
-        return supplierCost;
+        return this.itemPriceHistory.getCurrentCost();
     }
 
     public void setSupplierCost(BigDecimal supplierCost) {
-        this.supplierCost = supplierCost;
         this.itemPriceHistory.addSupplierCostToHistory(supplierCost);
     }
 
