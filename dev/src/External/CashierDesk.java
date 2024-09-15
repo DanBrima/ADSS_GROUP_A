@@ -19,7 +19,6 @@ public class CashierDesk {
     private Boolean isActivated = false;
     private Storage storageRef;
     private Store storeRef;
-    private ItemService itemService;
 
 
     public CashierDesk(PrintStream out, Scanner in, Storage storageRef, Store storeRef) {
@@ -27,7 +26,6 @@ public class CashierDesk {
         this.in = in;
         this.storageRef = storageRef;
         this.storeRef = storeRef;
-        this.itemService = new ItemService(storageRef, storeRef);
     }
 
     public void turnOn() throws Exception {
@@ -64,13 +62,34 @@ public class CashierDesk {
                     break;
                 }
                 case Constants.MISSING_ITEMS_RECORD_INDEX: {
-                    MissingItemsScreen missingItemsScreen = new MissingItemsScreen(this.out, this.in, this.storeRef, this.storageRef, this.itemService);
+                    MissingItemsScreen missingItemsScreen = new MissingItemsScreen(this.out, this.in, this.storeRef, this.storageRef);
                     missingItemsScreen.handleMsg();
                     break;
                 }
                 case Constants.DISCOUNTS_HISTORY_INDEX: {
                     DiscountsHistoryScreen discountsHistoryScreen = new DiscountsHistoryScreen(this.out, this.in, discountsHistory);
                     discountsHistoryScreen.handleMsg();
+                    break;
+                }
+                case Constants.REMOVE_ITEMS_INDEX: {
+                    RemoveItemScreen removeItemScreen = new RemoveItemScreen(this.out, this.in);
+                    userInput = removeItemScreen.handleMsg();
+                    switch (userInput) {
+                        case Constants.REMOVE_ITEM_STORE_INDEX: {
+                            RemoveItemsStoreScreen removeItemsStoreScreen = new RemoveItemsStoreScreen(this.out, this.in, this.storeRef);
+                            removeItemsStoreScreen.handleMsg();
+                            break;
+                        }
+                        case Constants.REMOVE_ITEM_STORAGE_INDEX: {
+                            RemoveItemsStorageScreen removeItemsStorageScreen = new RemoveItemsStorageScreen(this.out, this.in, this.storageRef);
+                            removeItemsStorageScreen.handleMsg();
+                            break;
+                        }
+                        default: {
+                            this.out.println(Constants.INVALID_INPUT);
+                            break;
+                        }
+                    }
                     break;
                 }
                 case Constants.DISPLAY_DEFECTIVE_ITEMS_INDEX: {
@@ -88,7 +107,7 @@ public class CashierDesk {
                     break;
                 }
                 case Constants.ITEM_PRICE_HISTORY_INDEX: {
-                    ItemPriceHistoryScreen itemPriceHistoryScreen = new ItemPriceHistoryScreen(this.out, this.in, this.storeRef, this.storageRef, this.itemService);
+                    ItemPriceHistoryScreen itemPriceHistoryScreen = new ItemPriceHistoryScreen(this.out, this.in, this.storeRef, this.storageRef);
                     itemPriceHistoryScreen.handleMsg();
                     break;
                 }

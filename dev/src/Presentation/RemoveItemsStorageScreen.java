@@ -3,6 +3,8 @@ package Presentation;
 import Domain.Items.ItemStack;
 import Domain.Storage;
 import External.Constants;
+import Service.ItemService;
+import Service.ItemStackService;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -31,12 +33,16 @@ public class RemoveItemsStorageScreen extends Screen {
         this.out.println();
 
         this.out.println(Constants.CHOOSE_TYPE_AMOUNT);
-        this.out.print(Constants.ENTER_ITEM);
+        this.out.print(Constants.ENTER_ITEM + " ");
         String userType = this.in.nextLine();
-        this.out.print(Constants.ENTER_AMOUNT);
+        this.out.print(Constants.ENTER_AMOUNT + " ");
         int userAmount = Integer.parseInt(this.in.nextLine());
 
-        //TODO: add service function to handle logic
+        if (ItemService.removeItemFromStorage(this.storageRef, userType, userAmount)) {
+            this.out.println(Constants.SUCCESS);
+        } else {
+            this.out.println("\n" + Constants.INVALID_INPUT + "\n");
+        }
 
         return Constants.USER_NO_INPUT;
     }

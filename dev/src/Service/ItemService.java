@@ -9,45 +9,66 @@ import Domain.Store;
 import java.util.ArrayList;
 
 public class ItemService {
-    private Storage storageRef;
-    private Store storeRef;
 
-    public ItemService(Storage storageRef, Store storeRef) {
-        this.storageRef = storageRef;
-        this.storeRef = storeRef;
+    public static boolean removeItemFromStore(Store storeRef, String type, int amount) {
+        for (Shelf shelf : storeRef.getShelves()) {
+            for (ItemStack itemStack : shelf.getItemsOnShelf()) {
+                if (itemStack.getItemType().getName().equals(type)) {
+                    if (itemStack.getItemCount() >= amount) {
+                        itemStack.setItemCount(itemStack.getItemCount() - amount);
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
-    public ArrayList<ItemStack> getAllUniqueItemsFromStorage() {
-        return ItemStackService.combineUniqueItems(this.storageRef.getInventory(), this.storageRef.getDefectiveItems());
+    public static boolean removeItemFromStorage(Storage storageRef, String type, int amount) {
+        for (ItemStack itemStack : storageRef.getInventory()) {
+            if (itemStack.getItemType().getName().equals(type)) {
+                if (itemStack.getItemCount() >= amount) {
+                    itemStack.setItemCount(itemStack.getItemCount() - amount);
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
-    public ArrayList<ItemStack> getAllUniqueItemsFromStore() {
-        return ItemStackService.getAllUniqueItemsFromStore(this.storeRef.getShelves());
+    public static ArrayList<ItemStack> getAllUniqueItemsFromStorage(Storage storageRef) {
+        return ItemStackService.combineUniqueItems(storageRef.getInventory(), storageRef.getDefectiveItems());
     }
 
-    public ArrayList<ItemStack> getAllUniqueItems() {
-        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStorage(), getAllUniqueItemsFromStore());
+    public static ArrayList<ItemStack> getAllUniqueItemsFromStore(Store storeRef) {
+        return ItemStackService.getAllUniqueItemsFromStore(storeRef.getShelves());
     }
 
-    public ArrayList<ItemStack> getAllUniqueItemsWithoutDefective() {
-        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStore(), this.storageRef.getInventory());
+    public static ArrayList<ItemStack> getAllUniqueItems(Storage storageRef, Store storeRef) {
+        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStorage(storageRef), getAllUniqueItemsFromStore(storeRef));
     }
 
-    public void reportDefectItem (ItemStack itemStack, int amount) {
+    public static ArrayList<ItemStack> getAllUniqueItemsWithoutDefective(Storage storageRef, Store storeRef) {
+        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStore(storeRef), storageRef.getInventory());
+    }
+
+    public static void reportDefectItem (Storage storageRef, Store storeRef, ItemStack itemStack, int amount) {
         itemStack.setItemCount(itemStack.getItemCount() - amount);
 
         if (itemStack.getItemCount() <= 0) {
-            for(Shelf shelf : this.storeRef.getShelves()) {
+            for(Shelf shelf : storeRef.getShelves()) {
                 if (shelf.getShelfId().equals(itemStack.getStackLocation().getShelfIndex())) {
                     shelf.getItemsOnShelf().remove(itemStack.getStackLocation().getItemStackIndex());
                 }
             }
         }
 
-        this.storageRef.addDefectiveItemStack(new ItemStack(itemStack.getItemType(), amount));
+        storageRef.addDefectiveItemStack(new ItemStack(itemStack.getItemType(), amount));
     }
 
-    public void addNewSupplyToStorage (Item item, int amount) {
-        this.storageRef.addItemStack(new ItemStack(item, amount));
+    public static void addNewSupplyToStorage (Storage storageRef, Item item, int amount) {
+        storageRef.addItemStack(new ItemStack(item, amount));
     }
 }

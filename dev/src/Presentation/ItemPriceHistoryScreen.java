@@ -16,17 +16,14 @@ import java.util.Scanner;
 public class ItemPriceHistoryScreen extends Screen {
     private Store storeRef;
     private Storage storageRef;
-    private ItemService itemService;
-
     private ArrayList<ItemStack> allExistingItemsOnStore;
 
-    public ItemPriceHistoryScreen(PrintStream out, Scanner in, Store storeRef, Storage storageRef, ItemService itemService) {
+    public ItemPriceHistoryScreen(PrintStream out, Scanner in, Store storeRef, Storage storageRef) {
         super(out, in);
         this.storeRef = storeRef;
         this.storageRef = storageRef;
-        this.itemService = itemService;
 
-        this.allExistingItemsOnStore = itemService.getAllUniqueItemsWithoutDefective();
+        this.allExistingItemsOnStore = ItemService.getAllUniqueItemsWithoutDefective(this.storageRef, this.storeRef);
     }
 
     @Override

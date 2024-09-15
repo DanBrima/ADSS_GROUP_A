@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04e4af10-f58c-4421-a6f0-3801fdee30f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemsStorageScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemsStoreScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Services/ItemStackTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Services/ItemTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dev.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Items/ItemStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Items/ItemStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Items/StackLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Items/StackLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Shelf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/External/CashierDesk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/External/CashierDesk.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/External/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/External/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/DefaultMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DefaultMenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/ItemPriceHistoryScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/ItemPriceHistoryScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/MissingItemsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/MissingItemsScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/RemoveItemsStorageScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemsStorageScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/RemoveItemsStoreScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemsStoreScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/ItemService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +37,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Debug",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.ItemStackTests.executor": "Run",
     "JUnit.ItemTests.executor": "Run",
@@ -57,7 +53,14 @@
     "last_opened_file_path": "C:/Users/idana/OneDrive/Desktop/ADSS_GROUP_A/dev"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ItemStackTests">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="dev" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ItemStackTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dev" />
       <extension name="coverage">
@@ -122,6 +125,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ItemStackTests" />
         <item itemvalue="JUnit.ItemTests" />
         <item itemvalue="JUnit.ItemTests.getAllUniqueItemsFromStorage_When_TwoDifferent" />
