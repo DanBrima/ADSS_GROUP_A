@@ -6,7 +6,9 @@ import Domain.Shelf;
 import Domain.Storage;
 import Domain.Store;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ItemService {
 
@@ -70,5 +72,14 @@ public class ItemService {
 
     public static void addNewSupplyToStorage (Storage storageRef, Item item, int amount) {
         storageRef.addItemStack(new ItemStack(item, amount));
+    }
+
+    public static void updateSupplierCost (Storage storageRef, UUID itemId, BigDecimal newSupplierCost){
+        for(ItemStack itemStack: storageRef.getInventory()){
+            if(itemStack.getItemType().getBARCODE().equals(itemId)){
+                itemStack.getItemType().setSupplierCost(newSupplierCost);
+            }
+        }
+
     }
 }
