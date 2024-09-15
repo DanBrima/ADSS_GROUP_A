@@ -78,6 +78,7 @@ public class ItemService {
         for(ItemStack itemStack: storageRef.getInventory()){
             if(itemStack.getItemType().getBARCODE().equals(itemId)){
                 itemStack.getItemType().setSupplierCost(newSupplierCost);
+                break;
             }
         }
 

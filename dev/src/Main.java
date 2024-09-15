@@ -50,7 +50,6 @@ public class Main {
         storage.addItemStack(new ItemStack(mangoItem, 25));
         storage.addItemStack(new ItemStack(watermelonItem, 10));
 
-
         CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), storage, store);
         cashierDesk.turnOn();
     }
