@@ -24,7 +24,7 @@ public class Contract {
         int wholesaleThreshold = io.readInt("Enter the wholesale threshold (minimal number of products of a wholesale):");
         int productCount = io.readInt("Enter the number of products in the contract (must be 1 or more:");
         assert productCount > 0;
-        List<ProductInContract> products = Stream.generate(() -> ProductInContract.getContractFromIO(io, wholesaleThreshold)).limit(productCount).toList();
+        List<ProductInContract> products = Stream.generate(() -> ProductInContract.getContractFromIO(io)).limit(productCount).toList();
 
         return new Contract(wholesaleThreshold, contractSupplier, products);
     }
