@@ -29,12 +29,12 @@ public class Storage {
 
     public void addItemStack(ItemStack itemStack) {
         this.inventory.add(itemStack);
-        itemStack.setLocation(new StackLocation(this.inventory.size() -1));
+        itemStack.setLocation(new StackLocation("inventory", this.inventory.size() -1));
     }
 
     public void addDefectiveItemStack(ItemStack itemStack) {
         this.defectiveItems.add(itemStack);
-        itemStack.setLocation(new StackLocation(this.defectiveItems.size() -1));
+        itemStack.setLocation(new StackLocation("defect",this.defectiveItems.size() -1));
     }
 
     public ArrayList<ItemStack> getInventory() {

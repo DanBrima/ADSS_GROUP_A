@@ -16,6 +16,8 @@ public class Item {
     private BigDecimal supplierCost;
     private int requiredAmount;
 
+    private ItemPriceHistory itemPriceHistory;
+
     public Item(String name, BigDecimal price, String supplier, BigDecimal supplierCost, int requiredAmount, SubSubCategory category) {
         this.BARCODE = UUID.randomUUID();
         this.name = name;
@@ -24,6 +26,7 @@ public class Item {
         this.supplierCost = supplierCost;
         this.requiredAmount = requiredAmount;
         this.category = category;
+        this.itemPriceHistory = new ItemPriceHistory(price, supplierCost);
     }
 
     public UUID getBARCODE() {
@@ -44,6 +47,7 @@ public class Item {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+        this.itemPriceHistory.addStorePriceToHistory(price);
     }
 
     public String getSupplier() {
@@ -60,6 +64,7 @@ public class Item {
 
     public void setSupplierCost(BigDecimal supplierCost) {
         this.supplierCost = supplierCost;
+        this.itemPriceHistory.addSupplierCostToHistory(supplierCost);
     }
 
     public int getRequiredAmount() {
@@ -72,5 +77,9 @@ public class Item {
 
     public SubSubCategory getCategory() {
         return category;
+    }
+
+    public ItemPriceHistory getItemPriceHistory() {
+        return itemPriceHistory;
     }
 }

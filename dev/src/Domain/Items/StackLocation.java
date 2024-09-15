@@ -3,6 +3,7 @@ package Domain.Items;
 public class StackLocation {
     private String place; // "Storage" or "Store"
     private int shelfIndex; // Shelf index (if the product is on a shelf)
+    private String type; // "inventory" or "defect" (if the product is in the storage)
     private int itemStackIndex;
 
     public StackLocation(int shelfIndex, int itemStackIndex) {
@@ -11,8 +12,9 @@ public class StackLocation {
         this.itemStackIndex = itemStackIndex;
     }
 
-    public StackLocation(int itemStackIndex) {
+    public StackLocation(String type, int itemStackIndex) {
         this.place = "Storage";
+        this.type = type;
         this.itemStackIndex = itemStackIndex;
     }
 
@@ -30,14 +32,5 @@ public class StackLocation {
 
     public void setItemStackIndex(int itemStackIndex) {
         this.itemStackIndex = itemStackIndex;
-    }
-
-    @Override
-    public String toString() {
-        return "Location{" +
-                "place='" + place + '\'' +
-                ", shelf=" + (shelfIndex + 1) +
-                ", itemStack=" + (itemStackIndex + 1) +
-                '}';
     }
 }

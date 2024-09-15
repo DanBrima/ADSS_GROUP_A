@@ -87,6 +87,11 @@ public class CashierDesk {
                     transferItemsScreen.handleMsg();
                     break;
                 }
+                case Constants.ITEM_PRICE_HISTORY_INDEX: {
+                    ItemPriceHistoryScreen itemPriceHistoryScreen = new ItemPriceHistoryScreen(this.out, this.in, this.storeRef, this.storageRef);
+                    itemPriceHistoryScreen.handleMsg();
+                    break;
+                }
                 default: {
                     this.out.println(Constants.INVALID_INPUT);
                     break;
