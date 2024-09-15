@@ -16,7 +16,6 @@ public class DefaultMenuScreen extends Screen {
         this.out.print(Constants.DISPLAY_SUPPLIERS_INDEX + ". ");
         this.out.println(Constants.DISPLAY_SUPPLIERS);
 
-//        Day 1 requirements do not include data manipulation
         this.out.print(Constants.ADD_SUPPLIER_INDEX + ". ");
         this.out.println(Constants.ADD_SUPPLIER);
 

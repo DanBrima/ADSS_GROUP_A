@@ -62,7 +62,6 @@ public class CashierDesk {
                     break;
                 }
 
-                //  Day 1 requirement do not include data manipulations
                 case Constants.ADD_SUPPLIER_INDEX: {
                     storeRef.addSupplier(io);
                     break;
