@@ -115,6 +115,27 @@ public class CashierDesk {
                     itemPriceHistoryScreen.handleMsg();
                     break;
                 }
+                case Constants.CREATE_NEW_DISCOUNT_INDEX: {
+                    AddDiscountScreen addDiscountScreen = new AddDiscountScreen(this.out, this.in);
+                    userInput = addDiscountScreen.handleMsg();
+                    switch (userInput) {
+                        case Constants.DISCOUNT_TYPE_CATEGORY_INDEX: {
+                            AddCategoryDiscountScreen addCategoryDiscountScreen = new AddCategoryDiscountScreen(this.out, this.in, discountsHistory);
+                            addCategoryDiscountScreen.handleMsg();
+                            break;
+                        }
+                        case Constants.DISCOUNT_TYPE_ITEM_INDEX: {
+                            AddItemDiscountScreen addItemDiscountScreen = new AddItemDiscountScreen(this.out, this.in, discountsHistory);
+                            addItemDiscountScreen.handleMsg();
+                            break;
+                        }
+                        default: {
+                            this.out.println(Constants.INVALID_INPUT);
+                            break;
+                        }
+                    }
+                    break;
+                }
                 default: {
                     this.out.println(Constants.INVALID_INPUT);
                     break;

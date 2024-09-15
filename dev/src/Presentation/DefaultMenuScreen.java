@@ -34,6 +34,9 @@ public class DefaultMenuScreen extends Screen {
         this.out.print(Constants.ITEM_PRICE_HISTORY_INDEX + ". ");
         this.out.println(Constants.ITEM_PRICE_HISTORY);
 
+        this.out.print(Constants.CREATE_NEW_DISCOUNT_INDEX + ". ");
+        this.out.println(Constants.CREATE_NEW_DISCOUNT);
+
         this.out.print(Constants.TURN_OFF_INDEX + ". ");
         this.out.println(Constants.TURN_OFF);
 

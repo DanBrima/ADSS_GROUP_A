@@ -18,8 +18,10 @@ public class Constants {
     public static final int REMOVE_ITEMS_INDEX = 6;
     public static final String ITEM_PRICE_HISTORY = "display item price history";
     public static final int ITEM_PRICE_HISTORY_INDEX = 7;
+    public static final String CREATE_NEW_DISCOUNT = "create new discount";
+    public static final int CREATE_NEW_DISCOUNT_INDEX = 8;
     public static final String TURN_OFF = "turn off";
-    public static final int TURN_OFF_INDEX = 8;
+    public static final int TURN_OFF_INDEX = 9;
     public static final String DISPLAY_STORE_ITEMS = "display items in store";
     public static final int DISPLAY_STORE_ITEMS_INDEX = 1;
     public static final String DISPLAY_STORAGE_ITEMS = "display items in storage";
@@ -37,6 +39,13 @@ public class Constants {
     public static final String REMOVE_ITEM_STORAGE = "remove items from the storage";
     public static final int REMOVE_ITEM_STORAGE_INDEX = 2;
     public static final String CHOOSE_TYPE_AMOUNT = "Choose item type and amount:";
+    public static final String ENTER_NEW_DISCOUNT = "Enter new discount information:";
+    public static final int DISCOUNT_TYPE_CATEGORY_INDEX = 1;
+    public static final String DISCOUNT_TYPE_CATEGORY = "category discount";
+    public static final int DISCOUNT_TYPE_ITEM_INDEX = 2;
+    public static final String DISCOUNT_TYPE_ITEM = "items discount";
+    public static final String PERCENTAGE = "percentage: ";
+    public static final String CATEGORY = "category: ";
 
     public static final int USER_NO_INPUT = -1;
 

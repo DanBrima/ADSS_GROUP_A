@@ -81,6 +81,14 @@ public class ItemService {
                 break;
             }
         }
+    }
 
+    public static void updateRequiredAmount (Storage storageRef, UUID itemId, int newRequiredAmount){
+        for(ItemStack itemStack: storageRef.getInventory()){
+            if(itemStack.getItemType().getBARCODE().equals(itemId)){
+                itemStack.getItemType().setRequiredAmount(newRequiredAmount);
+                break;
+            }
+        }
     }
 }
