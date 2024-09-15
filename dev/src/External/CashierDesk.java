@@ -1,5 +1,7 @@
 package External;
 
+import Domain.Categories.Category;
+import Domain.Discounts.CategoryDiscount;
 import Domain.Discounts.DiscountsHistory;
 import Domain.Discounts.ItemDiscount;
 import Domain.Items.Item;
@@ -32,7 +34,9 @@ public class CashierDesk {
         this.isActivated = true;
         DiscountsHistory discountsHistory = new DiscountsHistory();
         discountsHistory.discountList.add(new ItemDiscount(10, new Date(), new Date(),
-                new Item("test", new BigDecimal(10), "more test", new BigDecimal(100), 10, null)));
+                new Item("Watermelon", new BigDecimal(10), "more test", new BigDecimal(100), 10, null)));
+        discountsHistory.discountList.add(new CategoryDiscount(10, new Date(), new Date(),
+                new Category("Cloth")));
 
         while (this.isActivated) {
             // Activate Menu

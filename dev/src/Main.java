@@ -1,3 +1,6 @@
+import Domain.Categories.Category;
+import Domain.Categories.SubCategory;
+import Domain.Categories.SubSubCategory;
 import Domain.Items.Item;
 import Domain.Items.ItemStack;
 import Domain.Shelf;
@@ -12,12 +15,31 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        Item appleItem = new Item("Apple", new BigDecimal(10), "Itzik fruits", new BigDecimal(5), 200, null);
-        Item bananaItem = new Item("Banana", new BigDecimal(15), "Itzik fruits", new BigDecimal(3), 100, null);
-        Item orangeItem = new Item("Orange", new BigDecimal(20), "Tropicana", new BigDecimal(4), 150, null);
-        Item mangoItem = new Item("Mango", new BigDecimal(5), "Tropicana", new BigDecimal(10), 50, null);
-        Item grapesItem = new Item("Grapes", new BigDecimal(25), "Vineyard Select", new BigDecimal(2), 80, null);
-        Item watermelonItem = new Item("Watermelon", new BigDecimal(8), "MelonLand", new BigDecimal(7), 300, null);
+        //Example category
+        Category categoryFruits = new Category("Fruits");
+
+        //Example sub category
+        SubCategory subCategoryCitrus = new SubCategory(categoryFruits, "Citrus Fruits");
+        SubCategory subCategoryTropical = new SubCategory(categoryFruits, "Tropical Fruits");
+        SubCategory subCategoryBerries = new SubCategory(categoryFruits, "Berries");
+        SubCategory subCategoryPome = new SubCategory(categoryFruits, "Pome Fruits");
+        SubCategory subCategoryMelons = new SubCategory(categoryFruits, "Melons");
+
+        //Example sub sub category
+        SubSubCategory subSubCategoryOranges = new SubSubCategory("Oranges", subCategoryCitrus);
+        SubSubCategory subSubCategoryBananas = new SubSubCategory("Bananas", subCategoryTropical);
+        SubSubCategory subSubCategoryMangoes = new SubSubCategory("Mangoes", subCategoryTropical);
+        SubSubCategory subSubCategoryGrapes = new SubSubCategory("Grapes", subCategoryBerries);
+        SubSubCategory subSubCategoryApples = new SubSubCategory("Apples", subCategoryPome);
+        SubSubCategory subSubCategoryWatermelons = new SubSubCategory("Watermelons", subCategoryMelons);
+
+        // Example items
+        Item appleItem = new Item("Apple", new BigDecimal(10), "Itzik fruits", new BigDecimal(5), 200, subSubCategoryApples);
+        Item bananaItem = new Item("Banana", new BigDecimal(15), "Itzik fruits", new BigDecimal(3), 100, subSubCategoryBananas);
+        Item orangeItem = new Item("Orange", new BigDecimal(20), "Tropicana", new BigDecimal(4), 150, subSubCategoryOranges);
+        Item mangoItem = new Item("Mango", new BigDecimal(5), "Tropicana", new BigDecimal(10), 50, subSubCategoryMangoes);
+        Item grapesItem = new Item("Grapes", new BigDecimal(25), "Vineyard Select", new BigDecimal(2), 80, subSubCategoryGrapes);
+        Item watermelonItem = new Item("Watermelon", new BigDecimal(8), "MelonLand", new BigDecimal(7), 300, subSubCategoryWatermelons);
 
         Store store = new Store();
 
