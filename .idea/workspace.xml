@@ -5,46 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd18bd-c6d3-43b5-9d59-2976fb6f1c5b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dev/src/Presentation/TransferItemsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/adss_v0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADSS_GROUP_A.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/src/Presentation/RemoveItemScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/src/Presentation/RemoveItemsStorageScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/src/Presentation/RemoveItemsStoreScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/test/Services/ItemStackTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/test/Services/ItemTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/src/Domain/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/dev/src/Domain/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/src/External/CashierDesk.java" beforeDir="false" afterPath="$PROJECT_DIR$/dev/src/External/CashierDesk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dev/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/dev.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/src/Domain/Items/ItemStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/dev/src/Domain/Items/ItemStack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/src/External/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/dev/src/External/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/src/Presentation/DefaultMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/dev/src/Presentation/DefaultMenuScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Data/example.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Categories/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Categories/SubCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Categories/SubSubCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Discounts/CategoryDiscount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Discounts/Discount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Discounts/DiscountsHistory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Discounts/ItemDiscount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Items/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Items/ItemStack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Items/StackLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Shelf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Storage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Domain/Store.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/External/CashierDesk.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/External/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/AmountsScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/DefaultMenuScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/DefectiveItemsScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/DiscountsHistoryScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/MissingItemsScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/Screen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/StorageAmountScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADSS_GROUP_A/Presentation/StoreAmountScreen.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,23 +46,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature-ui",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/idana/OneDrive/Desktop/ADSS_GROUP_A/dev",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-ui&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/idana/OneDrive/Desktop/ADSS_GROUP_A/dev&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
