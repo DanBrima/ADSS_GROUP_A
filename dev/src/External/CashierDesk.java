@@ -6,6 +6,7 @@ import Domain.Items.Item;
 import Domain.Storage;
 import Domain.Store;
 import Presentation.*;
+import Service.ItemService;
 
 import java.io.PrintStream;
 import java.math.BigDecimal;
@@ -18,12 +19,15 @@ public class CashierDesk {
     private Boolean isActivated = false;
     private Storage storageRef;
     private Store storeRef;
+    private ItemService itemService;
+
 
     public CashierDesk(PrintStream out, Scanner in, Storage storageRef, Store storeRef) {
         this.out = out;
         this.in = in;
         this.storageRef = storageRef;
         this.storeRef = storeRef;
+        this.itemService = new ItemService(storageRef, storeRef);
     }
 
     public void turnOn() throws Exception {
@@ -59,12 +63,8 @@ public class CashierDesk {
                     }
                     break;
                 }
-                case Constants.DEAL_HISTORY_INDEX: {
-                    //TODO: create this screen
-                    break;
-                }
                 case Constants.MISSING_ITEMS_RECORD_INDEX: {
-                    MissingItemsScreen missingItemsScreen = new MissingItemsScreen(this.out, this.in, this.storeRef, this.storageRef);
+                    MissingItemsScreen missingItemsScreen = new MissingItemsScreen(this.out, this.in, this.storeRef, this.storageRef, this.itemService);
                     missingItemsScreen.handleMsg();
                     break;
                 }
@@ -88,7 +88,7 @@ public class CashierDesk {
                     break;
                 }
                 case Constants.ITEM_PRICE_HISTORY_INDEX: {
-                    ItemPriceHistoryScreen itemPriceHistoryScreen = new ItemPriceHistoryScreen(this.out, this.in, this.storeRef, this.storageRef);
+                    ItemPriceHistoryScreen itemPriceHistoryScreen = new ItemPriceHistoryScreen(this.out, this.in, this.storeRef, this.storageRef, this.itemService);
                     itemPriceHistoryScreen.handleMsg();
                     break;
                 }

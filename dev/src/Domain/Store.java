@@ -42,28 +42,4 @@ public class Store {
 
         return amount;
     }
-
-    public ArrayList<ItemStack> getAllUniqueItems() {
-        ArrayList<ItemStack> uniqueItems = new ArrayList<>();
-        HashMap<UUID, ItemStack> itemMap = new HashMap<>();
-
-        for (Shelf shelf : shelves) {
-            for (ItemStack itemStack : shelf.getItemsOnShelf()) {
-                Item currentItem = itemStack.getItemType();
-                UUID currentBarcode = currentItem.getBARCODE();
-
-                // If the item is already in the map, update the quantity
-                if (itemMap.containsKey(currentBarcode)) {
-                    ItemStack existingItem = itemMap.get(currentBarcode);
-                    existingItem.addItems(currentBarcode, itemStack.getItemCount());
-                } else {
-                    // Otherwise, add the new item with its quantity
-                    itemMap.put(currentBarcode, itemStack);
-                }
-            }
-        }
-
-        uniqueItems.addAll(itemMap.values());
-        return uniqueItems;
-    }
 }

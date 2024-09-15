@@ -3,6 +3,7 @@ package Domain;
 import Domain.Items.Item;
 import Domain.Items.ItemStack;
 import Domain.Items.StackLocation;
+import Service.ItemStackService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,32 +51,6 @@ public class Storage {
         }
 
         return null;
-    }
-
-    public ArrayList<ItemStack> getAllUniqueItems() {
-
-        //TODO: add condition if defected or address it somehow else
-        ArrayList<ItemStack> uniqueItems = new ArrayList<>();
-        HashMap<UUID, ItemStack> itemMap = new HashMap<>();
-
-        for (ItemStack itemStack : this.inventory) {
-            Item currentItem = itemStack.getItemType();
-            UUID currentBarcode = currentItem.getBARCODE();
-            int quantity = itemStack.getItemCount();
-
-            // If the item is already in the map, update the quantity
-            if (itemMap.containsKey(currentBarcode)) {
-                ItemStack existingItemStack = itemMap.get(currentBarcode);
-                existingItemStack.addItems(currentBarcode, itemStack.getItemCount());
-            } else {
-                // Otherwise, add the new item stack
-                ItemStack newItemStack = new ItemStack(currentItem, quantity);
-                itemMap.put(currentBarcode, newItemStack);
-            }
-        }
-
-        uniqueItems.addAll(itemMap.values());
-        return uniqueItems;
     }
 
     public ArrayList<ItemStack> getDefectiveItems() {

@@ -19,9 +19,6 @@ public class DefaultMenuScreen extends Screen {
         this.out.print(Constants.MISSING_ITEMS_RECORD_INDEX + ". ");
         this.out.println(Constants.MISSING_ITEMS_RECORD);
 
-        this.out.print(Constants.DEAL_HISTORY_INDEX + ". ");
-        this.out.println(Constants.DEAL_HISTORY);
-
         this.out.print(Constants.DISCOUNTS_HISTORY_INDEX + ". ");
         this.out.println(Constants.DISCOUNTS_HISTORY);
 
