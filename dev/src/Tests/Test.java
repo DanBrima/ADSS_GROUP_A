@@ -1,11 +1,8 @@
 package Tests;
 
 import Domain.*;
-import Presentation.IO;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Test {
     private static Contact dan;
@@ -59,7 +56,7 @@ public class Test {
         shufersal.addContract(shufersalDiary);
     }
 
-    public void test_SameSupplierMultipleContracts(){
+    public void test_SameSupplierMultipleContracts() {
         initializeObjects();
         bikoDiary = new Contract(100, biko,
                 List.of(new ProductInContract(milk, 5, 25),
@@ -74,7 +71,7 @@ public class Test {
         assert biko.contracts().size() == 2;
     }
 
-    public void test_ContractWithDiscount(){
+    public void test_ContractWithDiscount() {
         initializeObjects();
         bikoOsem = new Contract(10, biko,
                 List.of(new ProductInContract(bisli, 5, 25),
@@ -83,7 +80,7 @@ public class Test {
         assert biko.contracts().get(0).isDiscount();
     }
 
-    public void test_EmptyContract(){
+    public void test_EmptyContract() {
         initializeObjects();
         List list = List.of();
         int size = biko.getAllProductsInContracts().size();
@@ -92,7 +89,7 @@ public class Test {
         assert biko.getAllProductsInContracts().size() == size;
     }
 
-    public void test_SameSupplierProduct(){
+    public void test_SameSupplierProduct() {
         initializeObjects();
         Contract bikoOsem1 = new Contract(100, biko,
                 List.of(new ProductInContract(bisli, 5, 25),
@@ -108,7 +105,7 @@ public class Test {
         assert biko.getAllProductsInContracts().size() == 6;
     }
 
-    public void test_SameNameSuppliers(){
+    public void test_SameNameSuppliers() {
         initializeObjects();
         Supplier shufersal2 = new FixedDaysSupplier(false, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), List.of(WeekDay.MONDAY, WeekDay.TUESDAY));
@@ -116,7 +113,7 @@ public class Test {
     }
 
     // Always with discount
-    public void test_ZeroWholesaleThreshold(){
+    public void test_ZeroWholesaleThreshold() {
         initializeObjects();
         bikoOsem = new Contract(0, biko,
                 List.of(new ProductInContract(bisli, 5, 25),
@@ -126,21 +123,21 @@ public class Test {
         assert biko.contracts().get(0).isDiscount();
     }
 
-    public void test_NoDeliveryDays(){
+    public void test_NoDeliveryDays() {
         initializeObjects();
         shufersal = new FixedDaysSupplier(false, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), List.of());
         assert ((FixedDaysSupplier) shufersal).getArrivalDays().size() == 0;
     }
 
-    public void test_immediateDeliveryInPlace(){
+    public void test_immediateDeliveryInPlace() {
         initializeObjects();
         shufersal = new InPlaceSupplier(true, "shufersal", 123456,
-                PaymentOption.CREDIT_CARD, List.of(ban),0);
+                PaymentOption.CREDIT_CARD, List.of(ban), 0);
         assert ((InPlaceSupplier) shufersal).getDeliveryDays() == 0;
     }
 
-    public void test_AddSupplierToStore(){
+    public void test_AddSupplierToStore() {
         initializeObjects();
         Store store = new Store();
         store.addSupplier(shufersal);

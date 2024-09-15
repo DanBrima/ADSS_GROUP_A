@@ -18,10 +18,12 @@ public class InPlaceSupplier extends Supplier {
 
         return new InPlaceSupplier(supplier.needsPickup(), supplier.activeAccount(), supplier.bankAccount(), supplier.paymentOption(), supplier.contacts(), deliveryDays);
     }
-    public int getDeliveryDays(){
+
+    public int getDeliveryDays() {
         return deliveryDays;
     }
-    public void setDeliveryDays(int deliveryDays){
+
+    public void setDeliveryDays(int deliveryDays) {
         this.deliveryDays = deliveryDays;
     }
 }

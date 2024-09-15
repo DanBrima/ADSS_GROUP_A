@@ -10,13 +10,12 @@ import Domain.Supplier;
 import Presentation.*;
 
 import java.io.PrintStream;
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Scanner;
 
 public class CashierDesk {
     private final PrintStream out;
     private final Scanner in;
+    private final IO io;
 
     private Boolean isActivated = false;
     private Store storeRef;
@@ -25,10 +24,10 @@ public class CashierDesk {
         this.out = out;
         this.in = in;
         this.storeRef = storeRef;
+        this.io = new ConsoleIO();
     }
 
     public void turnOn() throws Exception {
-        ConsoleIO io = new ConsoleIO();
         this.isActivated = true;
 
         while (this.isActivated) {
@@ -41,7 +40,7 @@ public class CashierDesk {
                     userInput = suppliersScreen.handleMsg();
 
                     // Validate input
-                    if(userInput >= storeRef.getSuppliers().size() || userInput < 0){
+                    if (userInput >= storeRef.getSuppliers().size() || userInput < 0) {
                         this.out.println(Constants.INVALID_INPUT);
                         break;
                     }
@@ -51,11 +50,11 @@ public class CashierDesk {
                     userInput = supplierCardScreen.handleMsg();
 
                     int size = supplier.contracts().size();
-                    if(userInput >= size + 2 || userInput < 0) {
+                    if (userInput >= size + 2 || userInput < 0) {
                         this.out.println(Constants.INVALID_INPUT);
                     } else if (userInput == size) {
                         supplier.addContract(Contract.getContractFromIO(io, supplier));
-                    } else if (userInput == size + 1){
+                    } else if (userInput == size + 1) {
                         break;
                     }
                     ContractScreen contractScreen = new ContractScreen(this.out, this.in, supplier, userInput);

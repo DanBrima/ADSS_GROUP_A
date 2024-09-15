@@ -24,7 +24,8 @@ public class FixedDaysSupplier extends Supplier {
     public List<WeekDay> getArrivalDays() {
         return arrivalDays;
     }
-    public void setArrivalDays(List<WeekDay> arrivalDays){
+
+    public void setArrivalDays(List<WeekDay> arrivalDays) {
         this.arrivalDays = arrivalDays;
     }
 }

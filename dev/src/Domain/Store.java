@@ -4,7 +4,6 @@ import External.Constants;
 import Presentation.IO;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Store {
@@ -12,26 +11,22 @@ public class Store {
 
     // Constructor for empty inventory
     public Store() {
-        this.suppliers = new ArrayList<Supplier>();
+        this.suppliers = new ArrayList<>();
     }
 
     // Constructor from given Supplier
     public Store(Supplier supplier) {
-        this.suppliers = new ArrayList<Supplier>();
+        this.suppliers = new ArrayList<>();
         this.addSupplier(supplier);
     }
 
     public void addSupplier(Supplier supplier) {
-        int supplierIndex = this.suppliers.size();
-
-	// Do we want to maintain a suppliers IDs?
-        //shelf.setSupplierId(supplierIndex);
         this.suppliers.add(supplier);
     }
 
     public void addSupplier(IO io) {
         int delivery = io.readInt("Choose\n 1. Fixed days delivery\n 2. In place delivery:\n");
-        switch (delivery){
+        switch (delivery) {
             case 1:
                 this.suppliers.add(FixedDaysSupplier.getFixedDaysSupplierFromIO(io));
                 break;
