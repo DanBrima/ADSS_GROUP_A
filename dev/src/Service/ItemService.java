@@ -37,8 +37,11 @@ public class ItemService {
         itemStack.setItemCount(itemStack.getItemCount() - amount);
 
         if (itemStack.getItemCount() <= 0) {
-            this.storeRef.getShelves().get(itemStack.getStackLocation().getShelfIndex()).getItemsOnShelf()
-                    .remove(itemStack.getStackLocation().getItemStackIndex());
+            for(Shelf shelf : this.storeRef.getShelves()) {
+                if (shelf.getShelfId().equals(itemStack.getStackLocation().getShelfIndex())) {
+                    shelf.getItemsOnShelf().remove(itemStack.getStackLocation().getItemStackIndex());
+                }
+            }
         }
 
         this.storageRef.addDefectiveItemStack(new ItemStack(itemStack.getItemType(), amount));

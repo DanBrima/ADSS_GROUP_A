@@ -1,6 +1,7 @@
 package Domain.Items;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ItemStack {
@@ -60,4 +61,17 @@ public class ItemStack {
         this.stackLocation = stackLocation;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemStack itemStack = (ItemStack) o;
+        return itemCount == itemStack.itemCount && itemStack.getItemType().getBARCODE() == this.itemType.getBARCODE();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemType, itemCount, stackLocation);
+    }
 }

@@ -22,8 +22,6 @@ public class Store {
     }
 
     public void addShelf(Shelf shelf) {
-        int shelfIndex = this.shelves.size();
-        shelf.setShelfId(shelfIndex);
         this.shelves.add(shelf);
     }
 

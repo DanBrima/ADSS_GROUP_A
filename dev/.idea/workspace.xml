@@ -4,47 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48ebad58-578e-431a-91cf-ddc0c302b88a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Presentation/TransferItemsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/adss_v0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ADSS_GROUP_A.iml" beforeDir="false" />
+    <list default="true" id="04e4af10-f58c-4421-a6f0-3801fdee30f4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemsStorageScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Presentation/RemoveItemsStoreScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/Services/ItemStackTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/Services/ItemTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/External/CashierDesk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/External/CashierDesk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dev.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Items/ItemStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Items/ItemStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Items/StackLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Items/StackLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Shelf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Domain/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Store.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/External/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/External/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/AmountsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/AmountsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/DefaultMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DefaultMenuScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Data/example.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Categories/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Categories/SubCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Categories/SubSubCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/CategoryDiscount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/Discount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/DiscountsHistory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Discounts/ItemDiscount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Items/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Items/ItemStack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Items/StackLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Shelf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Storage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Domain/Store.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/External/CashierDesk.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/External/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/AmountsScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/DefaultMenuScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/DefectiveItemsScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/DiscountsHistoryScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/MissingItemsScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/Screen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/StorageAmountScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/ADSS_GROUP_A/Presentation/StoreAmountScreen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/ItemService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +31,25 @@
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 4
 }]]></component>
-  <component name="ProjectId" id="2m45AkfyykbdukkquWsfGg1O9WP" />
+  <component name="ProjectId" id="2m7JFg8olpAQY0lU8c0i6LTZwEK" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.ItemStackTests.executor": "Run",
+    "JUnit.ItemTests.executor": "Run",
+    "JUnit.ItemTests.getAllUniqueItemsFromStorage_When_TwoDifferent.executor": "Run",
+    "JUnit.ItemTests.getAllUniqueItemsFromStore_When_TwoDifferent.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature-ui",
@@ -72,6 +57,78 @@
     "last_opened_file_path": "C:/Users/idana/OneDrive/Desktop/ADSS_GROUP_A/dev"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.ItemStackTests">
+    <configuration name="ItemStackTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Services" />
+      <option name="MAIN_CLASS_NAME" value="Services.ItemStackTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ItemTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Services" />
+      <option name="MAIN_CLASS_NAME" value="Services.ItemTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ItemTests.getAllUniqueItemsFromStorage_When_TwoDifferent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Services" />
+      <option name="MAIN_CLASS_NAME" value="Services.ItemTests" />
+      <option name="METHOD_NAME" value="getAllUniqueItemsFromStorage_When_TwoDifferent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ItemTests.getAllUniqueItemsFromStore_When_TwoDifferent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Services" />
+      <option name="MAIN_CLASS_NAME" value="Services.ItemTests" />
+      <option name="METHOD_NAME" value="getAllUniqueItemsFromStore_When_TwoDifferent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ItemStackTests" />
+        <item itemvalue="JUnit.ItemTests" />
+        <item itemvalue="JUnit.ItemTests.getAllUniqueItemsFromStorage_When_TwoDifferent" />
+        <item itemvalue="JUnit.ItemTests.getAllUniqueItemsFromStore_When_TwoDifferent" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -82,12 +139,31 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="48ebad58-578e-431a-91cf-ddc0c302b88a" name="Changes" comment="" />
-      <created>1726322866970</created>
+      <changelist id="04e4af10-f58c-4421-a6f0-3801fdee30f4" name="Changes" comment="" />
+      <created>1726421578290</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1726322866970</updated>
+      <updated>1726421578290</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/Services/ItemTests.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/Services/ItemTests.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
