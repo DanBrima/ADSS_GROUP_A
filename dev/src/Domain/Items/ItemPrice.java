@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class ItemPrice {
-    private BigDecimal storePrice;
-    private BigDecimal supplierCost;
-    private Date updateDate;
+    private final BigDecimal storePrice;
+    private final BigDecimal supplierCost;
+    private final Date updateDate;
 
     public ItemPrice(BigDecimal storePrice, BigDecimal supplierCost, Date updateDate) {
         this.storePrice = storePrice;
