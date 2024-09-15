@@ -42,7 +42,7 @@ public class SupplierCardScreen extends Screen {
 
         this.out.println(Constants.DISPLAY_CONTRACTS);
 
-        String LEFT_ALIGN_FORMAT2 = "%s. display contract %<s %n";
+        String LEFT_ALIGN_FORMAT2 = "%s. display contract number %<s %n";
         int conIndex = 0;
         for (conIndex = 0; conIndex < this.supplier.contracts().size(); conIndex++) {
             Contract contract = this.supplier.contracts().get(conIndex);

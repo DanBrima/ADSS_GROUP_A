@@ -1,6 +1,8 @@
 package Presentation;
 
-import Domain.*;
+import Domain.Contract;
+import Domain.ProductInContract;
+import Domain.Supplier;
 import External.Constants;
 
 import java.io.PrintStream;
@@ -33,7 +35,7 @@ public class ContractScreen extends Screen {
             this.out.format(LEFT_ALIGN_FORMAT, product.name(), product.amount(), product.price(), product.priceWithDiscount(), product.supplierCatalogID());
         }
         this.out.format("+-----------+--------+--------+----------+--------------------------------------+%n");
-        this.out.format("+                   This contract %-7s wholesale discount                    +%n",(contract.isDiscount()) ? "has" : "not has");
+        this.out.format("+                   This contract %s wholesale discount                        +%n", (contract.isDiscount()) ? "has" : "not has");
         this.out.format("+-----------+--------+--------+----------+--------------------------------------+%n");
         this.out.println();
 
