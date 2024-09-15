@@ -10,7 +10,6 @@ public class Item {
     private final UUID BARCODE;
     private String name;
     private String supplier;
-
     private SubSubCategory category;
     private int requiredAmount;
 

@@ -38,13 +38,11 @@ public class ItemTests {
 
     @Test
     public void getAllUniqueItemsFromStorage_When_StorageEmpty() {
-        ItemService itemService = new ItemService(EXMPLE_VALID_STORAGE, EXMPLE_VALID_STORE);
 
-        Assert.assertTrue(itemService.getAllUniqueItemsFromStorage().isEmpty());
+        Assert.assertTrue(ItemService.getAllUniqueItemsFromStorage(EXMPLE_VALID_STORAGE).isEmpty());
     }
     @Test
     public void getAllUniqueItemsFromStore_When_TwoDifferent() {
-        ItemService itemService = new ItemService(EXMPLE_VALID_STORAGE, EXMPLE_VALID_STORE);
         EXMPLE_VALID_STORE.addShelf(EXMPLE_SHELF_1);
         EXMPLE_VALID_STORE.addShelf(EXMPLE_SHELF_2);
 
@@ -52,14 +50,13 @@ public class ItemTests {
         expected.add(EXAMPLE_VALID_ITEM_STACK_1);
         expected.add(EXAMPLE_VALID_ITEM_STACK_2);
 
-        ArrayList results = itemService.getAllUniqueItemsFromStore();
+        ArrayList results = ItemService.getAllUniqueItemsFromStore(EXMPLE_VALID_STORE);
 
         Assert.assertTrue(new HashSet<>(results).equals(new HashSet<>(expected)));
     }
 
     @Test
     public void getAllUniqueItemsFromStorage_When_TwoDifferent() {
-        ItemService itemService = new ItemService(EXMPLE_VALID_STORAGE, EXMPLE_VALID_STORE);
         EXMPLE_VALID_STORAGE.addItemStack(EXAMPLE_VALID_ITEM_STACK_1);
         EXMPLE_VALID_STORAGE.addItemStack(EXAMPLE_VALID_ITEM_STACK_2);
 
@@ -67,29 +64,23 @@ public class ItemTests {
         expected.add(EXAMPLE_VALID_ITEM_STACK_1);
         expected.add(EXAMPLE_VALID_ITEM_STACK_2);
 
-        ArrayList results = itemService.getAllUniqueItemsFromStorage();
+        ArrayList results = ItemService.getAllUniqueItemsFromStorage(EXMPLE_VALID_STORAGE);
 
         Assert.assertTrue(new HashSet<>(results).equals(new HashSet<>(expected)));
     }
 
     @Test
     public void getAllUniqueItemsFromStorage_When_StoreEmpty() {
-        ItemService itemService = new ItemService(EXMPLE_VALID_STORAGE, EXMPLE_VALID_STORE);
-
-        Assert.assertTrue(itemService.getAllUniqueItemsFromStore().isEmpty());
+        Assert.assertTrue(ItemService.getAllUniqueItemsFromStore(EXMPLE_VALID_STORE).isEmpty());
     }
 
     @Test
     public void getAllUniqueItems_When_BothEmpty() {
-        ItemService itemService = new ItemService(EXMPLE_VALID_STORAGE, EXMPLE_VALID_STORE);
-
-        Assert.assertTrue(itemService.getAllUniqueItemsFromStore().isEmpty());
+        Assert.assertTrue(ItemService.getAllUniqueItemsFromStore(EXMPLE_VALID_STORE).isEmpty());
     }
 
     @Test
     public void getAllUniqueItemsWithoutDefective_When_BothEmpty() {
-        ItemService itemService = new ItemService(EXMPLE_VALID_STORAGE, EXMPLE_VALID_STORE);
-
-        Assert.assertTrue(itemService.getAllUniqueItemsFromStore().isEmpty());
+        Assert.assertTrue(ItemService.getAllUniqueItemsFromStore(EXMPLE_VALID_STORE).isEmpty());
     }
 }
