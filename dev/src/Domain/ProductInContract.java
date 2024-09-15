@@ -2,10 +2,9 @@ package Domain;
 
 import Presentation.IO;
 
-import java.util.TooManyListenersException;
 import java.util.UUID;
 
-public class ProductInContract{
+public class ProductInContract {
     private Product product;
     private double price;
     private int productDiscountPercentage;
@@ -22,18 +21,18 @@ public class ProductInContract{
         //this.supplierCatalogID = UUID.fromString("1c2e2c05-9808-4d85-ae1e-5247582b884e");
     }
 
-    public static ProductInContract getContractFromIO(IO io, int wholesaleThreshold) {
+    public static ProductInContract getContractFromIO(IO io) {
         Product product = Product.getProductFromIO(io);
         int price = io.readInt("Enter the price of the product:");
         int productDiscountPercentage = io.readInt("Enter the discount percentage of the product:");
         return new ProductInContract(product, price, productDiscountPercentage);
     }
 
-    public String name(){
+    public String name() {
         return product.name;
     }
 
-    public int count(){
+    public int count() {
         return product.count;
     }
 

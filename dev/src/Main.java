@@ -4,8 +4,6 @@ import External.CashierDesk;
 import java.util.List;
 import java.util.Scanner;
 
-import Tests.*;
-
 public class Main {
     public static void main(String[] args) throws Exception {
         Store store = new Store();

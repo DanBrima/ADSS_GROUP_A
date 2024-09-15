@@ -3,6 +3,7 @@ package Tests;
 import Domain.*;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Test {
     private static Contact dan;
@@ -15,11 +16,17 @@ public class Test {
     private static Product bisli;
     private static Product bamba;
     private static Product waffle;
-    private static Supplier biko;
-    private static Supplier shufersal;
+    private static InPlaceSupplier biko;
+    private static FixedDaysSupplier shufersal;
     private static Contract bikoDiary;
     private static Contract bikoOsem;
     private static Contract shufersalDiary;
+
+    private static void assertTrue(boolean condition) throws Exception {
+        if (!condition) {
+            throw new Exception("Test failed");
+        }
+    }
 
     private static void initializeObjects() {
         dan = new Contact("Dan", "0585979676");
@@ -40,7 +47,7 @@ public class Test {
 
     // Dan create this as private and not public ? Why ?
     // We can also do the test functions boolean instead of void
-    public void test_SameProductMultipleSuppliers() {
+    public void test_SameProductMultipleSuppliers() throws Exception {
         initializeObjects();
         bikoDiary = new Contract(100, biko,
                 List.of(new ProductInContract(milk, 5, 25),
@@ -54,9 +61,11 @@ public class Test {
                         new ProductInContract(shoko, 15, 10)));
         biko.addContract(bikoDiary);
         shufersal.addContract(shufersalDiary);
+
+        assertTrue(false);
     }
 
-    public void test_SameSupplierMultipleContracts() {
+    public void test_SameSupplierMultipleContracts() throws Exception {
         initializeObjects();
         bikoDiary = new Contract(100, biko,
                 List.of(new ProductInContract(milk, 5, 25),
@@ -68,28 +77,28 @@ public class Test {
         biko.addContract(bikoDiary);
         biko.addContract(bikoOsem);
 
-        assert biko.contracts().size() == 2;
+        assertTrue(biko.contracts().size() == 2);
     }
 
-    public void test_ContractWithDiscount() {
+    public void test_ContractWithDiscount() throws Exception {
         initializeObjects();
         bikoOsem = new Contract(10, biko,
                 List.of(new ProductInContract(bisli, 5, 25),
                         new ProductInContract(bamba, 10, 20),
                         new ProductInContract(waffle, 30, 30)));
-        assert biko.contracts().get(0).isDiscount();
+        assertTrue(biko.contracts().get(0).isDiscount());
     }
 
-    public void test_EmptyContract() {
+    public void test_EmptyContract() throws Exception {
         initializeObjects();
         List list = List.of();
         int size = biko.getAllProductsInContracts().size();
         bikoOsem = new Contract(10, biko, List.of());
         biko.addContract(bikoOsem);
-        assert biko.getAllProductsInContracts().size() == size;
+        assertTrue(biko.getAllProductsInContracts().size() == size);
     }
 
-    public void test_SameSupplierProduct() {
+    public void test_SameSupplierProduct() throws Exception {
         initializeObjects();
         Contract bikoOsem1 = new Contract(100, biko,
                 List.of(new ProductInContract(bisli, 5, 25),
@@ -102,46 +111,46 @@ public class Test {
         biko.addContract(bikoOsem1);
         biko.addContract(bikoOsem2);
         // Needs to be 6 items (even if the products are the same)
-        assert biko.getAllProductsInContracts().size() == 6;
+        assertTrue(biko.getAllProductsInContracts().size() == 6);
     }
 
-    public void test_SameNameSuppliers() {
+    public void test_SameNameSuppliers() throws Exception {
         initializeObjects();
-        Supplier shufersal2 = new FixedDaysSupplier(false, "shufersal", 123456,
+        FixedDaysSupplier shufersal2 = new FixedDaysSupplier(false, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), List.of(WeekDay.MONDAY, WeekDay.TUESDAY));
-        assert shufersal2.activeAccount() == shufersal.activeAccount();
+        assertTrue(Objects.equals(shufersal2.activeAccount(), shufersal.activeAccount()));
     }
 
     // Always with discount
-    public void test_ZeroWholesaleThreshold() {
+    public void test_ZeroWholesaleThreshold() throws Exception {
         initializeObjects();
         bikoOsem = new Contract(0, biko,
                 List.of(new ProductInContract(bisli, 5, 25),
                         new ProductInContract(bamba, 10, 20),
                         new ProductInContract(waffle, 30, 30)));
         biko.addContract(bikoOsem);
-        assert biko.contracts().get(0).isDiscount();
+        assertTrue(biko.contracts().get(0).isDiscount());
     }
 
-    public void test_NoDeliveryDays() {
+    public void test_NoDeliveryDays() throws Exception {
         initializeObjects();
         shufersal = new FixedDaysSupplier(false, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), List.of());
-        assert ((FixedDaysSupplier) shufersal).getArrivalDays().size() == 0;
+        assertTrue(((FixedDaysSupplier) shufersal).getArrivalDays().size() == 0);
     }
 
-    public void test_immediateDeliveryInPlace() {
+    public void test_immediateDeliveryInPlace() throws Exception {
         initializeObjects();
-        shufersal = new InPlaceSupplier(true, "shufersal", 123456,
+        biko = new InPlaceSupplier(true, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), 0);
-        assert ((InPlaceSupplier) shufersal).getDeliveryDays() == 0;
+        assertTrue(((InPlaceSupplier) biko).getDeliveryDays() == 0);
     }
 
-    public void test_AddSupplierToStore() {
+    public void test_AddSupplierToStore() throws Exception {
         initializeObjects();
         Store store = new Store();
         store.addSupplier(shufersal);
         store.addSupplier(biko);
-        assert store.getSuppliers().size() == 2;
+        assertTrue(store.getSuppliers().size() == 2);
     }
 }
