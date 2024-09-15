@@ -32,33 +32,31 @@ public class Test {
         dan = new Contact("Dan", "0585979676");
         ban = new Contact("Ban", "0586979676");
         tnuva = new Manufacturer("Tnuva");
-        milk = new Product("Milk", 10, tnuva);
-        shoko = new Product("Shoko", 10, tnuva);
-        cheese = new Product("Cheese", 10, tnuva);
+        milk = new Product("Milk", tnuva);
+        shoko = new Product("Shoko", tnuva);
+        cheese = new Product("Cheese", tnuva);
         osem = new Manufacturer("Osem");
-        bisli = new Product("Bisli", 10, osem);
-        bamba = new Product("Bamba", 10, osem);
-        waffle = new Product("Waffle", 10, osem);
+        bisli = new Product("Bisli", osem);
+        bamba = new Product("Bamba", osem);
+        waffle = new Product("Waffle", osem);
         biko = new InPlaceSupplier(true, "biko", 123456,
                 PaymentOption.CASH, List.of(dan, ban), 5);
         shufersal = new FixedDaysSupplier(false, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), List.of(WeekDay.MONDAY, WeekDay.TUESDAY));
     }
 
-    // Dan create this as private and not public ? Why ?
-    // We can also do the test functions boolean instead of void
     public void test_SameProductMultipleSuppliers() throws Exception {
         initializeObjects();
         bikoDiary = new Contract(100, biko,
-                List.of(new ProductInContract(milk, 5, 25),
-                        new ProductInContract(shoko, 10, 20)));
+                List.of(new ProductInContract(milk, 5, 10,25),
+                        new ProductInContract(shoko, 10, 10, 20)));
         bikoOsem = new Contract(100, biko,
-                List.of(new ProductInContract(bisli, 5, 25),
-                        new ProductInContract(bamba, 10, 20),
-                        new ProductInContract(waffle, 30, 30)));
+                List.of(new ProductInContract(bisli, 5, 10, 25),
+                        new ProductInContract(bamba, 10, 10, 20),
+                        new ProductInContract(waffle, 30, 10, 30)));
         shufersalDiary = new Contract(15, shufersal,
-                List.of(new ProductInContract(milk, 10, 10),
-                        new ProductInContract(shoko, 15, 10)));
+                List.of(new ProductInContract(milk, 10, 10, 10),
+                        new ProductInContract(shoko, 15, 10, 10)));
         biko.addContract(bikoDiary);
         shufersal.addContract(shufersalDiary);
 
@@ -68,12 +66,12 @@ public class Test {
     public void test_SameSupplierMultipleContracts() throws Exception {
         initializeObjects();
         bikoDiary = new Contract(100, biko,
-                List.of(new ProductInContract(milk, 5, 25),
-                        new ProductInContract(shoko, 10, 20)));
+                List.of(new ProductInContract(milk, 5, 10, 25),
+                        new ProductInContract(shoko, 10, 10, 20)));
         bikoOsem = new Contract(100, biko,
-                List.of(new ProductInContract(bisli, 5, 25),
-                        new ProductInContract(bamba, 10, 20),
-                        new ProductInContract(waffle, 30, 30)));
+                List.of(new ProductInContract(bisli, 5, 10, 25),
+                        new ProductInContract(bamba, 10, 10, 20),
+                        new ProductInContract(waffle, 30, 10, 30)));
         biko.addContract(bikoDiary);
         biko.addContract(bikoOsem);
 
@@ -83,9 +81,9 @@ public class Test {
     public void test_ContractWithDiscount() throws Exception {
         initializeObjects();
         bikoOsem = new Contract(10, biko,
-                List.of(new ProductInContract(bisli, 5, 25),
-                        new ProductInContract(bamba, 10, 20),
-                        new ProductInContract(waffle, 30, 30)));
+                List.of(new ProductInContract(bisli, 5, 10, 25),
+                        new ProductInContract(bamba, 10, 10, 20),
+                        new ProductInContract(waffle, 30, 1, 30)));
         assertTrue(biko.contracts().get(0).isDiscount());
     }
 
@@ -101,13 +99,13 @@ public class Test {
     public void test_SameSupplierProduct() throws Exception {
         initializeObjects();
         Contract bikoOsem1 = new Contract(100, biko,
-                List.of(new ProductInContract(bisli, 5, 25),
-                        new ProductInContract(bamba, 10, 20),
-                        new ProductInContract(waffle, 30, 30)));
+                List.of(new ProductInContract(bisli, 5, 15, 25),
+                        new ProductInContract(bamba, 10, 10, 20),
+                        new ProductInContract(waffle, 30, 5, 30)));
         Contract bikoOsem2 = new Contract(100, biko,
-                List.of(new ProductInContract(bisli, 5, 25),
-                        new ProductInContract(bamba, 10, 20),
-                        new ProductInContract(waffle, 30, 30)));
+                List.of(new ProductInContract(bisli, 5, 4, 25),
+                        new ProductInContract(bamba, 10, 10, 20),
+                        new ProductInContract(waffle, 30, 15, 30)));
         biko.addContract(bikoOsem1);
         biko.addContract(bikoOsem2);
         // Needs to be 6 items (even if the products are the same)
@@ -125,9 +123,9 @@ public class Test {
     public void test_ZeroWholesaleThreshold() throws Exception {
         initializeObjects();
         bikoOsem = new Contract(0, biko,
-                List.of(new ProductInContract(bisli, 5, 25),
-                        new ProductInContract(bamba, 10, 20),
-                        new ProductInContract(waffle, 30, 30)));
+                List.of(new ProductInContract(bisli, 5, 10, 25),
+                        new ProductInContract(bamba, 10, 10, 20),
+                        new ProductInContract(waffle, 30, 10, 30)));
         biko.addContract(bikoOsem);
         assertTrue(biko.contracts().get(0).isDiscount());
     }

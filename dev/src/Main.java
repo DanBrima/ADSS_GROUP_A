@@ -17,20 +17,19 @@ public class Main {
                 PaymentOption.CREDIT_CARD, List.of(dan), List.of(WeekDay.MONDAY, WeekDay.TUESDAY));
 
         Manufacturer osem = new Manufacturer("Osem");
-        Product bisli = new Product("Bisli", 10, osem);
-        Product bamba = new Product("Bamba", 15, osem);
-        Product waffle = new Product("Waffle", 20, osem);
+        Product bisli = new Product("Bisli", osem);
+        Product bamba = new Product("Bamba",  osem);
+        Product waffle = new Product("Waffle",  osem);
 
         Contract bikoOsem = new Contract(10, biko,
-                List.of(new ProductInContract(bisli, 15, 25),
-                        new ProductInContract(bamba, 15, 20),
-                        new ProductInContract(waffle, 35, 30)));
+                List.of(new ProductInContract(bisli, 15, 10, 25),
+                        new ProductInContract(bamba, 15, 10, 20),
+                        new ProductInContract(waffle, 35, 10, 30)));
         Contract shufersalOsem = new Contract(10, biko,
-                List.of(new ProductInContract(bisli, 5, 25),
-                        new ProductInContract(bamba, 10, 20),
-                        new ProductInContract(waffle, 30, 30)));
+                List.of(new ProductInContract(bisli, 5, 30,25),
+                        new ProductInContract(bamba, 10, 10, 20),
+                        new ProductInContract(waffle, 30, 25, 30)));
 
-        // If we add the supplier in the contract creation, we need to add the contract in the supplier during contract build.
         biko.addContract(bikoOsem);
         shufersal.addContract(shufersalOsem);
 

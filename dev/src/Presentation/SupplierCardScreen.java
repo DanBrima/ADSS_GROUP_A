@@ -46,11 +46,9 @@ public class SupplierCardScreen extends Screen {
         int conIndex = 0;
         for (conIndex = 0; conIndex < this.supplier.contracts().size(); conIndex++) {
             Contract contract = this.supplier.contracts().get(conIndex);
-            // TODO replace contract "products" contract name...
             this.out.format(LEFT_ALIGN_FORMAT2, conIndex);
         }
 
-//        Day 1 requirements do not include data manipulations
         this.out.print(conIndex + ". ");
         this.out.println(Constants.ADD_CONTRACT);
 

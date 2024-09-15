@@ -17,7 +17,6 @@ public class SuppliersScreen extends Screen {
 
     @Override
     public int handleMsg() {
-        // TODO Print suppliers names and ID
 
         this.out.println(Constants.SUPPLIER_CARD);
 

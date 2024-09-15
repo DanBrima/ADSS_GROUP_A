@@ -19,7 +19,6 @@ public class Contract {
         this.products = products;
     }
 
-    // It's not suppose to be "Set" contract?
     public static Contract getContractFromIO(IO io, Supplier contractSupplier) {
         int wholesaleThreshold = io.readInt("Enter the wholesale threshold (minimal number of products of a wholesale):");
         int productCount = io.readInt("Enter the number of products in the contract (must be 1 or more:");
@@ -30,7 +29,7 @@ public class Contract {
     }
 
     public boolean isDiscount() {
-        return wholesaleThreshold < this.products.stream().mapToDouble(ProductInContract::count).sum();
+        return wholesaleThreshold < this.products.stream().mapToDouble(ProductInContract::amount).sum();
     }
 
     public List<ProductInContract> products() {
