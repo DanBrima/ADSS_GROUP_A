@@ -1,9 +1,11 @@
 package Tests;
 
 import Domain.*;
+import Presentation.IO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Test {
     private static Contact dan;
@@ -128,5 +130,21 @@ public class Test {
         initializeObjects();
         shufersal = new FixedDaysSupplier(false, "shufersal", 123456,
                 PaymentOption.CREDIT_CARD, List.of(ban), List.of());
+        assert ((FixedDaysSupplier) shufersal).getArrivalDays().size() == 0;
+    }
+
+    public void test_immediateDeliveryInPlace(){
+        initializeObjects();
+        shufersal = new InPlaceSupplier(true, "shufersal", 123456,
+                PaymentOption.CREDIT_CARD, List.of(ban),0);
+        assert ((InPlaceSupplier) shufersal).getDeliveryDays() == 0;
+    }
+
+    public void test_AddSupplierToStore(){
+        initializeObjects();
+        Store store = new Store();
+        store.addSupplier(shufersal);
+        store.addSupplier(biko);
+        assert store.getSuppliers().size() == 2;
     }
 }

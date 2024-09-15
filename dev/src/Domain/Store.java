@@ -1,5 +1,6 @@
 package Domain;
 
+import External.Constants;
 import Presentation.IO;
 
 import java.util.ArrayList;
@@ -29,7 +30,18 @@ public class Store {
     }
 
     public void addSupplier(IO io) {
-        this.suppliers.add(Supplier.getSupplierFromIO(io));
+        int delivery = io.readInt("Choose\n 1. Fixed days delivery\n 2. In place delivery:\n");
+        switch (delivery){
+            case 1:
+                this.suppliers.add(FixedDaysSupplier.getFixedDaysSupplierFromIO(io));
+                break;
+            case 2:
+                this.suppliers.add(InPlaceSupplier.getInPlaceSupplierFromIO(io));
+                break;
+            default:
+                io.print(Constants.INVALID_INPUT);
+                break;
+        }
     }
 
     public List<Supplier> getSuppliers() {
