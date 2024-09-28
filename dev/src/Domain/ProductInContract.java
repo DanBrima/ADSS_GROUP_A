@@ -16,10 +16,7 @@ public class ProductInContract {
         this.price = price;
         this.amount = amount;
         this.productDiscountPercentage = productDiscountPercentage;
-        // Why is this random ?? I think it should be from input
         this.supplierCatalogID = UUID.randomUUID();
-        // Test with constant
-        //this.supplierCatalogID = UUID.fromString("1c2e2c05-9808-4d85-ae1e-5247582b884e");
     }
 
     public static ProductInContract getContractFromIO(IO io) {

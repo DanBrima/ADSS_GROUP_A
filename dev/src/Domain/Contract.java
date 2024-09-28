@@ -32,6 +32,11 @@ public class Contract {
         return wholesaleThreshold < this.products.stream().mapToDouble(ProductInContract::amount).sum();
     }
 
+    // The wholesale discount is per product and not on the overall products in order
+    public boolean isDiscount(int amount){
+        return wholesaleThreshold < amount;
+    }
+
     public List<ProductInContract> products() {
         return Collections.unmodifiableList(this.products);
     }

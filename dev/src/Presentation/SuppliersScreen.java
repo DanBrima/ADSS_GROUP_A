@@ -4,15 +4,15 @@ import External.Constants;
 
 import java.io.PrintStream;
 import java.util.Scanner;
-import Domain.Store;
+import Domain.Controller;
 
 
 public class SuppliersScreen extends Screen {
-    private Store storeRef;
+    private Controller controllerRef;
 
-    public SuppliersScreen(PrintStream out, Scanner in, Store storeRef) {
+    public SuppliersScreen(PrintStream out, Scanner in, Controller controllerRef) {
         super(out, in);
-        this.storeRef = storeRef;
+        this.controllerRef = controllerRef;
     }
 
     @Override
@@ -25,8 +25,8 @@ public class SuppliersScreen extends Screen {
         this.out.format("+--------+-------------+%n");
         this.out.format("| Number |   Supplier  |%n");
         this.out.format("+--------+-------------+%n");
-        for (int supIndex = 0; supIndex < this.storeRef.getSuppliers().size(); supIndex++) {
-            Domain.Supplier supplier = this.storeRef.getSuppliers().get(supIndex);
+        for (int supIndex = 0; supIndex < this.controllerRef.getSuppliers().size(); supIndex++) {
+            Domain.Supplier supplier = this.controllerRef.getSuppliers().get(supIndex);
             this.out.format(LEFT_ALIGN_FORMAT, supIndex, supplier.activeAccount());
         }
         this.out.format("+--------+-------------+%n");

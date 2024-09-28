@@ -19,6 +19,12 @@ public class DefaultMenuScreen extends Screen {
         this.out.print(Constants.ADD_SUPPLIER_INDEX + ". ");
         this.out.println(Constants.ADD_SUPPLIER);
 
+        this.out.print(Constants.DISPLAY_STORES_INDEX + ". ");
+        this.out.println(Constants.DISPLAY_STORES);
+
+        this.out.print(Constants.ADD_STORE_INDEX + ". ");
+        this.out.println(Constants.ADD_STORE);
+
         this.out.print(Constants.TURN_OFF_INDEX + ". ");
         this.out.println(Constants.TURN_OFF);
 

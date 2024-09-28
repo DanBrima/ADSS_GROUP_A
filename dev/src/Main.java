@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Store store = new Store();
+        Controller controller = new Controller();
 
         Contact ban = new Contact("Ban", "0586979676");
         Contact dan = new Contact("Dan", "0585979676");
@@ -33,10 +33,10 @@ public class Main {
         biko.addContract(bikoOsem);
         shufersal.addContract(shufersalOsem);
 
-        store.addSupplier(biko);
-        store.addSupplier(shufersal);
+        controller.addSupplier(biko);
+        controller.addSupplier(shufersal);
 
-        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), store);
+        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), controller);
         cashierDesk.turnOn();
     }
 }

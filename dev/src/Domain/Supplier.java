@@ -2,6 +2,7 @@ package Domain;
 
 import Presentation.IO;
 
+import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -71,4 +72,11 @@ public class Supplier {
     public List<Contract> contracts() {
         return Collections.unmodifiableList(this.contracts);
     }
+
+//    // Return all the products the supplier has contracts on
+//    public List<ProductInContract> products(){
+//        return contracts.stream()
+//                .flatMap(contract -> contract.products().stream())
+//                .collect(Collectors.toList());
+//    }
 }

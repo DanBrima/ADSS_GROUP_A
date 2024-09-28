@@ -5,6 +5,7 @@ WHAT I NEED TO DO IN THIS PAGE IS INCLUDE OUR "SCREENS" INCLUDING SUPPLIERS AND 
 package External;
 
 import Domain.Contract;
+import Domain.Controller;
 import Domain.Store;
 import Domain.Supplier;
 import Presentation.*;
@@ -18,12 +19,12 @@ public class CashierDesk {
     private final IO io;
 
     private Boolean isActivated = false;
-    private Store storeRef;
+    private Controller controllerRef;
 
-    public CashierDesk(PrintStream out, Scanner in, Store storeRef) {
+    public CashierDesk(PrintStream out, Scanner in, Controller controllerRef) {
         this.out = out;
         this.in = in;
-        this.storeRef = storeRef;
+        this.controllerRef = controllerRef;
         this.io = new ConsoleIO();
     }
 
@@ -36,15 +37,15 @@ public class CashierDesk {
             int userInput = defaultMenuScreen.handleMsg();
             switch (userInput) {
                 case Constants.DISPLAY_SUPPLIERS_INDEX: {
-                    SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, storeRef);
+                    SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, controllerRef);
                     userInput = suppliersScreen.handleMsg();
 
                     // Validate input
-                    if (userInput >= storeRef.getSuppliers().size() || userInput < 0) {
+                    if (userInput >= controllerRef.getSuppliers().size() || userInput < 0) {
                         this.out.println(Constants.INVALID_INPUT);
                         break;
                     }
-                    Supplier supplier = storeRef.getSuppliers().get(userInput);
+                    Supplier supplier = controllerRef.getSuppliers().get(userInput);
 
                     SupplierCardScreen supplierCardScreen = new SupplierCardScreen(this.out, this.in, supplier);
                     userInput = supplierCardScreen.handleMsg();
@@ -63,7 +64,37 @@ public class CashierDesk {
                 }
 
                 case Constants.ADD_SUPPLIER_INDEX: {
-                    storeRef.addSupplier(io);
+                    controllerRef.addSupplier(io);
+                    break;
+                }
+
+                case Constants.DISPLAY_STORES_INDEX: {
+                    StoresScreen storesScreen = new StoresScreen(this.out, this.in, controllerRef);
+                    userInput = storesScreen.handleMsg();
+                    if (userInput >= controllerRef.getStores().size() || userInput < 0) {
+                        this.out.println(Constants.INVALID_INPUT);
+                        break;
+                    }
+                    Store store = controllerRef.getStores().get(userInput);
+
+                    OrdersScreen ordersScreen = new OrdersScreen(this.out, this.in, store);
+                    userInput = ordersScreen.handleMsg();
+                    if (userInput >= Constants.ADD_ORDER_INDEX+1 || userInput < 0) {
+                        this.out.println(Constants.INVALID_INPUT);
+                    } else if (userInput == Constants.ADD_ORDER_INDEX){
+                        // Choose supplier for order
+                        SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, controllerRef);
+                        userInput = suppliersScreen.handleMsg();
+                        if (userInput >= controllerRef.getSuppliers().size() || userInput < 0) {
+                            this.out.println(Constants.INVALID_INPUT);
+                            break;
+                        }
+                        store.addOrder(io,controllerRef.getSuppliers().get(userInput));
+                    }
+                }
+
+                case Constants.ADD_STORE_INDEX: {
+                    controllerRef.addStore(io);
                     break;
                 }
 
