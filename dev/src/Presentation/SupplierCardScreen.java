@@ -9,11 +9,6 @@ import java.util.Scanner;
 public class SupplierCardScreen extends Screen {
     private Supplier supplier;
 
-    public SupplierCardScreen(PrintStream out, Scanner in, Store storeRef, int supplierIndex) {
-        super(out, in);
-        this.supplier = storeRef.getSuppliers().get(supplierIndex);
-    }
-
     public SupplierCardScreen(PrintStream out, Scanner in, Supplier supplier) {
         super(out, in);
         this.supplier = supplier;

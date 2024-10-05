@@ -144,11 +144,4 @@ public class Test {
         assertTrue(((InPlaceSupplier) biko).getDeliveryDays() == 0);
     }
 
-    public void test_AddSupplierToStore() throws Exception {
-        initializeObjects();
-        Store store = new Store();
-        store.addSupplier(shufersal);
-        store.addSupplier(biko);
-        assertTrue(store.getSuppliers().size() == 2);
-    }
 }
