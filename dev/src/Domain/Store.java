@@ -45,8 +45,9 @@ public class Store {
         this.suppliers.add(supplier);
     }
 
-    public void addOrder(IO io, Supplier supplier){
-        this.orders.add(Order.getOrderFromIO(io, supplier));
+    public void addOrder(IO io, List<Supplier> suppliers){
+
+        this.orders.add(Order.getOrderFromIO(io, suppliers));
     }
 
     // TOBE DELETED

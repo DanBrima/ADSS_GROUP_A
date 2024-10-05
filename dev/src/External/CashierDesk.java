@@ -79,18 +79,22 @@ public class CashierDesk {
 
                     OrdersScreen ordersScreen = new OrdersScreen(this.out, this.in, store);
                     userInput = ordersScreen.handleMsg();
-                    if (userInput >= Constants.ADD_ORDER_INDEX+1 || userInput < 0) {
+                    if (userInput >= Constants.ADD_ORDER_INDEX+2 || userInput < 0) {
                         this.out.println(Constants.INVALID_INPUT);
                     } else if (userInput == Constants.ADD_ORDER_INDEX){
                         // Choose supplier for order
-                        SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, controllerRef);
-                        userInput = suppliersScreen.handleMsg();
-                        if (userInput >= controllerRef.getSuppliers().size() || userInput < 0) {
-                            this.out.println(Constants.INVALID_INPUT);
-                            break;
-                        }
-                        store.addOrder(io,controllerRef.getSuppliers().get(userInput));
+//                        SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, controllerRef);
+//                        userInput = suppliersScreen.handleMsg();
+//                        if (userInput >= controllerRef.getSuppliers().size() || userInput < 0) {
+//                            this.out.println(Constants.INVALID_INPUT);
+//                            break;
+//                        }
+                        store.addOrder(io,controllerRef.getSuppliers());
+                        //.get(userInput)
+                    } else if (userInput == Constants.ADD_ORDER_INDEX + 1){
+                        userInput = Constants.DISPLAY_STORES_INDEX;
                     }
+                    break;
                 }
 
                 case Constants.ADD_STORE_INDEX: {

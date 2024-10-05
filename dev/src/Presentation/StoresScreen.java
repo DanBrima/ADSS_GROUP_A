@@ -15,6 +15,10 @@ public class StoresScreen extends Screen {
 
     @Override
     public int handleMsg() {
+        if (this.controllerRef.getStores().size() == 0) {
+            this.out.println("No store found in the system");
+            return Constants.USER_NO_INPUT;
+        }
 
         this.out.println(Constants.DISPLAY_STORE_ORDERS);
 
