@@ -24,7 +24,7 @@ public class Order {
     }
 
     public static Order getOrderFromIO(IO io, List<Supplier> suppliers) {
-        int productCount = io.readInt("Enter the number of different products in the order (must be 1 or more:");
+        int productCount = io.readInt("Enter the number of different products in the order (must be 1 or more):");
         assert productCount > 0;
         List<ProductInOrder> products = new ArrayList<>();
 //        List<ProductInOrder> products = Stream.generate(() -> ProductInOrder.getOrderFromIO(io)).limit(productCount).toList();
@@ -45,6 +45,23 @@ public class Order {
 
     public List<ProductInOrder> getProducts(){
         return this.products;
+    }
+
+    public double getPrice(){
+        double price = 0;
+        for (ProductInOrder orderProduct: products){
+            for (Contract contract: orderProduct.supplier.contracts()){
+                for (ProductInContract contractProduct: contract.products()){
+                    if (contractProduct.name() == orderProduct.name()){
+                        if (contract.isDiscount(orderProduct.amount))
+                            price+=(contractProduct.priceWithDiscount()*orderProduct.amount);
+                        else
+                            price+=(contractProduct.price()*orderProduct.amount);
+                    }
+                }
+            }
+        }
+        return price;
     }
 
 //    // Example on how to nevigate from supplier to ProductInContract to compare to ProductInOrder
