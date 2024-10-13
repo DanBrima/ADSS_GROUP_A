@@ -20,8 +20,8 @@ public class InventoryConstants {
     public static final int ITEM_PRICE_HISTORY_INDEX = 7;
     public static final String CREATE_NEW_DISCOUNT = "create new discount";
     public static final int CREATE_NEW_DISCOUNT_INDEX = 8;
-    public static final String TURN_OFF = "turn off";
-    public static final int TURN_OFF_INDEX = 9;
+    public static final String RETURN_TO_MAIN_MENU_INVENTORY = "Return to main menu";
+    public static final int RETURN_TO_MAIN_MENU_INVENTORY_INDEX = 9;
     public static final String DISPLAY_STORE_ITEMS = "display items in store";
     public static final int DISPLAY_STORE_ITEMS_INDEX = 1;
     public static final String DISPLAY_STORAGE_ITEMS = "display items in storage";

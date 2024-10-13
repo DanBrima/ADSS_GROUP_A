@@ -27,11 +27,11 @@ public class DefaultMenuScreenSupp extends Screen {
         this.out.print(SuppliersConstants.ADD_STORE_INDEX + ". ");
         this.out.println(SuppliersConstants.ADD_STORE);
 
-        this.out.print(SuppliersConstants.TURN_OFF_INDEX + ". ");
-        this.out.println(SuppliersConstants.TURN_OFF);
+        this.out.print(SuppliersConstants.RETURN_TO_MAIN_MENU_SUPPLIERS_INDEX + ". ");
+        this.out.println(SuppliersConstants.RETURN_TO_MAIN_MENU_SUPPLIERS);
 
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
-        int userInput = this.in.nextInt();
+        int userInput = Integer.parseInt(this.in.nextLine());
         return userInput;
     }
 }

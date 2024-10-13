@@ -133,11 +133,8 @@ public class CashierDesk {
                 defectiveItemsScreen.handleMsg();
                 break;
             }
-            case InventoryConstants.TURN_OFF_INDEX: {
-                //TODO: remove this from options here
-
-//                this.turnOff();
-                break;
+            case InventoryConstants.RETURN_TO_MAIN_MENU_INVENTORY_INDEX: {
+                return;
             }
             case InventoryConstants.TRANSFER_ITEMS_INDEX: {
                 TransferItemsScreen transferItemsScreen = new TransferItemsScreen(this.out, this.in, this.storeRef, this.storageRef);
@@ -240,10 +237,8 @@ public class CashierDesk {
                 break;
             }
 
-            case SuppliersConstants.TURN_OFF_INDEX: {
-                //TODO: remove this from options here
-//                this.turnOff();
-                break;
+            case SuppliersConstants.RETURN_TO_MAIN_MENU_SUPPLIERS_INDEX: {
+                return;
             }
             default: {
                 this.out.println(SuppliersConstants.INVALID_INPUT);

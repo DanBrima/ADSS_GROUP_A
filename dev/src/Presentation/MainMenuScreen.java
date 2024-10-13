@@ -18,7 +18,7 @@ public class MainMenuScreen extends Screen {
         this.out.println("3. Exit");
 
         this.out.print("\n" + "Please choose an option: ");
-        int userInput = this.in.nextInt();
+        int userInput = Integer.parseInt(this.in.nextLine());
         return userInput;
     }
 }
