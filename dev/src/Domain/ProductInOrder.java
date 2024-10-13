@@ -17,13 +17,9 @@ public class ProductInOrder {
 
     public static ProductInOrder getOrderFromIO(IO io, List<Supplier> suppliers) {
         Product product = Product.getProductFromIO(io);
-//        Supplier supplier = Controller.getCheapestSupplier(product.name, suppliers);
-//        if (supplier != null){
-//            int amount = io.readInt("Enter amount of product:");
-//            return new ProductInOrder(product, amount);
-//        }
-//        else
-            return null;
+        int amount = io.readInt("Enter amount of product:");
+
+        return new ProductInOrder(product, amount);
     }
 
     public Product product() {
