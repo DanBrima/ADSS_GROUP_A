@@ -22,13 +22,13 @@ public class Main {
         Product waffle = new Product("Waffle",  osem);
 
         Contract bikoOsem = new Contract(10, biko,
-                List.of(new ProductInContract(bisli, 15, 10, 25),
-                        new ProductInContract(bamba, 15, 10, 20),
-                        new ProductInContract(waffle, 35, 10, 30)));
+                List.of(new ProductInContract(bisli, 15, 25),
+                        new ProductInContract(bamba, 15, 20),
+                        new ProductInContract(waffle, 35, 30)));
         Contract shufersalOsem = new Contract(10, biko,
-                List.of(new ProductInContract(bisli, 5, 30,25),
-                        new ProductInContract(bamba, 10, 10, 20),
-                        new ProductInContract(waffle, 30, 25, 30)));
+                List.of(new ProductInContract(bisli, 5,25),
+                        new ProductInContract(bamba, 10, 20),
+                        new ProductInContract(waffle, 30, 30)));
 
         biko.addContract(bikoOsem);
         shufersal.addContract(shufersalOsem);

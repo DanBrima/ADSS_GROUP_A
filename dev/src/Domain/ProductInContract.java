@@ -7,14 +7,12 @@ import java.util.UUID;
 public class ProductInContract {
     private Product product;
     private double price;
-    public int amount;
     private int productDiscountPercentage;
     private UUID supplierCatalogID;
 
-    public ProductInContract(Product product, int price, int amount, int productDiscountPercentage) {
+    public ProductInContract(Product product, int price, int productDiscountPercentage) {
         this.product = product;
         this.price = price;
-        this.amount = amount;
         this.productDiscountPercentage = productDiscountPercentage;
         this.supplierCatalogID = UUID.randomUUID();
     }
@@ -24,15 +22,11 @@ public class ProductInContract {
         int price = io.readInt("Enter the price of the product:");
         int amount = io.readInt("Enter amount of product:");
         int productDiscountPercentage = io.readInt("Enter the discount percentage of the product:");
-        return new ProductInContract(product, price, amount, productDiscountPercentage);
+        return new ProductInContract(product, price, productDiscountPercentage);
     }
 
     public String name() {
         return product.name;
-    }
-
-    public int amount() {
-        return amount;
     }
 
     public UUID supplierCatalogID() {
@@ -51,7 +45,6 @@ public class ProductInContract {
     public String toString() {
         return "{product=" + product +
                 ", price=" + price +
-                ", count=" + amount +
                 ", productDiscountPercentage=" + productDiscountPercentage +
                 ", supplierCatalogID=" + supplierCatalogID +
                 '}';
