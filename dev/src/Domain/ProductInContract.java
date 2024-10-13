@@ -20,7 +20,6 @@ public class ProductInContract {
     public static ProductInContract getContractFromIO(IO io) {
         Product product = Product.getProductFromIO(io);
         int price = io.readInt("Enter the price of the product:");
-        int amount = io.readInt("Enter amount of product:");
         int productDiscountPercentage = io.readInt("Enter the discount percentage of the product:");
         return new ProductInContract(product, price, productDiscountPercentage);
     }
