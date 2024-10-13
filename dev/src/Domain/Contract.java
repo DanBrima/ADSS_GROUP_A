@@ -28,8 +28,29 @@ public class Contract {
         return new Contract(wholesaleThreshold, contractSupplier, products);
     }
 
+    public boolean hasProduct(String productName) {
+        return products.stream().anyMatch(product -> product.name().equals(productName));
+    }
+
+    public double getPriceOfProduct(ProductInOrder productInOrder) {
+        double minPrice = Double.MAX_VALUE;
+
+        for (ProductInContract productInContract : products) {
+            if (productInContract.product().equals(productInOrder.product())) {
+                double basePrice = isDiscount(productInOrder.amount())
+                        ? productInContract.priceWithDiscount()
+                        : productInContract.price();
+                minPrice = Math.min(minPrice, basePrice * productInOrder.amount());
+            }
+        }
+
+        // TODO throw exception if minPrice is still Double.MAX_VALUE
+
+        return minPrice;
+    }
+
     // The wholesale discount is per product and not on the overall products in order
-    public boolean isDiscount(int amount){
+    public boolean isDiscount(int amount) {
         return wholesaleThreshold < amount;
     }
 

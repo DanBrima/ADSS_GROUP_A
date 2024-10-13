@@ -25,6 +25,10 @@ public class ProductInContract {
         return new ProductInContract(product, price, productDiscountPercentage);
     }
 
+    public Product product() {
+        return this.product;
+    }
+
     public String name() {
         return product.name;
     }

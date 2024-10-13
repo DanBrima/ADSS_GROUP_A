@@ -5,6 +5,7 @@ import Presentation.IO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Spliterator;
 import java.util.stream.Stream;
 
 
@@ -15,11 +16,11 @@ public class Order {
 
     // We can add reference to the product in contract instead of look for the related one every time
 
-    public Order(){
+    public Order() {
         this.products = new ArrayList<>();
     }
 
-    public Order(List<ProductInOrder> products){
+    public Order(List<ProductInOrder> products) {
         this.products = products;
     }
 
@@ -38,30 +39,34 @@ public class Order {
         return new Order(products);
     }
 
-    public boolean addProduct(ProductInOrder orderProduct){
+    public boolean addProduct(ProductInOrder orderProduct) {
         products.add(orderProduct);
         return true;
     }
 
-    public List<ProductInOrder> getProducts(){
+    public List<ProductInOrder> getProducts() {
         return this.products;
     }
 
-    public double getPrice(){
-        double price = 0;
-        for (ProductInOrder orderProduct: products){
-            for (Contract contract: orderProduct.supplier.contracts()){
-                for (ProductInContract contractProduct: contract.products()){
-                    if (contractProduct.name() == orderProduct.name()){
-                        if (contract.isDiscount(orderProduct.amount))
-                            price+=(contractProduct.priceWithDiscount()*orderProduct.amount);
-                        else
-                            price+=(contractProduct.price()*orderProduct.amount);
-                    }
-                }
+
+    private double getPriceForProduct(List<Supplier> availableSuppliers, ProductInOrder orderProduct) {
+        double minPrice = Double.MAX_VALUE;
+
+        for (Supplier supplier : availableSuppliers) {
+            for (Contract contract : supplier.getContractsSupplying(orderProduct.name())) {
+                minPrice = Math.min(minPrice, contract.getPriceOfProduct(orderProduct));
             }
         }
-        return price;
+
+        // throw exception if minPrice is still Double.MAX_VALUE
+
+        return minPrice;
+    }
+
+    public double getPrice(List<Supplier> availableSuppliers) {
+        return this.products.stream()
+                .mapToDouble(product -> getPriceForProduct(availableSuppliers, product))
+                .sum();
     }
 
 //    // Example on how to nevigate from supplier to ProductInContract to compare to ProductInOrder

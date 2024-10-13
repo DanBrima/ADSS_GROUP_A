@@ -17,6 +17,7 @@ public class Supplier {
     private List<Contact> contacts;
     private List<Contract> contracts;
 
+
     protected Supplier(boolean needsPickup, String activeAccount, int bankAccount, PaymentOption paymentOption, List<Contact> contacts) {
         this.needsPickup = needsPickup;
         this.activeAccount = activeAccount;
@@ -43,6 +44,11 @@ public class Supplier {
                 .flatMap(contract -> contract.products().stream())
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    public List<Contract> getContractsSupplying(String productName) {
+        return contracts.stream()
+                .filter(contract -> contract.hasProduct(productName)).toList();
     }
 
     public void addContract(Contract contract) {
