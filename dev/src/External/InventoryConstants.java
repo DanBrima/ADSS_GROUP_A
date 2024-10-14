@@ -2,7 +2,7 @@ package External;
 
 public class InventoryConstants {
 
-    public static final String DEFAULT_MSG = "Welcome!\nTo proceed please choose from the following options:\n";
+    public static final String DEFAULT_MSG = "\nWelcome!\nTo proceed please choose from the following options:\n";
     public static final String USER_INPUT = "input: ";
     public static final String CURRENT_ITEMS = "display the current items amount";
     public static final int CURRENT_ITEMS_INDEX = 1;
