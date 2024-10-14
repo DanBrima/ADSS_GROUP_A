@@ -21,8 +21,6 @@ public class Order {
         this.products = products;
     }
 
-
-    // What will happen in here is that ProductInOrder will be created without
     public static Order getOrderFromIO(IO io, List<Supplier> suppliers) {
         int productCount = io.readInt("Enter the number of different products in the order (must be 1 or more:)");
         assert productCount > 0;
