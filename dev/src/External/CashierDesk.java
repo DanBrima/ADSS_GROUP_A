@@ -21,10 +21,7 @@ public class CashierDesk {
 
     private Boolean isActivated = false;
     private Controller controllerRef;
-
-    //TODO: add store and storage selection to controllerRef inside the display inventory method
-    private Store storeRef;
-    private Storage storageRef;
+    private Store chosenStore = null;
 
     public CashierDesk(PrintStream out, Scanner in, Controller controllerRef) {
         this.out = out;
@@ -44,14 +41,24 @@ public class CashierDesk {
             int userInput = mainMenuScreen.handleMsg();
             switch (userInput) {
                 case 1: {
-                    this.displaySuppliers();
+                    this.controllerRef.addStore(this.io);
                     break;
                 }
                 case 2: {
-                    this.displayInventory();
+                    if (this.chosenStore == null)
+                        this.chooseStore();
+
+                    this.displaySuppliers();
                     break;
                 }
                 case 3: {
+                    if (this.chosenStore == null)
+                        this.chooseStore();
+
+                    this.displayInventory();
+                    break;
+                }
+                case 4: {
                     this.turnOff();
                     break;
                 }
@@ -62,6 +69,20 @@ public class CashierDesk {
             }
 
         }
+    }
+
+    private boolean chooseStore() {
+        this.out.println("There are: " + this.controllerRef.getStores().size() + " stores");
+        this.out.print("Please enter store id: ");
+        int storeIndex = Integer.parseInt(this.in.nextLine());
+        if (storeIndex < this.controllerRef.getStores().size())
+            chosenStore = this.controllerRef.getStores().get(storeIndex);
+        else {
+            this.out.println("Invalid store id\nReturning to main menu...\n");
+            return false;
+        }
+
+        return true;
     }
 
     private void turnOff() {
@@ -80,12 +101,12 @@ public class CashierDesk {
 
                 switch (userInput) {
                     case InventoryConstants.DISPLAY_STORE_ITEMS_INDEX: {
-                        StoreAmountScreen storeAmountScreen = new StoreAmountScreen(this.out, this.in, this.storeRef);
+                        StoreAmountScreen storeAmountScreen = new StoreAmountScreen(this.out, this.in, this.chosenStore);
                         storeAmountScreen.handleMsg();
                         break;
                     }
                     case InventoryConstants.DISPLAY_STORAGE_ITEMS_INDEX: {
-                        StorageAmountScreen storageAmountScreen = new StorageAmountScreen(this.out, this.in, this.storageRef);
+                        StorageAmountScreen storageAmountScreen = new StorageAmountScreen(this.out, this.in, this.chosenStore.getStorage());
                         storageAmountScreen.handleMsg();
                         break;
                     }
@@ -97,7 +118,7 @@ public class CashierDesk {
                 break;
             }
             case InventoryConstants.MISSING_ITEMS_RECORD_INDEX: {
-                MissingItemsScreen missingItemsScreen = new MissingItemsScreen(this.out, this.in, this.storeRef, this.storageRef);
+                MissingItemsScreen missingItemsScreen = new MissingItemsScreen(this.out, this.in, this.chosenStore, this.chosenStore.getStorage());
                 missingItemsScreen.handleMsg();
                 break;
             }
@@ -112,12 +133,12 @@ public class CashierDesk {
                 userInput = removeItemScreen.handleMsg();
                 switch (userInput) {
                     case InventoryConstants.REMOVE_ITEM_STORE_INDEX: {
-                        RemoveItemsStoreScreen removeItemsStoreScreen = new RemoveItemsStoreScreen(this.out, this.in, this.storeRef);
+                        RemoveItemsStoreScreen removeItemsStoreScreen = new RemoveItemsStoreScreen(this.out, this.in, this.chosenStore);
                         removeItemsStoreScreen.handleMsg();
                         break;
                     }
                     case InventoryConstants.REMOVE_ITEM_STORAGE_INDEX: {
-                        RemoveItemsStorageScreen removeItemsStorageScreen = new RemoveItemsStorageScreen(this.out, this.in, this.storageRef);
+                        RemoveItemsStorageScreen removeItemsStorageScreen = new RemoveItemsStorageScreen(this.out, this.in, this.chosenStore.getStorage());
                         removeItemsStorageScreen.handleMsg();
                         break;
                     }
@@ -129,7 +150,7 @@ public class CashierDesk {
                 break;
             }
             case InventoryConstants.DISPLAY_DEFECTIVE_ITEMS_INDEX: {
-                DefectiveItemsScreen defectiveItemsScreen = new DefectiveItemsScreen(this.out, this.in, this.storageRef);
+                DefectiveItemsScreen defectiveItemsScreen = new DefectiveItemsScreen(this.out, this.in, this.chosenStore.getStorage());
                 defectiveItemsScreen.handleMsg();
                 break;
             }
@@ -137,12 +158,12 @@ public class CashierDesk {
                 return;
             }
             case InventoryConstants.TRANSFER_ITEMS_INDEX: {
-                TransferItemsScreen transferItemsScreen = new TransferItemsScreen(this.out, this.in, this.storeRef, this.storageRef);
+                TransferItemsScreen transferItemsScreen = new TransferItemsScreen(this.out, this.in, this.chosenStore, this.chosenStore.getStorage());
                 transferItemsScreen.handleMsg();
                 break;
             }
             case InventoryConstants.ITEM_PRICE_HISTORY_INDEX: {
-                ItemPriceHistoryScreen itemPriceHistoryScreen = new ItemPriceHistoryScreen(this.out, this.in, this.storeRef, this.storageRef);
+                ItemPriceHistoryScreen itemPriceHistoryScreen = new ItemPriceHistoryScreen(this.out, this.in, this.chosenStore, this.chosenStore.getStorage());
                 itemPriceHistoryScreen.handleMsg();
                 break;
             }
@@ -229,11 +250,6 @@ public class CashierDesk {
                 } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX + 1) {
                     userInput = SuppliersConstants.DISPLAY_STORES_INDEX;
                 }
-                break;
-            }
-
-            case SuppliersConstants.ADD_STORE_INDEX: {
-                controllerRef.addStore(io);
                 break;
             }
 

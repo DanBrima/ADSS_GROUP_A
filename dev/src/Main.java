@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+
+    public static Controller setUpController() {
+
         Controller controller = new Controller();
 
         Contact ban = new Contact("Ban", "0586979676");
-        Contact dan = new Contact("Dan", "0585979676");
+        Contact dan = new Contact("Dan the orange", "0585979676");
 
         Supplier biko = new InPlaceSupplier(true, "biko", 123456,
                 PaymentOption.CASH, List.of(ban), 5);
@@ -36,7 +38,10 @@ public class Main {
         controller.addSupplier(biko);
         controller.addSupplier(shufersal);
 
-        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), controller);
+        return controller;
+    }
+    public static void main(String[] args) throws Exception {
+        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), setUpController());
         cashierDesk.turnOn();
     }
 }
