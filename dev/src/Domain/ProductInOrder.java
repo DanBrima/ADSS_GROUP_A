@@ -8,7 +8,6 @@ import java.util.UUID;
 public class ProductInOrder {
     private Product product;
     public int amount;
-
     public  Supplier supplier;
 
     public ProductInOrder(Product product, Supplier supplier, int amount) {
@@ -20,7 +19,6 @@ public class ProductInOrder {
     public static ProductInOrder getOrderFromIO(IO io, List<Supplier> suppliers) {
         Product product = Product.getProductFromIO(io);
         int amount = io.readInt("Enter amount of product:");
-
 
         // Remain calling "cheapestSupplier" in PIO since we need to create the "product" first and Order isn't
         // associated with Product, only then check for supplier and lastly create the PIO and return it
@@ -51,7 +49,7 @@ public class ProductInOrder {
             // This is weird we use "Contract" resource from PIO, but I have no idea how to deal with that
             Contract con = supplier.getContractSupplying(product);
             if (con != null) {
-                double price = con.isDiscount(amount) ? con.hasProduct(product).priceWithDiscount() : con.hasProduct(product).price();
+                double price = con.isDiscount(amount) ? con.getProduct(product).priceWithDiscount() : con.getProduct(product).price();
                 if (minPrice > price) {
                     minPrice = price;
                     minSup = supplier;

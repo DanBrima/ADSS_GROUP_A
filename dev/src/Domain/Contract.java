@@ -28,7 +28,7 @@ public class Contract {
         return new Contract(wholesaleThreshold, contractSupplier, products);
     }
 
-    public ProductInContract hasProduct(String productName) {
+    public ProductInContract getProduct(String productName) {
         return products.stream()
                 .filter(product -> product.name().equals(productName))
                 .findFirst()

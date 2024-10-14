@@ -76,10 +76,8 @@ public class Supplier {
     // To simplify the search if supplier hasProduct
     public Contract getContractSupplying(String productName) {
         return contracts.stream()
-                .filter(contract -> contract.hasProduct(productName) != null)
+                .filter(contract -> contract.getProduct(productName) != null)
                 .findFirst()
                 .orElse(null);
-        // Returns null if no contract is found
-        // We can throw an error instead already in here
     }
 }
