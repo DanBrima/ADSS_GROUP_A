@@ -19,14 +19,18 @@ public class ProductInOrder {
 
     public static ProductInOrder getOrderFromIO(IO io, List<Supplier> suppliers) {
         Product product = Product.getProductFromIO(io);
-        Supplier supplier = Controller.getCheapestSupplier(product.name, suppliers);
-        assert supplier != null;
+        int amount = io.readInt("Enter amount of product:");
+
+
+        // Remain calling "cheapestSupplier" in PIO since we need to create the "product" first and Order isn't
+        // associated with Product, only then check for supplier and lastly create the PIO and return it
+        Supplier supplier = getCheapestSupplier(product.name, amount, suppliers);
+
         if (supplier != null){
-            int amount = io.readInt("Enter amount of product:");
             return new ProductInOrder(product, supplier, amount);
         }
         else
-            return null;
+            throw new RuntimeException("No supplier provides");
     }
 
     public String name() {
@@ -37,10 +41,31 @@ public class ProductInOrder {
         return amount;
     }
 
+
+    // Gets also the amount to check if there is a discount for the checked supplier
+    public static Supplier getCheapestSupplier(String product, int amount, List<Supplier> suppliers){
+        Supplier minSup = null;
+        double minPrice = Integer.MAX_VALUE;
+        for (Supplier supplier: suppliers){
+
+            // This is weird we use "Contract" resource from PIO, but I have no idea how to deal with that
+            Contract con = supplier.getContractSupplying(product);
+            if (con != null) {
+                double price = con.isDiscount(amount) ? con.hasProduct(product).priceWithDiscount() : con.hasProduct(product).price();
+                if (minPrice > price) {
+                    minPrice = price;
+                    minSup = supplier;
+                }
+            }
+        }
+        return minSup;
+    }
+
     @Override
     public String toString() {
         return "{product=" + product +
                 ", count=" + amount +
+                ", supplier=" + supplier +
                 '}';
     }
 }

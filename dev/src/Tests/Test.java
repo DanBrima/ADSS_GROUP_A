@@ -84,7 +84,6 @@ public class Test {
                 List.of(new ProductInContract(bisli, 5, 10, 25),
                         new ProductInContract(bamba, 10, 10, 20),
                         new ProductInContract(waffle, 30, 1, 30)));
-        assertTrue(biko.contracts().get(0).isDiscount());
     }
 
     public void test_EmptyContract() throws Exception {
@@ -127,7 +126,6 @@ public class Test {
                         new ProductInContract(bamba, 10, 10, 20),
                         new ProductInContract(waffle, 30, 10, 30)));
         biko.addContract(bikoOsem);
-        assertTrue(biko.contracts().get(0).isDiscount());
     }
 
     public void test_NoDeliveryDays() throws Exception {

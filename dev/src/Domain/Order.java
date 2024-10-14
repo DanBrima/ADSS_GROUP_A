@@ -4,6 +4,7 @@ import Presentation.IO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -23,13 +24,12 @@ public class Order {
         this.products = products;
     }
 
+
+    // What will happen in here is that ProductInOrder will be created without
     public static Order getOrderFromIO(IO io, List<Supplier> suppliers) {
         int productCount = io.readInt("Enter the number of different products in the order (must be 1 or more:");
         assert productCount > 0;
         List<ProductInOrder> products = new ArrayList<>();
-//        List<ProductInOrder> products = Stream.generate(() -> ProductInOrder.getOrderFromIO(io)).limit(productCount).toList();
-//        return new Order(products);
-
         for (int i = 0; i < productCount; i++) {
             ProductInOrder product = ProductInOrder.getOrderFromIO(io, suppliers);
             if (product != null)
@@ -47,22 +47,7 @@ public class Order {
         return this.products;
     }
 
-//    // Example on how to nevigate from supplier to ProductInContract to compare to ProductInOrder
-//    public boolean isDiscount() {
-//        for (ProductInOrder orderProduct: products){
-//            for (Contract contract: supplier.contracts()){
-//                for (ProductInContract contractProduct: contract.products()){
-//                    if (contractProduct.name() == orderProduct.name()){
-//                        if (contract.isDiscount(orderProduct.amount))
-//                                return true;
-//                    }
-//                }
-//            }
-//        }
-//        return false;
-//    }
-//
-//
+
 //    public boolean isDiscount(ProductInOrder product) {
 //        for (Contract contract: supplier.contracts()){
 //            for (ProductInContract contractProduct: contract.products()){

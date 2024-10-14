@@ -38,7 +38,6 @@ public class CashierDesk {
 
         while (this.isActivated) {
 
-
             //SWITCH case to select inventory or suppliers
             MainMenuScreen mainMenuScreen = new MainMenuScreen(this.out, this.in);
             int userInput = mainMenuScreen.handleMsg();

@@ -73,10 +73,13 @@ public class Supplier {
         return Collections.unmodifiableList(this.contracts);
     }
 
-//    // Return all the products the supplier has contracts on
-//    public List<ProductInContract> products(){
-//        return contracts.stream()
-//                .flatMap(contract -> contract.products().stream())
-//                .collect(Collectors.toList());
-//    }
+    // To simplify the search if supplier hasProduct
+    public Contract getContractSupplying(String productName) {
+        return contracts.stream()
+                .filter(contract -> contract.hasProduct(productName) != null)
+                .findFirst()
+                .orElse(null);
+        // Returns null if no contract is found
+        // We can throw an error instead already in here
+    }
 }

@@ -39,6 +39,10 @@ public class ProductInContract {
         return this.supplierCatalogID;
     }
 
+    public Product product() {
+        return this.product;
+    }
+
     public double price() {
         return this.price;
     }
