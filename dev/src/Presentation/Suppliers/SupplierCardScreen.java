@@ -51,7 +51,7 @@ public class SupplierCardScreen extends Screen {
         this.out.format((conIndex + 1) + ". return");
 
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
-        int userInput = this.in.nextInt();
+        int userInput = Integer.parseInt(this.in.nextLine());
         return userInput;
     }
 }

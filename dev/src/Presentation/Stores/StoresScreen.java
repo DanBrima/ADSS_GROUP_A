@@ -1,10 +1,11 @@
-package Presentation.Suppliers;
+package Presentation.Stores;
 
-        import External.SuppliersConstants;
-        import java.io.PrintStream;
-        import java.util.Scanner;
-        import Domain.Controller;
-        import Presentation.Screen;
+import External.StoreConstants;
+import External.SuppliersConstants;
+import java.io.PrintStream;
+import java.util.Scanner;
+import Domain.Controller;
+import Presentation.Screen;
 
 public class StoresScreen extends Screen {
     private Controller controllerRef;
@@ -21,7 +22,7 @@ public class StoresScreen extends Screen {
             return SuppliersConstants.USER_NO_INPUT;
         }
 
-        this.out.println(SuppliersConstants.DISPLAY_STORE_ORDERS);
+        this.out.println(StoreConstants.DISPLAY_STORE);
 
         String LEFT_ALIGN_FORMAT = "| %-6s | %-11s |%n";
 
@@ -35,7 +36,7 @@ public class StoresScreen extends Screen {
         this.out.format("+--------+-------------+%n");
 
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
-        int userInput = this.in.nextInt();
+        int userInput = Integer.parseInt(this.in.nextLine());
         return userInput;
     }
 }
