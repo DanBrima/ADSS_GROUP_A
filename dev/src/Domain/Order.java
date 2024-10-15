@@ -27,9 +27,6 @@ public class Order {
         int productCount = io.readInt("Enter the number of different products in the order (must be 1 or more:");
         assert productCount > 0;
         List<ProductInOrder> products = new ArrayList<>();
-//        List<ProductInOrder> products = Stream.generate(() -> ProductInOrder.getOrderFromIO(io)).limit(productCount).toList();
-//        return new Order(products);
-
         for (int i = 0; i < productCount; i++) {
             ProductInOrder product = ProductInOrder.getOrderFromIO(io, suppliers);
             if (product != null)
