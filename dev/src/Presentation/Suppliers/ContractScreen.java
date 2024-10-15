@@ -35,6 +35,7 @@ public class ContractScreen extends Screen {
             ProductInContract product = this.contract.products().get(prodIndex);
             this.out.format(LEFT_ALIGN_FORMAT, product.name(), product.amount(), product.price(), product.priceWithDiscount(), product.supplierCatalogID());
         }
+        this.out.format("+-----------+--------+--------+----------+--------------------------------------+%n");
 
         return SuppliersConstants.USER_NO_INPUT;
     }

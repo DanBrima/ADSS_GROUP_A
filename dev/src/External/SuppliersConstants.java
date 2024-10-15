@@ -7,8 +7,6 @@ public class SuppliersConstants {
     public static final int DISPLAY_SUPPLIERS_INDEX = 1;
     public static final String ADD_SUPPLIER = "Add new supplier";
     public static final int ADD_SUPPLIER_INDEX = 2;
-    public static final String DISPLAY_STORES = "Display stores";
-    public static final int DISPLAY_STORES_INDEX = 3;
     public static final String ADD_ORDER = "Add new order";
     public static final int ADD_ORDER_INDEX = 1;
     public static final String RETURN_TO_MAIN_MENU_SUPPLIERS = "Return to main menu";
