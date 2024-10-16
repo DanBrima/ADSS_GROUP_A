@@ -35,7 +35,7 @@ public class Contract {
                 .orElse(null);  // Returns null if no product is found
     }
 
-    public boolean isDiscount(int amount) {
+    public boolean isDiscount(int amount){
         return wholesaleThreshold < amount;
     }
 
