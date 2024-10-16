@@ -76,15 +76,17 @@ public class CashierDesk {
             this.out.println(SuppliersConstants.INVALID_INPUT);
             return false;
         }
-        Store store = controllerRef.getStores().get(userInput);
+        this.chosenStore = controllerRef.getStores().get(userInput);
 
         StoreScreen storeScreen = new StoreScreen(this.out, this.in);
         userInput = storeScreen.handleMsg();
         switch (userInput) {
             case StoreConstants.DISPLAY_INVENTORY_INDEX:
                 displayInventory();
+                break;
             case StoreConstants.DISPLAY_ORDERS_INDEX:;
-                displayOrders(store);
+                displayOrders();
+                break;
         }
         return true;
     }
@@ -94,20 +96,19 @@ public class CashierDesk {
         this.isActivated = false;
     }
 
-    private void displayOrders(Store store) {
-        OrdersScreen ordersScreen = new OrdersScreen(this.out, this.in, store);
+    private void displayOrders() {
+        OrdersScreen ordersScreen = new OrdersScreen(this.out, this.in, this.chosenStore);
         int userInput = ordersScreen.handleMsg();
         if (userInput >= SuppliersConstants.ADD_ORDER_INDEX + 2 || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX) {
-            store.addOrder(io, controllerRef.getSuppliers());
+            this.chosenStore.addOrder(io, controllerRef.getSuppliers());
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX + 1) {
             displayStores();
         }
     }
 
 
-    // TODO: Inventory screens need to be on given store parameter
     private void displayInventory() {
         // Activate Menu
         DefaultMenuScreen defaultMenuScreen = new DefaultMenuScreen(this.out, this.in);
