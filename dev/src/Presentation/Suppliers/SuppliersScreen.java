@@ -9,11 +9,8 @@ import Presentation.Screen;
 
 
 public class SuppliersScreen extends Screen {
-    private Controller controllerRef;
-
-    public SuppliersScreen(PrintStream out, Scanner in, Controller controllerRef) {
+    public SuppliersScreen(PrintStream out, Scanner in) {
         super(out, in);
-        this.controllerRef = controllerRef;
     }
 
     @Override
@@ -26,8 +23,8 @@ public class SuppliersScreen extends Screen {
         this.out.format("+--------+-------------+%n");
         this.out.format("| Number |   Supplier  |%n");
         this.out.format("+--------+-------------+%n");
-        for (int supIndex = 0; supIndex < this.controllerRef.getSuppliers().size(); supIndex++) {
-            Domain.Supplier supplier = this.controllerRef.getSuppliers().get(supIndex);
+        for (int supIndex = 0; supIndex < Controller.controllerInstance().getSuppliers().size(); supIndex++) {
+            Domain.Supplier supplier = Controller.controllerInstance().getSuppliers().get(supIndex);
             this.out.format(LEFT_ALIGN_FORMAT, supIndex, supplier.activeAccount());
         }
         this.out.format("+--------+-------------+%n");

@@ -40,8 +40,10 @@ public class Main {
 
         return controller;
     }
+
     public static void main(String[] args) throws Exception {
-        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), setUpController());
+        Controller.setControllerInstance(setUpController());
+        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
         cashierDesk.turnOn();
     }
 }

@@ -19,15 +19,12 @@ public class CashierDesk {
     private final PrintStream out;
     private final Scanner in;
     private final IO io;
-
     private Boolean isActivated = false;
-    private Controller controllerRef;
     private Store chosenStore = null;
 
-    public CashierDesk(PrintStream out, Scanner in, Controller controllerRef) {
+    public CashierDesk(PrintStream out, Scanner in) {
         this.out = out;
         this.in = in;
-        this.controllerRef = controllerRef;
         this.io = new ConsoleIO();
     }
 
@@ -40,7 +37,7 @@ public class CashierDesk {
             int userInput = mainMenuScreen.handleMsg();
             switch (userInput) {
                 case 1: {
-                    controllerRef.addStore(io);
+                    Controller.controllerInstance().addStore(io);
                     break;
                 }
                 case 2: {
@@ -48,7 +45,7 @@ public class CashierDesk {
                     break;
                 }
                 case 3: {
-                    controllerRef.addSupplier(io);
+                    Controller.controllerInstance().addSupplier(io);
                     break;
                 }
                 case 4: {
@@ -69,14 +66,14 @@ public class CashierDesk {
 
 
     private boolean displayStores() {
-        StoresScreen storesScreen = new StoresScreen(this.out, this.in, controllerRef);
+        StoresScreen storesScreen = new StoresScreen(this.out, this.in);
         int userInput = storesScreen.handleMsg();
 
-        if (userInput >= controllerRef.getStores().size() || userInput < 0) {
+        if (userInput >= Controller.controllerInstance().getStores().size() || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
             return false;
         }
-        this.chosenStore = controllerRef.getStores().get(userInput);
+        this.chosenStore = Controller.controllerInstance().getStores().get(userInput);
 
         StoreScreen storeScreen = new StoreScreen(this.out, this.in);
         userInput = storeScreen.handleMsg();
@@ -102,7 +99,7 @@ public class CashierDesk {
         if (userInput >= SuppliersConstants.ADD_ORDER_INDEX + 2 || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX) {
-            this.chosenStore.addOrder(io, controllerRef.getSuppliers());
+            this.chosenStore.addOrder(io, Controller.controllerInstance().getSuppliers());
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX + 1) {
             displayStores();
         }
@@ -225,15 +222,15 @@ public class CashierDesk {
         int userInput = defaultMenuScreenSupp.handleMsg();
         switch (userInput) {
             case SuppliersConstants.DISPLAY_SUPPLIERS_INDEX: {
-                SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, controllerRef);
+                SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in);
                 userInput = suppliersScreen.handleMsg();
 
                 // Validate input
-                if (userInput >= controllerRef.getSuppliers().size() || userInput < 0) {
+                if (userInput >= Controller.controllerInstance().getSuppliers().size() || userInput < 0) {
                     this.out.println(SuppliersConstants.INVALID_INPUT);
                     break;
                 }
-                Supplier supplier = controllerRef.getSuppliers().get(userInput);
+                Supplier supplier = Controller.controllerInstance().getSuppliers().get(userInput);
 
                 SupplierCardScreen supplierCardScreen = new SupplierCardScreen(this.out, this.in, supplier);
                 userInput = supplierCardScreen.handleMsg();
@@ -252,7 +249,7 @@ public class CashierDesk {
             }
 
             case SuppliersConstants.ADD_SUPPLIER_INDEX: {
-                controllerRef.addSupplier(io);
+                Controller.controllerInstance().addSupplier(io);
                 break;
             }
 

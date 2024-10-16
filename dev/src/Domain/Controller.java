@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
+
+    private static Controller controller_instance = null;
     private List<Supplier> suppliers;
     private List<Store> stores;
 
@@ -16,13 +18,17 @@ public class Controller {
         this.stores = new ArrayList<>();
     }
 
-    // Constructor from given Store
-    public Controller(Store store) {
-        this.stores = new ArrayList<>();
-        this.addStore(store);
-        this.suppliers = new ArrayList<>();
+    public static void setControllerInstance(Controller controller) {
+        controller_instance = controller;
     }
 
+    public static Controller controllerInstance() {
+        // To ensure only one instance is created
+        if (controller_instance == null) {
+            controller_instance = new Controller();
+        }
+        return controller_instance;
+    }
     public void addSupplier(Supplier supplier) {
         this.suppliers.add(supplier);
     }
