@@ -44,6 +44,7 @@ public class Main {
 
         return controller;
     }
+
     public static void main(String[] args) throws Exception {
         // Get a session
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -71,9 +72,8 @@ public class Main {
             HibernateUtil.shutdown();
         }
 
-
-
-        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in), setUpController());
+        Controller.setControllerInstance(setUpController());
+        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
         cashierDesk.turnOn();
     }
 }
