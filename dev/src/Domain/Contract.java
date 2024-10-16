@@ -28,11 +28,13 @@ public class Contract {
         return new Contract(wholesaleThreshold, contractSupplier, products);
     }
 
-    public boolean isDiscount() {
-        return wholesaleThreshold < this.products.stream().mapToDouble(ProductInContract::amount).sum();
+    public ProductInContract getProduct(String productName) {
+        return products.stream()
+                .filter(product -> product.name().equals(productName))
+                .findFirst()
+                .orElse(null);  // Returns null if no product is found
     }
 
-    // The wholesale discount is per product and not on the overall products in order
     public boolean isDiscount(int amount){
         return wholesaleThreshold < amount;
     }

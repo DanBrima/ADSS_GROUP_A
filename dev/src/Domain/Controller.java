@@ -56,22 +56,4 @@ public class Controller {
     public List<Store> getStores() {
         return stores;
     }
-
-    // Gets product name and find the supplier with the cheapest contract for the product
-    // ?? Does it need to calculate the discount and include it in "cheapest" calculation ??
-    // Return null if not found product name in any supplier
-    public static Supplier getCheapestSupplier(String product, List<Supplier> suppliers){
-        Supplier minSup = null;
-        double minPrice = Integer.MAX_VALUE;
-        for (Supplier supplier: suppliers){
-            for (ProductInContract conProduct: supplier.getAllProductsInContracts()){
-                if (product.equals(conProduct.name()) && conProduct.price() < minPrice){
-                    minPrice = conProduct.price();
-                    minSup = supplier;
-                }
-            }
-        }
-        // Need to throw exception if not initialized?
-        return minSup;
-    }
 }
