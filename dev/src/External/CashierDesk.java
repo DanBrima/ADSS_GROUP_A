@@ -35,39 +35,44 @@ public class CashierDesk {
 
         while (this.isActivated) {
             //SWITCH case to select stores or suppliers
-            MainMenuScreen mainMenuScreen = new MainMenuScreen(this.out, this.in);
-            int userInput = mainMenuScreen.handleMsg();
-            switch (userInput) {
-                case 1: {
-                    controllerRef.addStore(io);
-                    break;
+            try {
+                MainMenuScreen mainMenuScreen = new MainMenuScreen(this.out, this.in);
+                int userInput = mainMenuScreen.handleMsg();
+                switch (userInput) {
+                    case 1: {
+                        controllerRef.addStore(io);
+                        break;
+                    }
+                    case 2: {
+                        if (controllerRef.getStores().size() > 0)
+                            displayStores();
+                        else
+                            this.out.println("No store in the system");
+                        break;
+                    }
+                    case 3: {
+                        controllerRef.addSupplier(io);
+                        break;
+                    }
+                    case 4: {
+                        if (controllerRef.getSuppliers().size() > 0)
+                            displaySuppliers();
+                        else
+                            this.out.println("No supplier in the system");
+                        break;
+                    }
+                    case 5: {
+                        this.turnOff();
+                        break;
+                    }
+                    default: {
+                        this.out.println(InventoryConstants.INVALID_INPUT);
+                        break;
+                    }
                 }
-                case 2: {
-                    if (controllerRef.getStores().size() > 0)
-                        displayStores();
-                    else
-                        this.out.println("No store in the system");
-                    break;
-                }
-                case 3: {
-                    controllerRef.addSupplier(io);
-                    break;
-                }
-                case 4: {
-                    if (controllerRef.getSuppliers().size() > 0)
-                        displaySuppliers();
-                    else
-                        this.out.println("No supplier in the system");
-                    break;
-                }
-                case 5: {
-                    this.turnOff();
-                    break;
-                }
-                default: {
-                    this.out.println(InventoryConstants.INVALID_INPUT);
-                    break;
-                }
+            }
+            catch (Exception NumberFormatException){
+                this.out.println("Invalid input. Expect to get a number.");
             }
         }
     }
@@ -109,7 +114,12 @@ public class CashierDesk {
         if (userInput >= SuppliersConstants.ADD_ORDER_INDEX + 2 || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX) {
-            this.chosenStore.addOrder(io, controllerRef.getSuppliers());
+            try {
+                this.chosenStore.addOrder(io, controllerRef.getSuppliers());
+            }
+            catch (Exception RuntimeException){
+                this.out.println("No supplier provides given product");
+            }
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX + 1) {
             displayStores();
         }
