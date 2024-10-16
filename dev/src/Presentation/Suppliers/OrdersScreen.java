@@ -41,7 +41,6 @@ public class OrdersScreen extends Screen {
         this.out.println(SuppliersConstants.ADD_ORDER);
         this.out.format((SuppliersConstants.ADD_ORDER_INDEX + 1) + ". return");
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
-        int userInput = Integer.parseInt(this.in.nextLine());
-        return userInput;
+        return Integer.parseInt(this.in.nextLine());
     }
 }

@@ -47,7 +47,6 @@ public class DefaultMenuScreen extends Screen {
         this.out.println(InventoryConstants.RETURN_TO_MAIN_MENU_INVENTORY);
 
         this.out.print("\n" + InventoryConstants.USER_INPUT);
-        int userInput = Integer.parseInt(this.in.nextLine());
-        return userInput;
+        return Integer.parseInt(this.in.nextLine());
     }
 }

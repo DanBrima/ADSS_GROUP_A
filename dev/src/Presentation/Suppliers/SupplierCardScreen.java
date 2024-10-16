@@ -19,22 +19,22 @@ public class SupplierCardScreen extends Screen {
     public int handleMsg() {
         // TODO print supplier according to given ID
 
-        String LEFT_ALIGN_FORMAT1 = "| %-16s | %-18s |%n";
+        String LEFT_ALIGN_FORMAT1 = "| %-20s | %-26s |%n";
 
         this.out.println();
-        this.out.format("+---------------------------------------+%n");
+        this.out.format("+---------------------------------------------------+%n");
         this.out.format(LEFT_ALIGN_FORMAT1, "Active account", supplier.activeAccount());
         this.out.format(LEFT_ALIGN_FORMAT1, "Needs pickup", supplier.needsPickup());
         this.out.format(LEFT_ALIGN_FORMAT1, "Bank account", supplier.bankAccount());
         this.out.format(LEFT_ALIGN_FORMAT1, "Payment option", supplier.paymentOption());
         this.out.format(LEFT_ALIGN_FORMAT1, "Contacts", supplier.contacts());
-        this.out.format("+---------------------------------------+%n");
+        this.out.format("+---------------------------------------------------+%n");
         if (supplier instanceof InPlaceSupplier) {
             this.out.format(LEFT_ALIGN_FORMAT1, "In Place Order ", ((InPlaceSupplier) supplier).getDeliveryDays() + " days");
         } else if (supplier instanceof FixedDaysSupplier) {
             this.out.format(LEFT_ALIGN_FORMAT1, "Fixed days delivery: ", ((FixedDaysSupplier) supplier).getArrivalDays());
         }
-        this.out.format("+-------------------------------------+%n");
+        this.out.format("+---------------------------------------------------+%n");
 
         this.out.println(SuppliersConstants.DISPLAY_CONTRACTS);
 
@@ -51,7 +51,6 @@ public class SupplierCardScreen extends Screen {
         this.out.format((conIndex + 1) + ". return");
 
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
-        int userInput = Integer.parseInt(this.in.nextLine());
-        return userInput;
+        return Integer.parseInt(this.in.nextLine());
     }
 }

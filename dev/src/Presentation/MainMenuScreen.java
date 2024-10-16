@@ -14,13 +14,12 @@ public class MainMenuScreen extends Screen {
         this.out.println("Main Menu");
 
         this.out.println("1. Add Store");
-        this.out.println("2. Display Store");
+        this.out.println("2. Display Stores");
         this.out.println("3. Add Supplier");
-        this.out.println("4. Display Supplier");
+        this.out.println("4. Display Suppliers");
         this.out.println("5. Exit");
 
         this.out.print("\n" + "Please choose an option: ");
-        int userInput = Integer.parseInt(this.in.nextLine());
-        return userInput;
+        return Integer.parseInt(this.in.nextLine());
     }
 }

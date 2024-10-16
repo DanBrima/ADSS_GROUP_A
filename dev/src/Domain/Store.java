@@ -39,7 +39,7 @@ public class Store {
         if (this.shelves.size() == 0) {
             this.shelves.add(new Shelf(new ItemStack(productInStore, 1)));
         } else {
-           this.shelves.getFirst().addItemStack(new ItemStack(productInStore, 1));
+           //this.shelves.getFirst().addItemStack(new ItemStack(productInStore, 1));
         }
     }
 

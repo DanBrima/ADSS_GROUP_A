@@ -20,7 +20,6 @@ public class RemoveItemScreen extends Screen {
         this.out.println(InventoryConstants.REMOVE_ITEM_STORAGE);
 
         this.out.print("\n" + InventoryConstants.USER_INPUT);
-        int userInput = Integer.parseInt(this.in.nextLine());
-        return userInput;
+        return Integer.parseInt(this.in.nextLine());
     }
 }

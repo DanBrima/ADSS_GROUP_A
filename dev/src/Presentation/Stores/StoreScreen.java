@@ -22,7 +22,6 @@ public class StoreScreen extends Screen {
         this.out.println(StoreConstants.DISPLAY_ORDERS);
 
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
-        int userInput = Integer.parseInt(this.in.nextLine());
-        return userInput;
+        return Integer.parseInt(this.in.nextLine());
     }
 }
