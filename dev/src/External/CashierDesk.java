@@ -7,6 +7,7 @@ package External;
 import Domain.*;
 import Presentation.*;
 import Presentation.Inventory.*;
+import Presentation.Stores.*;
 import Presentation.Suppliers.*;
 import Presentation.Suppliers.DefaultMenuScreenSupp;
 
@@ -34,30 +35,27 @@ public class CashierDesk {
         this.isActivated = true;
 
         while (this.isActivated) {
-
-            //SWITCH case to select inventory or suppliers
+            //SWITCH case to select stores or suppliers
             MainMenuScreen mainMenuScreen = new MainMenuScreen(this.out, this.in);
             int userInput = mainMenuScreen.handleMsg();
             switch (userInput) {
                 case 1: {
-                    this.controllerRef.addStore(this.io);
+                    controllerRef.addStore(io);
                     break;
                 }
                 case 2: {
-                    if (this.chosenStore == null)
-                        this.chooseStore();
-
-                    this.displaySuppliers();
+                    displayStores();
                     break;
                 }
                 case 3: {
-                    if (this.chosenStore == null)
-                        this.chooseStore();
-
-                    this.displayInventory();
+                    controllerRef.addSupplier(io);
                     break;
                 }
                 case 4: {
+                    displaySuppliers();
+                    break;
+                }
+                case 5: {
                     this.turnOff();
                     break;
                 }
@@ -66,21 +64,28 @@ public class CashierDesk {
                     break;
                 }
             }
-
         }
     }
 
-    private boolean chooseStore() {
-        this.out.println("There are: " + this.controllerRef.getStores().size() + " stores");
-        this.out.print("Please enter store id: ");
-        int storeIndex = Integer.parseInt(this.in.nextLine());
-        if (storeIndex < this.controllerRef.getStores().size())
-            chosenStore = this.controllerRef.getStores().get(storeIndex);
-        else {
-            this.out.println("Invalid store id\nReturning to main menu...\n");
+
+    private boolean displayStores() {
+        StoresScreen storesScreen = new StoresScreen(this.out, this.in, controllerRef);
+        int userInput = storesScreen.handleMsg();
+
+        if (userInput >= controllerRef.getStores().size() || userInput < 0) {
+            this.out.println(SuppliersConstants.INVALID_INPUT);
             return false;
         }
+        Store store = controllerRef.getStores().get(userInput);
 
+        StoreScreen storeScreen = new StoreScreen(this.out, this.in);
+        userInput = storeScreen.handleMsg();
+        switch (userInput) {
+            case StoreConstants.DISPLAY_INVENTORY_INDEX:
+                displayInventory();
+            case StoreConstants.DISPLAY_ORDERS_INDEX:;
+                displayOrders(store);
+        }
         return true;
     }
 
@@ -89,6 +94,20 @@ public class CashierDesk {
         this.isActivated = false;
     }
 
+    private void displayOrders(Store store) {
+        OrdersScreen ordersScreen = new OrdersScreen(this.out, this.in, store);
+        int userInput = ordersScreen.handleMsg();
+        if (userInput >= SuppliersConstants.ADD_ORDER_INDEX + 2 || userInput < 0) {
+            this.out.println(SuppliersConstants.INVALID_INPUT);
+        } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX) {
+            store.addOrder(io, controllerRef.getSuppliers());
+        } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX + 1) {
+            displayStores();
+        }
+    }
+
+
+    // TODO: Inventory screens need to be on given store parameter
     private void displayInventory() {
         // Activate Menu
         DefaultMenuScreen defaultMenuScreen = new DefaultMenuScreen(this.out, this.in);
@@ -228,27 +247,6 @@ public class CashierDesk {
 
             case SuppliersConstants.ADD_SUPPLIER_INDEX: {
                 controllerRef.addSupplier(io);
-                break;
-            }
-
-            case SuppliersConstants.DISPLAY_STORES_INDEX: {
-                StoresScreen storesScreen = new StoresScreen(this.out, this.in, controllerRef);
-                userInput = storesScreen.handleMsg();
-                if (userInput >= controllerRef.getStores().size() || userInput < 0) {
-                    this.out.println(SuppliersConstants.INVALID_INPUT);
-                    break;
-                }
-                Store store = controllerRef.getStores().get(userInput);
-
-                OrdersScreen ordersScreen = new OrdersScreen(this.out, this.in, store);
-                userInput = ordersScreen.handleMsg();
-                if (userInput >= SuppliersConstants.ADD_ORDER_INDEX + 2 || userInput < 0) {
-                    this.out.println(SuppliersConstants.INVALID_INPUT);
-                } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX) {
-                    store.addOrder(io, controllerRef.getSuppliers());
-                } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX + 1) {
-                    userInput = SuppliersConstants.DISPLAY_STORES_INDEX;
-                }
                 break;
             }
 

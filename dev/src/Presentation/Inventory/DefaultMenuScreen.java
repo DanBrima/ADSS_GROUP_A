@@ -1,5 +1,6 @@
 package Presentation.Inventory;
 import External.InventoryConstants;
+import External.SuppliersConstants;
 import Presentation.Screen;
 
 import java.io.PrintStream;
