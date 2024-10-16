@@ -1,6 +1,7 @@
 package Domain;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,12 +13,21 @@ public class ProductInStore {
     private List<Discount> discounts;
     private double price;
 
-    public ProductInStore(Product product, int requiredAmount, UUID barcode, Category category, List<Discount> discounts, double price) {
+    public ProductInStore(Product product, int requiredAmount, Category category, List<Discount> discounts, double price) {
         this.product = product;
         this.requiredAmount = requiredAmount;
-        this.barcode = barcode;
+        this.barcode = UUID.randomUUID();
         this.category = category;
         this.discounts = discounts;
+        this.price = price;
+    }
+
+    public ProductInStore(Product product, int requiredAmount, Category category, double price) {
+        this.product = product;
+        this.requiredAmount = requiredAmount;
+        this.barcode = UUID.randomUUID();
+        this.category = category;
+        this.discounts = new ArrayList<>();
         this.price = price;
     }
 

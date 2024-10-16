@@ -32,8 +32,15 @@ public class Store {
     }
 
     public void addOrder(IO io, List<Supplier> suppliers){
-
         this.orders.add(Order.getOrderFromIO(io, suppliers));
+    }
+
+    public void addItem(ProductInStore productInStore) {
+        if (this.shelves.size() == 0) {
+            this.shelves.add(new Shelf(new ItemStack(productInStore, 1)));
+        } else {
+           this.shelves.getFirst().addItemStack(new ItemStack(productInStore, 1));
+        }
     }
 
     public String getName(){

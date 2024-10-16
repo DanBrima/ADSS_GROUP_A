@@ -173,9 +173,6 @@ public class CashierDesk {
                 defectiveItemsScreen.handleMsg();
                 break;
             }
-            case InventoryConstants.RETURN_TO_MAIN_MENU_INVENTORY_INDEX: {
-                return;
-            }
             case InventoryConstants.TRANSFER_ITEMS_INDEX: {
                 TransferItemsScreen transferItemsScreen = new TransferItemsScreen(this.out, this.in, this.chosenStore, this.chosenStore.getStorage());
                 transferItemsScreen.handleMsg();
@@ -207,6 +204,14 @@ public class CashierDesk {
 //                    }
 //                }
                 break;
+            }
+            case InventoryConstants.CREATE_NEW_PRODUCT_INDEX: {
+                AddProductScreen addProductScreen = new AddProductScreen(this.out, this.in, this.chosenStore);
+                addProductScreen.handleMsg();
+                break;
+            }
+            case InventoryConstants.RETURN_TO_MAIN_MENU_INVENTORY_INDEX: {
+                return;
             }
             default: {
                 this.out.println(InventoryConstants.INVALID_INPUT);

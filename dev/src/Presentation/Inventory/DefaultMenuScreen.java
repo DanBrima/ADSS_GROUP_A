@@ -40,6 +40,9 @@ public class DefaultMenuScreen extends Screen {
         this.out.print(InventoryConstants.CREATE_NEW_DISCOUNT_INDEX + ". ");
         this.out.println(InventoryConstants.CREATE_NEW_DISCOUNT);
 
+        this.out.print(InventoryConstants.CREATE_NEW_PRODUCT_INDEX + ". ");
+        this.out.println(InventoryConstants.CREATE_NEW_PRODUCT);
+
         this.out.print(InventoryConstants.RETURN_TO_MAIN_MENU_INVENTORY_INDEX + ". ");
         this.out.println(InventoryConstants.RETURN_TO_MAIN_MENU_INVENTORY);
 
