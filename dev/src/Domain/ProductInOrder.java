@@ -27,8 +27,7 @@ public class ProductInOrder {
         if (supplier != null){
             return new ProductInOrder(product, supplier, amount);
         }
-        else
-            throw new RuntimeException("No supplier provides");
+        throw new RuntimeException("No supplier provides");
     }
 
     public String name() {
