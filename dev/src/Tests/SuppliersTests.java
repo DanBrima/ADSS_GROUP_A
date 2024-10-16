@@ -137,5 +137,7 @@ public class SuppliersTests {
     public void testEmptyContractsInitially() {
         Assert.assertTrue(supplier.contracts().isEmpty());
     }
+
+
 }
 

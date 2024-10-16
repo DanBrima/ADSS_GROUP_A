@@ -39,7 +39,7 @@ public class Store {
         if (this.shelves.size() == 0) {
             this.shelves.add(new Shelf(new ItemStack(productInStore, 1)));
         } else {
-           this.shelves.getFirst().addItemStack(new ItemStack(productInStore, 1));
+           //this.shelves.getFirst().addItemStack(new ItemStack(productInStore, 1));
         }
     }
 
@@ -47,7 +47,7 @@ public class Store {
         return name;
     }
 
-    protected static Store getStoreFromIO(IO io) {
+    public static Store getStoreFromIO(IO io) {
         String name = io.readString("Enter the store's name:");
         return new Store(name);
     }

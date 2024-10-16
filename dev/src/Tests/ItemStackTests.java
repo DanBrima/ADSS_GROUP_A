@@ -13,7 +13,6 @@ public class ItemStackTests {
     Manufacturer aviad = new Manufacturer("Aviad");
     Product product1 = new Product("Bisli", aviad);
     Product product2 = new Product("Bamba", aviad);
-
     Category category = new Category("Snack");
     private ProductInStore EXAMPLE_VALID_ITEM_1 = new ProductInStore(product1,10,category,10);
     private ProductInStore EXAMPLE_VALID_ITEM_2 = new ProductInStore(product2,100,category,5);
