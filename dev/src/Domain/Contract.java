@@ -28,7 +28,13 @@ public class Contract {
         return new Contract(wholesaleThreshold, contractSupplier, products);
     }
 
-    // The wholesale discount is per product and not on the overall products in order
+    public ProductInContract getProduct(String productName) {
+        return products.stream()
+                .filter(product -> product.name().equals(productName))
+                .findFirst()
+                .orElse(null);  // Returns null if no product is found
+    }
+
     public boolean isDiscount(int amount){
         return wholesaleThreshold < amount;
     }
