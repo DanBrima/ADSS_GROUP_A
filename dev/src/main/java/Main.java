@@ -54,7 +54,7 @@ public class Main {
             try {
                 ContactRepository a = new ContactRepository();
                 a.add(new Contact("Ban", "0586979676"));
-                Contact retrievedUser = a.get(Contact.class, "Ban");
+                Contact retrievedUser = a.get("Ban");
                 System.out.println("Retrieved user: " + retrievedUser);
 
             } catch (Exception e) {
