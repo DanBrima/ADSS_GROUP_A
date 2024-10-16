@@ -96,6 +96,8 @@ public class CashierDesk {
             case StoreConstants.DISPLAY_ORDERS_INDEX:
                 displayOrders();
                 break;
+            case StoreConstants.RETURN_TO_MAIN_MENU_INDEX:
+                break;
             default: {
                 this.out.println(InventoryConstants.INVALID_INPUT);
                 break;
