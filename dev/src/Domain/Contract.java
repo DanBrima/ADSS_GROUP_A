@@ -38,6 +38,7 @@ public class Contract {
     public boolean isDiscount(int amount) {
         return wholesaleThreshold < amount;
     }
+
     public List<ProductInContract> products() {
         return Collections.unmodifiableList(this.products);
     }

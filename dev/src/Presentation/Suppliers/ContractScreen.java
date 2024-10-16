@@ -25,15 +25,15 @@ public class ContractScreen extends Screen {
     @Override
     public int handleMsg() {
 
-        String LEFT_ALIGN_FORMAT = "| %-9s | %-6s | %-6s | %-8s | %-20s |%n";
+        String LEFT_ALIGN_FORMAT = "| %-9s | %-6s | %-8s | %-20s |%n";
 
         this.out.println();
-        this.out.format("+-----------+--------+--------+----------+--------------------------------------+%n");
-        this.out.format("|  Product  | Count  | Price  | Discount |               Catalog ID             |%n");
-        this.out.format("+-----------+--------+--------+----------+--------------------------------------+%n");
+        this.out.format("+-----------+--------+----------+--------------------------------------+%n");
+        this.out.format("|  Product  | Price  | Discount |               Catalog ID             |%n");
+        this.out.format("+-----------+--------+----------+--------------------------------------+%n");
         for (int prodIndex = 0; prodIndex < this.contract.products().size(); prodIndex++) {
             ProductInContract product = this.contract.products().get(prodIndex);
-            this.out.format(LEFT_ALIGN_FORMAT, product.name(), product.amount(), product.price(), product.priceWithDiscount(), product.supplierCatalogID());
+            this.out.format(LEFT_ALIGN_FORMAT, product.name(), product.price(), product.priceWithDiscount(), product.supplierCatalogID());
         }
 
         return SuppliersConstants.USER_NO_INPUT;
