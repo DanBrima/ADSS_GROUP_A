@@ -8,19 +8,19 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class ManufacturerRepository {
-    public void add(Manufacturer manufacturer) {
+    public static void add(Manufacturer manufacturer) {
         HibernateUtil.getSession().save(manufacturer);
     }
 
-    public void remove(Manufacturer manufacturer) {
+    public static void remove(Manufacturer manufacturer) {
         HibernateUtil.getSession().remove(manufacturer);
     }
 
-    public void update(Manufacturer manufacturer) {
+    public static void update(Manufacturer manufacturer) {
         HibernateUtil.getSession().update(manufacturer);
     }
 
-    public Manufacturer get(String name) {
+    public static Manufacturer get(String name) {
         // Get contact from database
         return HibernateUtil.getSession().get(Manufacturer.class, name) ;
     }

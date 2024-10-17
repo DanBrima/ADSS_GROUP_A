@@ -5,15 +5,15 @@ import db.HibernateUtil;
 
 public class StorageRepository {
 
-    public void add(Storage storage) {
+    public static void add(Storage storage) {
         HibernateUtil.getSession().save(storage);
     }
 
-    public void remove(Storage storage) {
+    public static void remove(Storage storage) {
         HibernateUtil.getSession().remove(storage);
     }
 
-    public void update(Storage storage) {
+    public static void update(Storage storage) {
         HibernateUtil.getSession().update(storage);
     }
 

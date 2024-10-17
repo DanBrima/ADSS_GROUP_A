@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class CategoryRepository {
-    public void add(Category category) {
+    public static void add(Category category) {
 
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
@@ -28,7 +28,7 @@ public class CategoryRepository {
         }
     }
 
-    public void addDiscount(Category category, Discount discount) {
+    public static void addDiscount(Category category, Discount discount) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         try {
@@ -44,11 +44,11 @@ public class CategoryRepository {
         }
     }
 
-    public Category get(String name) {
+    public static Category get(String name) {
         return HibernateUtil.getSession().get(Category.class, name) ;
     }
 
-    public Category getFromDB(String name) {
+    public static Category getFromDB(String name) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Category categoryFromDB = null;
@@ -68,7 +68,7 @@ public class CategoryRepository {
         return categoryFromDB;
     }
 
-    public List<Category> getAll() {
+    public static List<Category> getAll() {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         List<Category> categories = new ArrayList<>();

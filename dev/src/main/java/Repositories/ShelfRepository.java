@@ -4,19 +4,19 @@ import Domain.Shelf;
 import db.HibernateUtil;
 
 public class ShelfRepository {
-    public void add(Shelf shelf) {
+    public static void add(Shelf shelf) {
         HibernateUtil.getSession().save(shelf);
     }
 
-    public void remove(Shelf shelf) {
+    public static void remove(Shelf shelf) {
         HibernateUtil.getSession().remove(shelf);
     }
 
-    public void update(Shelf shelf) {
+    public static void update(Shelf shelf) {
         HibernateUtil.getSession().update(shelf);
     }
 
-    public Shelf get(String shelf) {
+    public static Shelf get(String shelf) {
         // Get contact from database
         return HibernateUtil.getSession().get(Shelf.class, shelf);
     }

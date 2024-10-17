@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class DiscountRepository {
-    public void add(Discount discount) {
+    public static void add(Discount discount) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         try {
@@ -23,7 +23,7 @@ public class DiscountRepository {
         }
     }
 
-    public Discount get(String name) {
+    public static Discount get(String name) {
         // Get discount from database
         return HibernateUtil.getSession().get(Discount.class, name) ;
     }

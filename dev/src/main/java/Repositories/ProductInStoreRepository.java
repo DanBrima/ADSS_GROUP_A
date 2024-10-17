@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ProductInStoreRepository {
-    public void add(ProductInStore product) {
+    public static void add(ProductInStore product) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         try {
@@ -27,7 +27,7 @@ public class ProductInStoreRepository {
         }
     }
 
-    public void addDiscount(ProductInStore product, Discount discount) {
+    public static void addDiscount(ProductInStore product, Discount discount) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         try {
@@ -44,7 +44,7 @@ public class ProductInStoreRepository {
         }
     }
 
-    public ProductInStore getProduct(UUID barcode) {
+    public static ProductInStore getProduct(UUID barcode) {
         Session session = HibernateUtil.getSession();
         ProductInStore productFromDB = null;
         try {
@@ -62,7 +62,7 @@ public class ProductInStoreRepository {
         return productFromDB;
     }
 
-    public List<ProductInStore> getAll() {
+    public static List<ProductInStore> getAll() {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         List<ProductInStore> products = new ArrayList<ProductInStore>();

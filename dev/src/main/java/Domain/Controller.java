@@ -3,6 +3,7 @@ package Domain;
 import External.SuppliersConstants;
 import Presentation.IO;
 import Repositories.StoreRepository;
+import Repositories.SupplierRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class Controller {
         switch (delivery) {
             case 1:
                 this.suppliers.add(FixedDaysSupplier.getFixedDaysSupplierFromIO(io));
+                SupplierRepository re
                 break;
             case 2:
                 this.suppliers.add(InPlaceSupplier.getInPlaceSupplierFromIO(io));

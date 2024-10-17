@@ -4,19 +4,19 @@ import Domain.ProductInOrder;
 import db.HibernateUtil;
 
 public class ProductInOrderRepository {
-   public void add(ProductInOrder productInOrder) {
+   public static void add(ProductInOrder productInOrder) {
        HibernateUtil.getSession().save(productInOrder);
    }
 
-    public void remove(ProductInOrder productInOrder) {
+    public static void remove(ProductInOrder productInOrder) {
          HibernateUtil.getSession().remove(productInOrder);
     }
 
-    public void update(ProductInOrder productInOrder) {
+    public static void update(ProductInOrder productInOrder) {
          HibernateUtil.getSession().update(productInOrder);
     }
 
-    public ProductInOrder get(String id) {
+    public static ProductInOrder get(String id) {
          // Get contact from database
          return HibernateUtil.getSession().get(ProductInOrder.class, id) ;
     }
