@@ -18,7 +18,7 @@ public class ProductInStore {
     private UUID barcode;
     @OneToOne
     private Category category;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Discount> discounts;
     @Column
     private double price;

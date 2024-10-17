@@ -28,11 +28,15 @@ public class ProductInStoreRepository {
 
     public void addDiscount(ProductInStore product, Discount discount) {
         Session session = HibernateUtil.getSession();
+        Transaction transaction = null;
         try {
+            transaction = session.beginTransaction();
             ProductInStore productFromDB = getProduct(product.getBarcode());
             productFromDB.getDiscounts().add(discount);
-            session.saveOrUpdate(product);
+            session.update(productFromDB);
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();

@@ -1,5 +1,7 @@
 package Domain;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ public class Category {
     private String name;
     @ManyToOne
     private Category parent;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Discount> discounts;
 
     public Category() {

@@ -29,14 +29,18 @@ public class CategoryRepository {
 
     public void addDiscount(Category category, Discount discount) {
         Session session = HibernateUtil.getSession();
-        session.beginTransaction();
-
-        Category categoryFromDB = getFromDB(category.getName());
-        categoryFromDB.getDiscounts().add(discount);
-        session.update(categoryFromDB);
-
-//        session.getTransaction().commit();
-        session.close();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            category.getDiscounts().add(discount);
+            session.update(category);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     public Category get(String name) {
