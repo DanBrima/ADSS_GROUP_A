@@ -1,8 +1,8 @@
 package Repositories;
 
+import Domain.Supplier;
 import db.HibernateUtil;
 
-import java.util.function.Supplier;
 
 public class SupplierRepository {
     public static void add(Supplier supplier) {

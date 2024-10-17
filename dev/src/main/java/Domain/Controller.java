@@ -39,11 +39,14 @@ public class Controller {
         int delivery = io.readInt("Choose\n 1. Fixed days delivery\n 2. In place delivery:\n");
         switch (delivery) {
             case 1:
-                this.suppliers.add(FixedDaysSupplier.getFixedDaysSupplierFromIO(io));
-                SupplierRepository re
+                Supplier supplier = FixedDaysSupplier.getFixedDaysSupplierFromIO(io);
+                this.suppliers.add(supplier);
+//                SupplierRepository.add(supplier);
                 break;
             case 2:
-                this.suppliers.add(InPlaceSupplier.getInPlaceSupplierFromIO(io));
+                Supplier inPlaceSupplier = InPlaceSupplier.getInPlaceSupplierFromIO(io);
+                this.suppliers.add(inPlaceSupplier);
+//                SupplierRepository.add(inPlaceSupplier);
                 break;
             default:
                 io.print(SuppliersConstants.INVALID_INPUT);
