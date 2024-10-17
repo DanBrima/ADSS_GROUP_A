@@ -10,8 +10,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static javax.persistence.InheritanceType.SINGLE_TABLE;
+
 @Entity
 @Table
+@Inheritance(strategy=SINGLE_TABLE)
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING,
+        name = "Supplier_Type")
 public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
