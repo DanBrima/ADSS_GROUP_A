@@ -2,6 +2,9 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public enum WeekDay {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
 
