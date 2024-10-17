@@ -9,12 +9,15 @@ import java.util.UUID;
 @Entity
 @Table
 public class ProductInStore {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @OneToOne
     private Product product;
     @Column
     private int requiredAmount;
     @Column
-    @Id
     private UUID barcode;
     @OneToOne
     private Category category;

@@ -49,18 +49,20 @@ public class Main {
 
         return controller;
     }
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         // Get a session
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // Begin transaction
             Transaction transaction = session.beginTransaction();
 
             try {
+                // Setup the controller
                 Controller.setControllerInstance(setUpController());
                 CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
                 cashierDesk.turnOn();
 
+                // Commit the transaction if everything is successful
+                transaction.commit();
             } catch (Exception e) {
                 // If there's an exception, rollback the transaction
                 if (transaction != null) {
@@ -71,8 +73,9 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // Close the session factory
+            // Close the session factory (this is typically done when the application shuts down)
             HibernateUtil.shutdown();
         }
     }
+
 }

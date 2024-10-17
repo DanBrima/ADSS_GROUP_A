@@ -2,6 +2,7 @@ package Domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Storage {
@@ -12,11 +13,16 @@ public class Storage {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "storage_id")
-    private ArrayList<ItemStack> inventory = new ArrayList<>();
+    private List<ItemStack> inventory = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "defective_storage_id")
-    private ArrayList<ItemStack> defectiveItems = new ArrayList<>();
+    private List<ItemStack> defectiveItems = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "store_id") // Foreign key to Store
+    private Store store; // Reference to Store
+
 
     // Constructor for empty inventory
     public Storage() {
@@ -30,6 +36,7 @@ public class Storage {
         this.addItemStack(itemStack);
     }
 
+    // Methods
     public void addItemStack(ItemStack itemStack) {
         this.inventory.add(itemStack);
         itemStack.setLocation(new StackLocation("inventory", this.inventory.size() - 1));
@@ -40,8 +47,8 @@ public class Storage {
         itemStack.setLocation(new StackLocation("defect", this.defectiveItems.size() - 1));
     }
 
-    public ArrayList<ItemStack> getInventory() {
-        return new ArrayList<>(inventory);
+    public List<ItemStack> getInventory() {
+        return inventory;
     }
 
     public ItemStack pullItemsStack(String itemName) {
@@ -54,7 +61,7 @@ public class Storage {
         return null;
     }
 
-    public ArrayList<ItemStack> getDefectiveItems() {
+    public List<ItemStack> getDefectiveItems() {
         return new ArrayList<>(defectiveItems);
     }
 }

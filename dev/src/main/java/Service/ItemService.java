@@ -41,7 +41,8 @@ public class ItemService {
     }
 
     public static ArrayList<ItemStack> getAllUniqueItemsFromStorage(Storage storageRef) {
-        return ItemStackService.combineUniqueItems(storageRef.getInventory(), storageRef.getDefectiveItems());
+        return ItemStackService.combineUniqueItems(new ArrayList<>(storageRef.getInventory()),
+                new ArrayList<>(storageRef.getDefectiveItems()));
     }
 
     public static ArrayList<ItemStack> getAllUniqueItemsFromStore(Store storeRef) {
@@ -53,7 +54,7 @@ public class ItemService {
     }
 
     public static ArrayList<ItemStack> getAllUniqueItemsWithoutDefective(Storage storageRef, Store storeRef) {
-        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStore(storeRef), storageRef.getInventory());
+        return ItemStackService.combineUniqueItems(getAllUniqueItemsFromStore(storeRef), new ArrayList<>(storageRef.getInventory()));
     }
 
     public static void reportDefectItem (Storage storageRef, Store storeRef, ItemStack itemStack, int amount) {

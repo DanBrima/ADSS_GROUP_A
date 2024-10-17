@@ -28,12 +28,11 @@
         <mapping class="Domain.StackLocation"/>
         <mapping class="Domain.Supplier"/>
         <mapping class="Domain.Store"/>
-        <mapping class="Domain.ItemStack"/>
         <mapping class="Domain.Storage"/>
+        <mapping class="Domain.ItemStack"/>
         <mapping class="Domain.Shelf"/>
         <mapping class="Domain.Order"/>
         <mapping class="Domain.ProductInOrder"/>
-
     </session-factory>
 </hibernate-configuration>
 
