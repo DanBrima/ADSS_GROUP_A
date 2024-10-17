@@ -47,7 +47,7 @@ public class Store {
         return name;
     }
 
-    protected static Store getStoreFromIO(IO io) {
+    public static Store getStoreFromIO(IO io) {
         String name = io.readString("Enter the store's name:");
         return new Store(name);
     }
