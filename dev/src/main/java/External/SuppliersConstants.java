@@ -16,7 +16,7 @@ public class SuppliersConstants {
     public static final String ADD_CONTRACT = "Add contract";
     public static final String STORE_ORDERS = "Orders: ";
     public static final String INVALID_INPUT = "invalid input";
-    public static final String GOODBYE_MSG = "Turning off... \nErasing all data... \nSuccess!";
+    public static final String GOODBYE_MSG = "Turning off... \nSuccess!";
     public static final int USER_NO_INPUT = -1;
 
 

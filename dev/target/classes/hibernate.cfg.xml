@@ -17,7 +17,16 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Names the annotated entity class -->
+        <mapping class="Domain.Category"/>
         <mapping class="Domain.Contact"/>
+        <mapping class="Domain.Contract"/>
+        <mapping class="Domain.Discount"/>
+        <mapping class="Domain.Manufacturer"/>
+        <mapping class="Domain.Product"/>
+        <mapping class="Domain.ProductInContract"/>
+        <mapping class="Domain.ProductInStore"/>
+        <mapping class="Domain.StackLocation"/>
+        <mapping class="Domain.Supplier"/>
     </session-factory>
 </hibernate-configuration>
 
