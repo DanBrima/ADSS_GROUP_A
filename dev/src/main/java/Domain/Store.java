@@ -11,7 +11,7 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
     @Column
     private String name;
 
@@ -25,6 +25,9 @@ public class Store {
     // One-to-One relationship with Storage
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "store")
     private Storage storage;
+
+    public Store() {
+    }
 
     // Constructor
     public Store(String name) {
