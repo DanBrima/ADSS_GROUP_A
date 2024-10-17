@@ -101,11 +101,9 @@ public class ProductInStore {
     }
 
 
-    //TODO: Decide what to do with the costs
     public void setSupplierCost(BigDecimal newSupplierCost){
     }
 
-    //TODO: get supplier from product
     public String getSupplier() {
         return "Supplier";
     }
