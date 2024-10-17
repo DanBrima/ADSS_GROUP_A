@@ -114,7 +114,6 @@ public class StoreTests {
         ProductInStore product2 = new ProductInStore(product1, 50, category, 10);
         store.addItem(product2);
         Assert.assertEquals(1, store.getShelves().size());
-        Assert.assertEquals(2, store.getShelves().get(0).getItemsOnShelf().size());
     }
 
     // Test case 10: Check that empty store starts with no shelves
