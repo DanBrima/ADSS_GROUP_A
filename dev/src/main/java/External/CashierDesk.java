@@ -69,7 +69,7 @@ public class CashierDesk {
                 }
             }
             catch (Exception NumberFormatException){
-                this.out.println("Invalid input. Expect to get a number.");
+                this.out.println(NumberFormatException.getMessage());
             }
         }
     }
