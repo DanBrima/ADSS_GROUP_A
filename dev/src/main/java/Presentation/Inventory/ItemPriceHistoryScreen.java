@@ -33,7 +33,6 @@ public class ItemPriceHistoryScreen extends Screen {
         this.out.println();
 
         this.out.println(InventoryConstants.YOU_CHOSE + userInput);
-        //TODO: Change the method to match the class diagram and probably select from DB
         //ItemPriceHistory itemHistory = getItemHistory(userInput);
 
 //        if (itemHistory == null)
