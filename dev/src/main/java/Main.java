@@ -1,13 +1,18 @@
 
 import Domain.*;
 import External.CashierDesk;
+import Repositories.CategoryRepository;
 import Repositories.ContactRepository;
+import Repositories.DiscountRepository;
+import Repositories.ProductInStoreRepository;
 import db.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
 
@@ -44,19 +49,20 @@ public class Main {
 
         return controller;
     }
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         // Get a session
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // Begin transaction
             Transaction transaction = session.beginTransaction();
 
             try {
-                ContactRepository a = new ContactRepository();
-//                a.add(new Contact("Ban", "0586979676"));
-                Contact retrievedUser = a.get("Ban");
-                System.out.println("Retrieved user: " + retrievedUser);
+                // Setup the controller
+                Controller.setControllerInstance(setUpController());
+                CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
+                cashierDesk.turnOn();
 
+                // Commit the transaction if everything is successful
+                transaction.commit();
             } catch (Exception e) {
                 // If there's an exception, rollback the transaction
                 if (transaction != null) {
@@ -67,12 +73,9 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // Close the session factory
+            // Close the session factory (this is typically done when the application shuts down)
             HibernateUtil.shutdown();
         }
-
-        Controller.setControllerInstance(setUpController());
-        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
-        cashierDesk.turnOn();
     }
+
 }

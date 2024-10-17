@@ -2,10 +2,16 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Stream;
 
+
+@Entity
+@DiscriminatorValue("InPlaceSupplier")
 public class FixedDaysSupplier extends Supplier {
+    @Column
+    @Enumerated(EnumType.STRING)
     private List<WeekDay> arrivalDays;
 
     public FixedDaysSupplier(boolean needsPickup, String activeAccount, int bankAccount, PaymentOption paymentOption, List<Contact> contacts, List<WeekDay> arrivalDays) {

@@ -1,12 +1,24 @@
 package Domain;
 
+import org.hibernate.annotations.ManyToAny;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table
 public class Category {
+    @Id
+    @Column
     private String name;
+    @ManyToOne
     private Category parent;
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Discount> discounts;
+
+    public Category() {
+    }
 
     public Category(String name) {
         this.name = name;
