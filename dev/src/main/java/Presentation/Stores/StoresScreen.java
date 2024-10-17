@@ -35,7 +35,6 @@ public class StoresScreen extends Screen {
         this.out.format("+--------+-------------+%n");
 
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
-        int userInput = Integer.parseInt(this.in.nextLine());
-        return userInput;
+        return Integer.parseInt(this.in.nextLine());
     }
 }

@@ -12,11 +12,6 @@ import java.util.Scanner;
 public class ContractScreen extends Screen {
     private Contract contract;
 
-    public ContractScreen(PrintStream out, Scanner in, Supplier supplier, int contract) {
-        super(out, in);
-        this.contract = supplier.contracts().get(contract);
-    }
-
     public ContractScreen(PrintStream out, Scanner in, Contract contract) {
         super(out, in);
         this.contract = contract;
@@ -35,7 +30,7 @@ public class ContractScreen extends Screen {
             ProductInContract product = this.contract.products().get(prodIndex);
             this.out.format(LEFT_ALIGN_FORMAT, product.name(), product.price(), product.priceWithDiscount(), product.supplierCatalogID());
         }
-        this.out.format("+-----------+--------+--------+----------+--------------------------------------+%n");
+        this.out.format("+-----------+--------+----------+--------------------------------------+%n");
 
         return SuppliersConstants.USER_NO_INPUT;
     }
