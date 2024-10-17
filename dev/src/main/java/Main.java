@@ -1,11 +1,14 @@
 
 import Domain.*;
 import External.CashierDesk;
+import Repositories.CategoryRepository;
 import Repositories.ContactRepository;
+import Repositories.DiscountRepository;
 import db.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -57,6 +60,10 @@ public class Main {
                 Contact retrievedUser = a.get("Ban");
                 System.out.println("Retrieved user: " + retrievedUser);
 
+                Controller.setControllerInstance(setUpController());
+                CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
+                cashierDesk.turnOn();
+
             } catch (Exception e) {
                 // If there's an exception, rollback the transaction
                 if (transaction != null) {
@@ -70,9 +77,5 @@ public class Main {
             // Close the session factory
             HibernateUtil.shutdown();
         }
-
-        Controller.setControllerInstance(setUpController());
-        CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
-        cashierDesk.turnOn();
     }
 }
