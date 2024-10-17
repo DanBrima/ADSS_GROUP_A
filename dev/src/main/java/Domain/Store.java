@@ -8,7 +8,7 @@ import java.util.List;
 public class Store {
     private String name;
     private List<Order> orders;
-    private ArrayList<Shelf> shelves;
+    private List<Shelf> shelves;
     private Storage storage;
 
     // Constructor for empty inventory
@@ -39,7 +39,7 @@ public class Store {
         if (this.shelves.size() == 0) {
             this.shelves.add(new Shelf(new ItemStack(productInStore, 1)));
         } else {
-           //this.shelves.getFirst().addItemStack(new ItemStack(productInStore, 1));
+            this.shelves.get(0).addItemStack(new ItemStack(productInStore, 1));
         }
     }
 
