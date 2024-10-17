@@ -57,13 +57,6 @@ public class Main {
             Transaction transaction = session.beginTransaction();
 
             try {
-                ContactRepository a = new ContactRepository();
-//                a.add(new Contact("Ban", "0586979676"));
-                Contact retrievedUser = a.get("Ban");
-                System.out.println("Retrieved user: " + retrievedUser);
-
-                System.out.println(UUID.randomUUID());
-
                 Controller.setControllerInstance(setUpController());
                 CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
                 cashierDesk.turnOn();
