@@ -63,6 +63,6 @@ public class Controller {
         return suppliers;
     }
     public List<Store> getStores() {
-        return stores;
+        return StoreRepository.getAllStores();
     }
 }
