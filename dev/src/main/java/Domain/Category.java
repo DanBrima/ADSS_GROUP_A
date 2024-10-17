@@ -12,7 +12,7 @@ public class Category {
     private String name;
     @ManyToOne
     private Category parent;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Discount> discounts;
 
     public Category() {

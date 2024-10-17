@@ -190,11 +190,11 @@ public class CashierDesk {
                         addCategoryDiscountScreen.handleMsg();
                         break;
                     }
-//                    case InventoryConstants.DISCOUNT_TYPE_ITEM_INDEX: {
-//                        AddItemDiscountScreen addItemDiscountScreen = new AddItemDiscountScreen(this.out, this.in, discountsHistory);
-//                        addItemDiscountScreen.handleMsg();
-//                        break;
-//                    }
+                    case InventoryConstants.DISCOUNT_TYPE_ITEM_INDEX: {
+                        AddItemDiscountScreen addItemDiscountScreen = new AddItemDiscountScreen(this.out, this.in);
+                        addItemDiscountScreen.handleMsg();
+                        break;
+                    }
                     default: {
                         this.out.println(InventoryConstants.INVALID_INPUT);
                         break;

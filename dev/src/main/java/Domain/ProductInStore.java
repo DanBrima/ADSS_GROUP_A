@@ -1,17 +1,30 @@
 package Domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table
 public class ProductInStore {
+    @OneToOne
     private Product product;
+    @Column
     private int requiredAmount;
+    @Column
+    @Id
     private UUID barcode;
+    @OneToOne
     private Category category;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Discount> discounts;
+    @Column
     private double price;
+
+    public ProductInStore() {
+    }
 
     public ProductInStore(Product product, int requiredAmount, Category category, List<Discount> discounts, double price) {
         this.product = product;

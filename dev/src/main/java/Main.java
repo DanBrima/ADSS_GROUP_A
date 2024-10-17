@@ -4,6 +4,7 @@ import External.CashierDesk;
 import Repositories.CategoryRepository;
 import Repositories.ContactRepository;
 import Repositories.DiscountRepository;
+import Repositories.ProductInStoreRepository;
 import db.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import org.hibernate.Transaction;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
 
@@ -59,6 +61,8 @@ public class Main {
 //                a.add(new Contact("Ban", "0586979676"));
                 Contact retrievedUser = a.get("Ban");
                 System.out.println("Retrieved user: " + retrievedUser);
+
+                System.out.println(UUID.randomUUID());
 
                 Controller.setControllerInstance(setUpController());
                 CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));

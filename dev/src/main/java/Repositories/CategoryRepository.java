@@ -2,11 +2,13 @@ package Repositories;
 
 import Domain.Category;
 import Domain.Discount;
+import Domain.ProductInStore;
 import db.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CategoryRepository {
     public void add(Category category) {
@@ -25,22 +27,40 @@ public class CategoryRepository {
         }
     }
 
-    public void setParent(Category category) {
-    }
-
     public void addDiscount(Category category, Discount discount) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
-        category.getDiscounts().add(discount);
-        session.saveOrUpdate(category);
-        session.getTransaction().commit();
+        Category categoryFromDB = getFromDB(category.getName());
+        categoryFromDB.getDiscounts().add(discount);
+        session.update(categoryFromDB);
+
+//        session.getTransaction().commit();
         session.close();
     }
 
     public Category get(String name) {
-        // Get category from database
         return HibernateUtil.getSession().get(Category.class, name) ;
+    }
+
+    public Category getFromDB(String name) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Category categoryFromDB = null;
+
+        try {
+            categoryFromDB = session.createQuery(
+                            "SELECT c FROM Category c LEFT JOIN FETCH c.discounts WHERE c.name = :name",
+                            Category.class)
+                    .setParameter("name", name)
+                    .uniqueResult();;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return categoryFromDB;
     }
 
     public List<Category> getAll() {

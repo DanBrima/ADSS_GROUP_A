@@ -10,11 +10,17 @@ import java.util.List;
 public class DiscountRepository {
     public void add(Discount discount) {
         Session session = HibernateUtil.getSession();
-        session.beginTransaction();
-        session.save(discount);
-
-        session.getTransaction().commit();
-        session.close();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.save(discount);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     public Discount get(String name) {

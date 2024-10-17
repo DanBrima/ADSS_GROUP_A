@@ -24,6 +24,7 @@
         <mapping class="Domain.Manufacturer"/>
         <mapping class="Domain.Product"/>
         <mapping class="Domain.ProductInContract"/>
+        <mapping class="Domain.ProductInStore"/>
         <mapping class="Domain.StackLocation"/>
         <mapping class="Domain.Supplier"/>
     </session-factory>
