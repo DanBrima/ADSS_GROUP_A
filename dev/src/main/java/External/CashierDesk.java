@@ -139,9 +139,8 @@ public class CashierDesk {
                 break;
             }
             case InventoryConstants.DISCOUNTS_HISTORY_INDEX: {
-//                DiscountsHistoryScreen discountsHistoryScreen = new DiscountsHistoryScreen(this.out, this.in, discountsHistory);
-//                discountsHistoryScreen.handleMsg();
-                this.out.println(InventoryConstants.NOT_IMPLEMENTED);
+                DiscountsHistoryScreen discountsHistoryScreen = new DiscountsHistoryScreen(this.out, this.in);
+                discountsHistoryScreen.handleMsg();
                 break;
             }
             case InventoryConstants.REMOVE_ITEMS_INDEX: {
@@ -181,7 +180,6 @@ public class CashierDesk {
                 break;
             }
             case InventoryConstants.CREATE_NEW_DISCOUNT_INDEX: {
-                System.out.println(InventoryConstants.NOT_IMPLEMENTED);
                 AddDiscountScreen addDiscountScreen = new AddDiscountScreen(this.out, this.in);
                 userInput = addDiscountScreen.handleMsg();
                 switch (userInput) {

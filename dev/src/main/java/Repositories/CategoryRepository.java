@@ -7,6 +7,7 @@ import db.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -69,11 +70,19 @@ public class CategoryRepository {
 
     public List<Category> getAll() {
         Session session = HibernateUtil.getSession();
-        session.beginTransaction();
+        Transaction transaction = null;
+        List<Category> categories = new ArrayList<>();
 
-        List<Category> categories = session.createQuery("from Category", Category.class).list();
-        session.getTransaction().commit();
-        session.close();
+        try {
+            transaction = session.beginTransaction();
+            categories = session.createQuery("from Category", Category.class).list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
 
         return categories;
     }

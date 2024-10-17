@@ -1,52 +1,67 @@
 package Presentation.Inventory;
 
 
+import Domain.Category;
+import Domain.Discount;
 import Domain.DiscountsHistory;
+import Domain.ProductInStore;
+import External.InventoryConstants;
 import Presentation.Screen;
+import Repositories.CategoryRepository;
+import Repositories.ProductInStoreRepository;
 
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Scanner;
 
 public class DiscountsHistoryScreen extends Screen {
 
-    private final DiscountsHistory discountsHistory;
-
-    public DiscountsHistoryScreen(PrintStream out, Scanner in, DiscountsHistory discountsHistory) {
+    public DiscountsHistoryScreen(PrintStream out, Scanner in) {
         super(out, in);
-        this.discountsHistory = discountsHistory;
     }
 
 
-// TODO: implement with new History management
-//    @Override
-//    public int handleMsg() {
-//        String LEFT_ALIGN_FORMAT = "| %-12s | %-9s | %-12s | %-28s | %-28s |%n";
-//
-//        this.out.println();
-//        this.out.format("+--------------+-----------+--------------+------------------------------+------------------------------+%n");
-//        this.out.format("| Percentage   | Type      | includes     | Start Date                   | End Date                     |%n");
-//        this.out.format("+--------------+-----------+--------------+------------------------------+------------------------------+%n");
-//        for (int discountIndex = 0; discountIndex < discountsHistory.discountList.size(); discountIndex++) {
-//            Discount discount = discountsHistory.discountList.get(discountIndex);
-//
-//            String discountType = "General";
-//            String discountIncludes = "all";
-//            if (discount instanceof CategoryDiscount) {
-//                discountType = "Category";
-//                discountIncludes = ((CategoryDiscount)discount).getCategory().getName();
-//            }
-//            else if (discount instanceof ItemDiscount) {
-//                discountType = "Items";
-//                discountIncludes = ((ItemDiscount)discount).getItem().getName();
-//            }
-//
-//            this.out.format(LEFT_ALIGN_FORMAT,
-//                    discount.getPercentage() + "%", discountType, discountIncludes, discount.getStartDate(), discount.getFinalDate());
-//        }
-//
-//        this.out.format("+--------------+-----------+--------------+------------------------------+------------------------------+%n");
-//        this.out.println();
-//
-//        return InventoryConstants.USER_NO_INPUT;
-//    }
+    @Override
+    public int handleMsg() {
+        String LEFT_ALIGN_FORMAT = "| %-12s | %-9s | %-12s | %-28s | %-28s |%n";
+
+        this.out.println();
+        this.out.format("+--------------+-----------+--------------+------------------------------+------------------------------+%n");
+        this.out.format("| Percentage   | Type      | Name     | Start Date                   | End Date                     |%n");
+        this.out.format("+--------------+-----------+--------------+------------------------------+------------------------------+%n");
+
+        String discountType = "General";
+        String discountOfName = "all";
+
+        CategoryRepository categoryRepository = new CategoryRepository();
+        List<Category> categories = categoryRepository.getAll();
+
+        for (Category category : categories) {
+            discountType = "Category";
+            discountOfName = category.getName();
+
+            for (Discount discount : category.getDiscounts()) {
+                this.out.format(LEFT_ALIGN_FORMAT,
+                        discount.getPercentage() + "%", discountType, discountOfName, discount.getStartDate(), discount.getEndDate());
+            }
+        }
+
+        ProductInStoreRepository productInStoreRepository = new ProductInStoreRepository();
+        List<ProductInStore> products = productInStoreRepository.getAll();
+
+        for (ProductInStore product : products) {
+            discountType = "Products";
+            discountOfName = product.getName();
+
+            for (Discount discount : product.getDiscounts()) {
+                this.out.format(LEFT_ALIGN_FORMAT,
+                        discount.getPercentage() + "%", discountType, discountOfName, discount.getStartDate(), discount.getEndDate());
+            }
+        }
+
+        this.out.format("+--------------+-----------+--------------+------------------------------+------------------------------+%n");
+        this.out.println();
+
+        return InventoryConstants.USER_NO_INPUT;
+    }
 }

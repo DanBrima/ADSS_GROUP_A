@@ -1,6 +1,7 @@
 package Repositories;
 
 import Domain.Discount;
+import Domain.Product;
 import Domain.ProductInStore;
 import db.HibernateUtil;
 import org.hibernate.Session;
@@ -51,7 +52,7 @@ public class ProductInStoreRepository {
                             "SELECT p FROM ProductInStore p LEFT JOIN FETCH p.discounts WHERE p.id = :productId",
                             ProductInStore.class)
                     .setParameter("productId", barcode)
-                    .uniqueResult();;
+                    .uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -65,16 +66,27 @@ public class ProductInStoreRepository {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         List<ProductInStore> products = new ArrayList<ProductInStore>();
+        List<ProductInStore> productsFromDB = new ArrayList<ProductInStore>();
+
         try {
             transaction = session.beginTransaction();
             products = session.createQuery("from ProductInStore ", ProductInStore.class).list();
+
+            for (ProductInStore product : products) {
+                productsFromDB.add(session.createQuery(
+                                "SELECT p FROM ProductInStore p LEFT JOIN FETCH p.discounts WHERE p.id = :productId",
+                                ProductInStore.class)
+                        .setParameter("productId", product.getBarcode())
+                        .uniqueResult());
+            }
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();
-            return products;
+            return productsFromDB;
         }
     }
 }

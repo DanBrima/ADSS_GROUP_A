@@ -27,9 +27,4 @@ public class DiscountRepository {
         // Get discount from database
         return HibernateUtil.getSession().get(Discount.class, name) ;
     }
-
-    public List<Discount> getAll() {
-        // Get all discounts from database
-        return null;
-    }
 }
