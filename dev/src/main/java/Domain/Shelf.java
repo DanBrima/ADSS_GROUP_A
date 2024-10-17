@@ -9,44 +9,52 @@ import java.util.UUID;
 @Table
 public class Shelf {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private UUID shelfId;
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<ItemStack> itemsOnShelf;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "id")
+    private List<ItemStack> itemsOnShelf = new ArrayList<>();
 
-    // Constructor for empty inventory
+    // Constructor for empty shelf
     public Shelf() {
-        this.itemsOnShelf = new ArrayList<ItemStack>();
+        this.shelfId = UUID.randomUUID();
+        this.itemsOnShelf = new ArrayList<>();
     }
-
 
     // Constructor from item stack
     public Shelf(ItemStack itemStack) {
         this.shelfId = UUID.randomUUID();
-        this.itemsOnShelf = new ArrayList<ItemStack>();
+        this.itemsOnShelf = new ArrayList<>();
         this.addItemStack(itemStack);
     }
 
     // Constructor from another shelf
     public Shelf(Shelf shelf) {
         this.shelfId = UUID.randomUUID();
-        this.itemsOnShelf = new ArrayList<ItemStack>(shelf.getItemsOnShelf());
+        this.itemsOnShelf = new ArrayList<>(shelf.getItemsOnShelf());
     }
 
-
+    // Add an item stack to the shelf
     public void addItemStack(ItemStack itemStack) {
         this.itemsOnShelf.add(itemStack);
-        itemStack.setLocation(new StackLocation(this.shelfId, itemsOnShelf.size()-1));
+        itemStack.setLocation(new StackLocation(this.shelfId, itemsOnShelf.size() - 1));
     }
 
+    // Getters
     public UUID getShelfId() {
         return shelfId;
     }
 
-    public ArrayList<ItemStack> getItemsOnShelf() {
-        ArrayList<ItemStack> itemCopies = new ArrayList<>();
-        for (ItemStack itemStack : this.itemsOnShelf) {
-            itemCopies.add(itemStack.deepCopy());
-        }
-        return itemCopies;
+//    public ArrayList<ItemStack> getItemsOnShelf() {
+//        ArrayList<ItemStack> itemCopies = new ArrayList<>();
+//        for (ItemStack itemStack : this.itemsOnShelf) {
+//            itemCopies.add(itemStack.deepCopy());
+//        }
+//        return itemCopies;
+
+    public List<ItemStack> getItemsOnShelf() {
+        return new ArrayList<>(itemsOnShelf);
     }
 }

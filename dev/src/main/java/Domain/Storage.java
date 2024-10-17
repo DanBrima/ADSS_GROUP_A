@@ -1,44 +1,54 @@
 package Domain;
 
-import Domain.ItemStack;
-import Domain.StackLocation;
-import Service.ItemStackService;
-
+import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.List;
 
+@Entity
 public class Storage {
-    private ArrayList<ItemStack> inventory;
 
-    private ArrayList<ItemStack> defectiveItems;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "storage_id")
+    private List<ItemStack> inventory = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "defective_storage_id")
+    private List<ItemStack> defectiveItems = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "store_id") // Foreign key to Store
+    private Store store; // Reference to Store
+
 
     // Constructor for empty inventory
     public Storage() {
-        this.inventory = new ArrayList<ItemStack>();
-        this.defectiveItems = new ArrayList<ItemStack>();
+        this.inventory = new ArrayList<>();
+        this.defectiveItems = new ArrayList<>();
     }
 
-    // Constructor from item stack
+    // Constructor with item stack
     public Storage(ItemStack itemStack) {
-        this.inventory = new ArrayList<ItemStack>();
+        this();
         this.addItemStack(itemStack);
-
-        this.defectiveItems = new ArrayList<ItemStack>();
     }
 
+    // Methods
     public void addItemStack(ItemStack itemStack) {
         this.inventory.add(itemStack);
-        itemStack.setLocation(new StackLocation("inventory", this.inventory.size() -1));
+        itemStack.setLocation(new StackLocation("inventory", this.inventory.size() - 1));
     }
 
     public void addDefectiveItemStack(ItemStack itemStack) {
         this.defectiveItems.add(itemStack);
-        itemStack.setLocation(new StackLocation("defect",this.defectiveItems.size() -1));
+        itemStack.setLocation(new StackLocation("defect", this.defectiveItems.size() - 1));
     }
 
-    public ArrayList<ItemStack> getInventory() {
-        return (ArrayList<ItemStack>) inventory.clone();
+    public List<ItemStack> getInventory() {
+        return inventory;
     }
 
     public ItemStack pullItemsStack(String itemName) {
@@ -48,11 +58,10 @@ public class Storage {
                 return this.inventory.remove(i);
             }
         }
-
         return null;
     }
 
-    public ArrayList<ItemStack> getDefectiveItems() {
-        return (ArrayList<ItemStack>) defectiveItems.clone();
+    public List<ItemStack> getDefectiveItems() {
+        return new ArrayList<>(defectiveItems);
     }
 }

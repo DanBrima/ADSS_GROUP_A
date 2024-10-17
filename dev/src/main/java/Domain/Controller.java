@@ -2,6 +2,7 @@ package Domain;
 
 import External.SuppliersConstants;
 import Presentation.IO;
+import Repositories.StoreRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,9 @@ public class Controller {
     }
 
     public void addStore(IO io) {
-        this.stores.add(Store.getStoreFromIO(io));
+        Store store = Store.getStoreFromIO(io);
+        this.stores.add(store);
+        StoreRepository.add(store);
     }
 
     public List<Supplier> getSuppliers() {

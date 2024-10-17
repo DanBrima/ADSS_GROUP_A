@@ -2,23 +2,40 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-// Order has creation Date and Products
+@Entity
+@Table(name = "\"Order\"")
 public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Primary key for Order
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "order_id")
     private List<ProductInOrder> products;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    public Order(){
+    @ManyToOne
+    @JoinColumn(name = "store_id") // Foreign key column in Order table
+    private Store store; // Reference to Store
+
+
+    // Default constructor for Hibernate
+    public Order() {
         this.products = new ArrayList<>();
         this.date = new Date();
     }
 
-    public Order(List<ProductInOrder> products){
+    public Order(List<ProductInOrder> products) {
         this.products = products;
+        this.date = new Date();
     }
 
     public static Order getOrderFromIO(IO io, List<Supplier> suppliers) {
@@ -33,13 +50,16 @@ public class Order {
         return new Order(products);
     }
 
-    public boolean addProduct(ProductInOrder orderProduct){
+    public boolean addProduct(ProductInOrder orderProduct) {
         products.add(orderProduct);
         return true;
     }
 
-    public List<ProductInOrder> getProducts(){
+    public List<ProductInOrder> getProducts() {
         return this.products;
     }
 
+    public Date getDate() {
+        return date;
+    }
 }

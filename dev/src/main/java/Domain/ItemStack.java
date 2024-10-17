@@ -6,29 +6,37 @@ import java.util.UUID;
 @Entity
 @Table
 public class ItemStack {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column
     private int itemCount;
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "stack_location_id", referencedColumnName = "id")
     private StackLocation stackLocation;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_in_store_id", referencedColumnName = "id")
     private ProductInStore itemType;
-    @Id
-    private Long id;
 
-    public ItemStack() {
-    }
+    // Default constructor for JPA
+    public ItemStack() {}
 
+    // Constructor with full parameters
     public ItemStack(int itemCount, StackLocation stackLocation, ProductInStore itemType) {
         this.itemCount = itemCount;
         this.stackLocation = stackLocation;
         this.itemType = itemType;
     }
 
+    // Constructor with item type and amount
     public ItemStack(ProductInStore ProductInStore, int amount) {
         this.itemType = ProductInStore;
         this.itemCount = amount;
     }
 
+    // Getters and setters
     public int getItemCount() {
         return itemCount;
     }
@@ -54,8 +62,8 @@ public class ItemStack {
     }
 
     public void addItems(UUID barcode, int amount) {
-        if (barcode == this.itemType.getBarcode()) {
-            this.itemCount+=amount;
+        if (barcode.equals(this.itemType.getBarcode())) {
+            this.itemCount += amount;
         }
     }
 

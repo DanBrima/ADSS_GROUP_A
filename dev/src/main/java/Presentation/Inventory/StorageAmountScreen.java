@@ -22,9 +22,9 @@ public class StorageAmountScreen extends Screen {
     public int handleMsg() {
 
         this.out.print("\nInventory");
-        this.displayItemsFrom(this.storageRef.getInventory());
+        this.displayItemsFrom(new ArrayList<>(this.storageRef.getInventory()));
         this.out.print("\nDefected Items");
-        this.displayItemsFrom(this.storageRef.getDefectiveItems());
+        this.displayItemsFrom(new ArrayList<>(this.storageRef.getDefectiveItems()));
 
         return InventoryConstants.USER_NO_INPUT;
     }

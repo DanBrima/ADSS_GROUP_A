@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+Repositories\DiscountRepository.class
+Repositories\CategoryRepository.class
+Repositories\ProductInStoreRepository.class
+=======
 External/StoreConstants.class
 Domain/Order.class
 Domain/Store.class
@@ -31,11 +36,14 @@ Presentation/Inventory/AddCategoryDiscountScreen.class
 Service/DiscountService.class
 Presentation/Suppliers/SuppliersScreen.class
 Domain/Storage.class
+Repositories/DiscountRepository.class
+Repositories/ContactRepository.class
 Presentation/ConsoleIO.class
 Presentation/Inventory/AmountsScreen.class
 Presentation/Suppliers/DefaultMenuScreenSupp.class
 Presentation/Inventory/TransferItemsScreen.class
 Domain/Discount.class
+Repositories/CategoryRepository.class
 Domain/Product.class
 Presentation/Inventory/RemoveItemsStoreScreen.class
 Main.class
@@ -47,13 +55,15 @@ Presentation/Inventory/DefaultMenuScreen.class
 Domain/Supplier.class
 External/InventoryConstants.class
 Domain/PaymentOption.class
-HibernateUtil.class
 Tests/Test.class
 Domain/Controller.class
 Domain/ProductInStore.class
 Service/ItemStackService.class
+Repositories/ProductInStoreRepository.class
 Presentation/Suppliers/OrdersScreen.class
+db/HibernateUtil.class
 Presentation/Screen.class
 Domain/ProductInContract.class
 Domain/FixedDaysSupplier.class
 Domain/DiscountsHistory.class
+>>>>>>> 55db8885d7feadc4e28895dbe8a4942251106565

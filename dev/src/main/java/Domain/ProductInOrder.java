@@ -2,53 +2,65 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
+@Entity
 public class ProductInOrder {
-    private Product product;
-    public int amount;
-    public  Supplier supplier;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Primary key for ProductInOrder
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    private int amount;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    public Supplier supplier;
+
+    // Constructor
     public ProductInOrder(Product product, Supplier supplier, int amount) {
         this.product = product;
         this.amount = amount;
         this.supplier = supplier;
     }
 
+    // Static method for IO
     public static ProductInOrder getOrderFromIO(IO io, List<Supplier> suppliers) {
         Product product = Product.getProductFromIO(io);
         int amount = io.readInt("Enter amount of product:");
 
-        // Remain calling "cheapestSupplier" in PIO since we need to create the "product" first and Order isn't
-        // associated with Product, only then check for supplier and lastly create the PIO and return it
-        Supplier supplier = getCheapestSupplier(product.name, amount, suppliers);
+        Supplier supplier = getCheapestSupplier(product.getName(), amount, suppliers);
 
-        if (supplier != null){
+        if (supplier != null) {
             return new ProductInOrder(product, supplier, amount);
         }
         throw new RuntimeException("No supplier provides");
     }
 
-    public String name() {
-        return product.name;
+    // Getters
+    public String getName() {
+        return product.getName();
     }
 
-    public int amount() {
+    public int getAmount() {
         return amount;
     }
 
 
-    // Gets also the amount to check if there is a discount for the checked supplier
-    public static Supplier getCheapestSupplier(String product, int amount, List<Supplier> suppliers){
-        Supplier minSup = null;
-        double minPrice = Integer.MAX_VALUE;
-        for (Supplier supplier: suppliers){
 
-            // This is weird we use "Contract" resource from PIO, but I have no idea how to deal with that
-            Contract con = supplier.getContractSupplying(product);
+    // Static method to get the cheapest supplier
+    public static Supplier getCheapestSupplier(String productName, int amount, List<Supplier> suppliers) {
+        Supplier minSup = null;
+        double minPrice = Double.MAX_VALUE; // Change to Double.MAX_VALUE for proper comparisons
+        for (Supplier supplier : suppliers) {
+            Contract con = supplier.getContractSupplying(productName);
             if (con != null) {
-                double price = con.isDiscount(amount) ? con.getProduct(product).priceWithDiscount() : con.getProduct(product).price();
+                double price = con.isDiscount(amount) ? con.getProduct(productName).priceWithDiscount() : con.getProduct(productName).price();
                 if (minPrice > price) {
                     minPrice = price;
                     minSup = supplier;
@@ -61,7 +73,7 @@ public class ProductInOrder {
     @Override
     public String toString() {
         return "{product=" + product +
-                ", count=" + amount +
+                ", amount=" + amount +
                 ", supplier=" + supplier +
                 '}';
     }

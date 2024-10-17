@@ -32,7 +32,7 @@ public class OrdersScreen extends Screen {
             for (int orderIndex = 0; orderIndex < this.storeRef.getOrders().size(); orderIndex++) {
                 Order order = storeRef.getOrders().get(orderIndex);
                 for (ProductInOrder product : order.getProducts()) {
-                    this.out.format(LEFT_ALIGN_FORMAT, orderIndex, product.supplier.activeAccount(), product.name(), product.amount);
+                    this.out.format(LEFT_ALIGN_FORMAT, orderIndex, product.supplier.activeAccount(), product.getName(), product.getAmount());
                 }
             }
             this.out.format("+--------+----------+-------------+--------+%n");
