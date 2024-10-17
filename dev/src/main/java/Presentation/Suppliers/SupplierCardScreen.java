@@ -17,7 +17,6 @@ public class SupplierCardScreen extends Screen {
 
     @Override
     public int handleMsg() {
-        // TODO print supplier according to given ID
 
         String LEFT_ALIGN_FORMAT1 = "| %-20s | %-26s |%n";
 
@@ -38,17 +37,18 @@ public class SupplierCardScreen extends Screen {
 
         this.out.println(SuppliersConstants.DISPLAY_CONTRACTS);
 
-        String LEFT_ALIGN_FORMAT2 = "%s. display contract number %<s %n";
+        this.out.print(SuppliersConstants.ADD_CONTRACT_INDEX + ". ");
+        this.out.println(SuppliersConstants.ADD_CONTRACT);
+
+        this.out.print(SuppliersConstants.RETURN_INDEX + ". ");
+        this.out.println(SuppliersConstants.RETURN);
+
+        String LEFT_ALIGN_FORMAT2 = "%s. display supplier contract number %<s %n";
         int conIndex = 0;
         for (conIndex = 0; conIndex < this.supplier.contracts().size(); conIndex++) {
             Contract contract = this.supplier.contracts().get(conIndex);
             this.out.format(LEFT_ALIGN_FORMAT2, conIndex);
         }
-
-        this.out.print(conIndex + ". ");
-        this.out.println(SuppliersConstants.ADD_CONTRACT);
-
-        this.out.format((conIndex + 1) + ". return");
 
         this.out.print("\n" + SuppliersConstants.USER_INPUT);
         return Integer.parseInt(this.in.nextLine());
