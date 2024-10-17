@@ -2,8 +2,20 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Manufacturer {
+    @Id
+    @Column
     private String name;
+
+    public Manufacturer() {
+    }
 
     public Manufacturer(String name) {
         this.name = name;

@@ -2,14 +2,26 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
+@Entity
+@Table
 public class Contract {
+    @Column
     private int wholesaleThreshold;
+    @ManyToOne
     private Supplier supplier;
+    @OneToMany
     private List<ProductInContract> products;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public Contract() {
+    }
 
     public Contract(int wholesaleThreshold, Supplier supplier, List<ProductInContract> products) {
         assert wholesaleThreshold > 0;

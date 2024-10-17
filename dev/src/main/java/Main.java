@@ -51,10 +51,9 @@ public class Main {
             // Begin transaction
             Transaction transaction = session.beginTransaction();
 
-
             try {
                 ContactRepository a = new ContactRepository();
-                a.add(new Contact("Ban", "0586979676"));
+//                a.add(new Contact("Ban", "0586979676"));
                 Contact retrievedUser = a.get("Ban");
                 System.out.println("Retrieved user: " + retrievedUser);
 
