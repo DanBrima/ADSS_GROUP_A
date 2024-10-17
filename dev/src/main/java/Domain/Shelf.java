@@ -1,15 +1,17 @@
 package Domain;
 
-import Domain.ItemStack;
-import Domain.StackLocation;
-
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table
 public class Shelf {
+    @Id
     private UUID shelfId;
-
-    private ArrayList<ItemStack> itemsOnShelf;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<ItemStack> itemsOnShelf;
 
     // Constructor for empty inventory
     public Shelf() {
@@ -41,6 +43,10 @@ public class Shelf {
     }
 
     public ArrayList<ItemStack> getItemsOnShelf() {
-        return (ArrayList<ItemStack>) itemsOnShelf.clone();
+        ArrayList<ItemStack> itemCopies = new ArrayList<>();
+        for (ItemStack itemStack : this.itemsOnShelf) {
+            itemCopies.add(itemStack.deepCopy());
+        }
+        return itemCopies;
     }
 }

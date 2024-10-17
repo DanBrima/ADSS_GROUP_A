@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "product_in_contract")
+@Table(name = "productincontract")
 public class ProductInContract {
     @Id
     @Column

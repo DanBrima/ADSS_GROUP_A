@@ -1,5 +1,6 @@
 package Presentation.Inventory;
 
+import Domain.Category;
 import Domain.ItemStack;
 import Domain.Shelf;
 import Domain.Store;
@@ -36,7 +37,20 @@ public class StoreAmountScreen extends Screen {
         this.out.format("+-------------+------------------+-------------+--------+%n");
         for (int itemStackIndex = 0; itemStackIndex < shelf.getItemsOnShelf().size(); itemStackIndex++) {
             ItemStack itemStack = shelf.getItemsOnShelf().get(itemStackIndex);
-            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemType().getSupplier(), itemStack.getItemType().getCategory().getName(), itemStack.getItemCount());
+
+            String fullCategory = itemStack.getItemType().getCategory().getName();
+            Category parentCategory = itemStack.getItemType().getCategory().getParent();
+
+            if (parentCategory != null) {
+                fullCategory += " - " + parentCategory.getName();
+
+                Category grandParentCategory = parentCategory.getParent();
+                if (grandParentCategory != null) {
+                    fullCategory += " - " + grandParentCategory.getName();
+                }
+            }
+
+            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemType().getSupplier(), fullCategory, itemStack.getItemCount());
         }
 
         this.out.format("+-------------+------------------+-------------+--------+%n");

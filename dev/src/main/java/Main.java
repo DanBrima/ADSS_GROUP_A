@@ -60,7 +60,6 @@ public class Main {
                 Controller.setControllerInstance(setUpController());
                 CashierDesk cashierDesk = new CashierDesk(System.out, new Scanner(System.in));
                 cashierDesk.turnOn();
-
             } catch (Exception e) {
                 // If there's an exception, rollback the transaction
                 if (transaction != null) {

@@ -80,7 +80,7 @@ public class CashierDesk {
         switch (userInput) {
             case StoreConstants.DISPLAY_INVENTORY_INDEX:
                 displayInventory();
-                break;
+            break;
             case StoreConstants.DISPLAY_ORDERS_INDEX:;
                 displayOrders();
                 break;
@@ -104,7 +104,6 @@ public class CashierDesk {
             displayStores();
         }
     }
-
 
     private void displayInventory() {
         // Activate Menu

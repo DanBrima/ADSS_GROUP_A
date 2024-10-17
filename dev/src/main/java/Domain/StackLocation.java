@@ -1,14 +1,13 @@
 package Domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table
 public class StackLocation {
+    @Id
+    private Long id;
     @Column
     private String place; // "Storage" or "Store"
     @Column
@@ -17,8 +16,6 @@ public class StackLocation {
     private String type; // "inventory" or "defect" (if the product is in the storage)
     @Column
     private int itemStackIndex;
-    @Id
-    private Long id;
 
     public StackLocation() {
     }
@@ -32,6 +29,13 @@ public class StackLocation {
     public StackLocation(String type, int itemStackIndex) {
         this.place = "Storage";
         this.type = type;
+        this.itemStackIndex = itemStackIndex;
+    }
+
+    public StackLocation(String place, String type, UUID shelfId, int itemStackIndex) {
+        this.place = place;
+        this.type = type;
+        this.shelfId = shelfId;
         this.itemStackIndex = itemStackIndex;
     }
 
@@ -49,6 +53,14 @@ public class StackLocation {
 
     public void setItemStackIndex(int itemStackIndex) {
         this.itemStackIndex = itemStackIndex;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setId(Long id) {

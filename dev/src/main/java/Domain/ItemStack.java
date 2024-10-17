@@ -1,11 +1,22 @@
 package Domain;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table
 public class ItemStack {
+    @Column
     private int itemCount;
+    @OneToOne
     private StackLocation stackLocation;
+    @ManyToOne
     private ProductInStore itemType;
+    @Id
+    private Long id;
+
+    public ItemStack() {
+    }
 
     public ItemStack(int itemCount, StackLocation stackLocation, ProductInStore itemType) {
         this.itemCount = itemCount;
@@ -48,4 +59,14 @@ public class ItemStack {
         }
     }
 
+    public ItemStack deepCopy() {
+        ItemStack newItem = new ItemStack();
+        newItem.setItemCount(this.itemCount);
+        newItem.setLocation(new StackLocation(this.stackLocation.getPlace(), this.stackLocation.getType(),
+                this.stackLocation.getShelfIndex(), this.stackLocation.getItemStackIndex()));
+        newItem.setItemType(new ProductInStore(this.itemType.getProduct(), this.itemType.getRequiredAmount(),
+                this.itemType.getCategory(), this.itemType.getPrice()));
+
+        return newItem;
+    }
 }
