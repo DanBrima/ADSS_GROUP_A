@@ -8,6 +8,7 @@
 דן ברימה 324974955
 
 מעין ויצמן 213089089
+
 You can look at the documentation to find instructions about how to run the code.
 
 The code uses hibernate, a java ORM that helps use create the DTO layer.
