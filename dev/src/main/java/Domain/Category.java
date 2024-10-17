@@ -1,12 +1,22 @@
 package Domain;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table
 public class Category {
+    @Id
+    @Column
     private String name;
+    @ManyToOne
     private Category parent;
+    @OneToMany
     private List<Discount> discounts;
+
+    public Category() {
+    }
 
     public Category(String name) {
         this.name = name;
