@@ -2,13 +2,25 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "product_in_contract")
 public class ProductInContract {
-    private Product product;
-    private double price;
-    private int productDiscountPercentage;
+    @Id
+    @Column
     private UUID supplierCatalogID;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+    @Column
+    private double price;
+    @Column
+    private int productDiscountPercentage;
+
+    public ProductInContract() {
+    }
 
     public ProductInContract(Product product, int price, int productDiscountPercentage) {
         this.product = product;

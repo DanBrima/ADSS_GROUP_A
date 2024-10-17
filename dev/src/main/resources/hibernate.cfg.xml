@@ -18,6 +18,12 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="Domain.Contact"/>
+        <mapping class="Domain.Contract"/>
+        <mapping class="Domain.Manufacturer"/>
+        <mapping class="Domain.Product"/>
+        <mapping class="Domain.ProductInContract"/>
+        <mapping class="Domain.StackLocation"/>
+        <mapping class="Domain.Supplier"/>
     </session-factory>
 </hibernate-configuration>
 

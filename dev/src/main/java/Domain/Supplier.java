@@ -2,6 +2,7 @@ package Domain;
 
 import Presentation.IO;
 
+import javax.persistence.*;
 import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,13 +10,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Entity
+@Table
 public class Supplier {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private boolean needsPickup;
+    @Column
     private String activeAccount;
+    @Column
     private int bankAccount;
+    @Column
+    @Enumerated(EnumType.STRING)
     private PaymentOption paymentOption;
+    @OneToMany
+    @JoinColumn(name = "id")
     private List<Contact> contacts;
+    @OneToMany
+    @JoinColumn(name = "id")
     private List<Contract> contracts;
+
+    public Supplier() {
+    }
 
     protected Supplier(boolean needsPickup, String activeAccount, int bankAccount, PaymentOption paymentOption, List<Contact> contacts) {
         this.needsPickup = needsPickup;

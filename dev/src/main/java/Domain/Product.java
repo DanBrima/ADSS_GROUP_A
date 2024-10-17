@@ -1,11 +1,21 @@
 package Domain;
 
 import Presentation.IO;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table
 public class Product {
+    @Id
+    @Column
     public String name;
+    @ManyToOne
     private Manufacturer manufacturer;
+
+    public Product() {
+    }
 
     public Product(String name, Manufacturer manufacturer) {
         this.name = name;
