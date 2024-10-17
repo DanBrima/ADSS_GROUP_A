@@ -37,22 +37,22 @@ public class CashierDesk {
                 int userInput = mainMenuScreen.handleMsg();
                 switch (userInput) {
                     case 1: {
-                        controllerRef.addStore(io);
+                        Controller.controllerInstance().addStore(io);
                         break;
                     }
                     case 2: {
-                        if (controllerRef.getStores().size() > 0)
+                        if (Controller.controllerInstance().getStores().size() > 0)
                             displayStores();
                         else
                             this.out.println("There aren't any stores in the system");
                         break;
                     }
                     case 3: {
-                        controllerRef.addSupplier(io);
+                        Controller.controllerInstance().addSupplier(io);
                         break;
                     }
                     case 4: {
-                        if (controllerRef.getSuppliers().size() > 0)
+                        if (Controller.controllerInstance().getSuppliers().size() > 0)
                             displaySuppliers();
                         else
                             this.out.println("There aren't any suppliers in the system");
@@ -75,7 +75,7 @@ public class CashierDesk {
     }
 
     private void displayStores() {
-        StoresScreen storesScreen = new StoresScreen(this.out, this.in, controllerRef);
+        StoresScreen storesScreen = new StoresScreen(this.out, this.in);
         int userInput = storesScreen.handleMsg();
 
         if (userInput >= Controller.controllerInstance().getStores().size() || userInput < 0) {
@@ -113,7 +113,7 @@ public class CashierDesk {
             this.out.println(SuppliersConstants.INVALID_INPUT);
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX) {
             try {
-                this.chosenStore.addOrder(io, controllerRef.getSuppliers());
+                this.chosenStore.addOrder(io, Controller.controllerInstance().getSuppliers());
             }
             catch (Exception RuntimeException){
                 this.out.println("No supplier provides given product");
@@ -234,15 +234,15 @@ public class CashierDesk {
     }
 
     private void displaySuppliers() {
-        SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, controllerRef);
+        SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in);
         int userInput = suppliersScreen.handleMsg();
 
         // Validate input
-        if (userInput >= controllerRef.getSuppliers().size() || userInput < 0) {
+        if (userInput >= Controller.controllerInstance().getSuppliers().size() || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
             return;
         }
-        Supplier supplier = controllerRef.getSuppliers().get(userInput);
+        Supplier supplier = Controller.controllerInstance().getSuppliers().get(userInput);
 
         SupplierCardScreen supplierCardScreen = new SupplierCardScreen(this.out, this.in, supplier);
         userInput = supplierCardScreen.handleMsg();
