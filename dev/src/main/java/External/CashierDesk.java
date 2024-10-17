@@ -83,13 +83,13 @@ public class CashierDesk {
         switch (userInput) {
             case StoreConstants.DISPLAY_INVENTORY_INDEX:
                 displayInventory();
-                break;
+                return;
             case StoreConstants.DISPLAY_ORDERS_INDEX:
                 displayOrders();
-                break;
+                return;
             default: {
                 this.out.println(InventoryConstants.INVALID_INPUT);
-                break;
+                return;
             }
         }
     }
