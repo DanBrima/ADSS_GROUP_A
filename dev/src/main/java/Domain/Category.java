@@ -56,4 +56,20 @@ public class Category {
     public void setDiscounts(List<Discount> discounts) {
         this.discounts = discounts;
     }
+
+    public String fullCategoryName() {
+        String fullCategory = this.name;
+        Category parentCategory = this.parent;
+
+        if (parentCategory != null) {
+            fullCategory += " - " + parentCategory.getName();
+
+            Category grandParentCategory = parentCategory.getParent();
+            if (grandParentCategory != null) {
+                fullCategory += " - " + grandParentCategory.getName();
+            }
+        }
+
+        return fullCategory;
+    }
 }

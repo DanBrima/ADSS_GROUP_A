@@ -38,19 +38,7 @@ public class StoreAmountScreen extends Screen {
         for (int itemStackIndex = 0; itemStackIndex < shelf.getItemsOnShelf().size(); itemStackIndex++) {
             ItemStack itemStack = shelf.getItemsOnShelf().get(itemStackIndex);
 
-            String fullCategory = itemStack.getItemType().getCategory().getName();
-            Category parentCategory = itemStack.getItemType().getCategory().getParent();
-
-            if (parentCategory != null) {
-                fullCategory += " - " + parentCategory.getName();
-
-                Category grandParentCategory = parentCategory.getParent();
-                if (grandParentCategory != null) {
-                    fullCategory += " - " + grandParentCategory.getName();
-                }
-            }
-
-            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemType().getSupplier(), fullCategory, itemStack.getItemCount());
+            this.out.format(LEFT_ALIGN_FORMAT, itemStack.getItemType().getName(), itemStack.getItemType().getSupplier(), itemStack.getItemType().getCategory().fullCategoryName(), itemStack.getItemCount());
         }
 
         this.out.format("+-------------+------------------+-------------+--------+%n");
