@@ -44,7 +44,7 @@ public class CashierDesk {
                         if (controllerRef.getStores().size() > 0)
                             displayStores();
                         else
-                            this.out.println("No store in the system");
+                            this.out.println("There aren't any stores in the system");
                         break;
                     }
                     case 3: {
@@ -55,7 +55,7 @@ public class CashierDesk {
                         if (controllerRef.getSuppliers().size() > 0)
                             displaySuppliers();
                         else
-                            this.out.println("No supplier in the system");
+                            this.out.println("There aren't any suppliers in the system");
                         break;
                     }
                     case 5: {
@@ -88,15 +88,15 @@ public class CashierDesk {
         switch (userInput) {
             case StoreConstants.DISPLAY_INVENTORY_INDEX:
                 displayInventory();
-                break;
+                return;
             case StoreConstants.DISPLAY_ORDERS_INDEX:
                 displayOrders();
-                break;
+                return;
             case StoreConstants.RETURN_TO_MAIN_MENU_INDEX:
-                break;
+                return;
             default: {
                 this.out.println(InventoryConstants.INVALID_INPUT);
-                break;
+                return;
             }
         }
     }
@@ -251,16 +251,21 @@ public class CashierDesk {
 
         int size = supplier.contracts().size();
 
-        // Last 2 options are for adding contract or returning the rest is numbering of contracts.
-        if (userInput >= size + 2 || userInput < 0) {
+        // First 2 options are for adding contract or returning the rest is numbering of contracts.
+        if (userInput >= supplier.contracts().size() + 2 || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
-        } else if (userInput == size) {
-            supplier.addContract(Contract.getContractFromIO(io, supplier));
-        } else if (userInput == size + 1) {
-            displaySuppliers();
-        } else {
-            ContractScreen contractScreen = new ContractScreen(this.out, this.in, supplier.contracts().get(userInput));
-            contractScreen.handleMsg();
+        }
+        switch (userInput){
+            case SuppliersConstants.ADD_CONTRACT_INDEX: {
+                supplier.addContract(Contract.getContractFromIO(io, supplier));
+            }
+            case SuppliersConstants.RETURN_INDEX: {
+                displaySuppliers();
+            }
+            default: {
+                ContractScreen contractScreen = new ContractScreen(this.out, this.in, supplier.contracts().get(userInput + 2));
+                contractScreen.handleMsg();
+            }
         }
     }
 }
