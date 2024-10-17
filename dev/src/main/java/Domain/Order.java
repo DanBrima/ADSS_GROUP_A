@@ -39,7 +39,7 @@ public class Order {
     }
 
     public static Order getOrderFromIO(IO io, List<Supplier> suppliers) {
-        int productCount = io.readInt("Enter the number of different products in the order (must be 1 or more:)");
+        int productCount = io.readInt("Enter the number of different products in the order (must be 1 or more):");
         assert productCount > 0;
         List<ProductInOrder> products = new ArrayList<>();
         for (int i = 0; i < productCount; i++) {

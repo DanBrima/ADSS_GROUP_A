@@ -9,7 +9,6 @@ import Presentation.*;
 import Presentation.Inventory.*;
 import Presentation.Stores.*;
 import Presentation.Suppliers.*;
-import Presentation.Suppliers.DefaultMenuScreenSupp;
 
 import Presentation.Inventory.DefaultMenuScreen;
 import java.io.PrintStream;
@@ -33,45 +32,54 @@ public class CashierDesk {
 
         while (this.isActivated) {
             //SWITCH case to select stores or suppliers
-            MainMenuScreen mainMenuScreen = new MainMenuScreen(this.out, this.in);
-            int userInput = mainMenuScreen.handleMsg();
-            switch (userInput) {
-                case 1: {
-                    Controller.controllerInstance().addStore(io);
-                    break;
+            try {
+                MainMenuScreen mainMenuScreen = new MainMenuScreen(this.out, this.in);
+                int userInput = mainMenuScreen.handleMsg();
+                switch (userInput) {
+                    case 1: {
+                        controllerRef.addStore(io);
+                        break;
+                    }
+                    case 2: {
+                        if (controllerRef.getStores().size() > 0)
+                            displayStores();
+                        else
+                            this.out.println("There aren't any stores in the system");
+                        break;
+                    }
+                    case 3: {
+                        controllerRef.addSupplier(io);
+                        break;
+                    }
+                    case 4: {
+                        if (controllerRef.getSuppliers().size() > 0)
+                            displaySuppliers();
+                        else
+                            this.out.println("There aren't any suppliers in the system");
+                        break;
+                    }
+                    case 5: {
+                        this.turnOff();
+                        break;
+                    }
+                    default: {
+                        this.out.println(InventoryConstants.INVALID_INPUT);
+                        break;
+                    }
                 }
-                case 2: {
-                    displayStores();
-                    break;
-                }
-                case 3: {
-                    Controller.controllerInstance().addSupplier(io);
-                    break;
-                }
-                case 4: {
-                    displaySuppliers();
-                    break;
-                }
-                case 5: {
-                    this.turnOff();
-                    break;
-                }
-                default: {
-                    this.out.println(InventoryConstants.INVALID_INPUT);
-                    break;
-                }
+            }
+            catch (Exception NumberFormatException){
+                this.out.println("Invalid input. Expect to get a number.");
             }
         }
     }
 
-
-    private boolean displayStores() {
-        StoresScreen storesScreen = new StoresScreen(this.out, this.in);
+    private void displayStores() {
+        StoresScreen storesScreen = new StoresScreen(this.out, this.in, controllerRef);
         int userInput = storesScreen.handleMsg();
 
         if (userInput >= Controller.controllerInstance().getStores().size() || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
-            return false;
         }
         this.chosenStore = Controller.controllerInstance().getStores().get(userInput);
 
@@ -80,12 +88,17 @@ public class CashierDesk {
         switch (userInput) {
             case StoreConstants.DISPLAY_INVENTORY_INDEX:
                 displayInventory();
-                break;
-            case StoreConstants.DISPLAY_ORDERS_INDEX:;
+                return;
+            case StoreConstants.DISPLAY_ORDERS_INDEX:
                 displayOrders();
-                break;
+                return;
+            case StoreConstants.RETURN_TO_MAIN_MENU_INDEX:
+                return;
+            default: {
+                this.out.println(InventoryConstants.INVALID_INPUT);
+                return;
+            }
         }
-        return true;
     }
 
     private void turnOff() {
@@ -99,7 +112,12 @@ public class CashierDesk {
         if (userInput >= SuppliersConstants.ADD_ORDER_INDEX + 2 || userInput < 0) {
             this.out.println(SuppliersConstants.INVALID_INPUT);
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX) {
-            this.chosenStore.addOrder(io, Controller.controllerInstance().getSuppliers());
+            try {
+                this.chosenStore.addOrder(io, controllerRef.getSuppliers());
+            }
+            catch (Exception RuntimeException){
+                this.out.println("No supplier provides given product");
+            }
         } else if (userInput == SuppliersConstants.ADD_ORDER_INDEX + 1) {
             displayStores();
         }
@@ -216,49 +234,36 @@ public class CashierDesk {
     }
 
     private void displaySuppliers() {
-        DefaultMenuScreenSupp defaultMenuScreenSupp = new DefaultMenuScreenSupp(this.out, this.in);
-        int userInput = defaultMenuScreenSupp.handleMsg();
-        switch (userInput) {
-            case SuppliersConstants.DISPLAY_SUPPLIERS_INDEX: {
-                SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in);
-                userInput = suppliersScreen.handleMsg();
+        SuppliersScreen suppliersScreen = new SuppliersScreen(this.out, this.in, controllerRef);
+        int userInput = suppliersScreen.handleMsg();
 
-                // Validate input
-                if (userInput >= Controller.controllerInstance().getSuppliers().size() || userInput < 0) {
-                    this.out.println(SuppliersConstants.INVALID_INPUT);
-                    break;
-                }
-                Supplier supplier = Controller.controllerInstance().getSuppliers().get(userInput);
+        // Validate input
+        if (userInput >= controllerRef.getSuppliers().size() || userInput < 0) {
+            this.out.println(SuppliersConstants.INVALID_INPUT);
+            return;
+        }
+        Supplier supplier = controllerRef.getSuppliers().get(userInput);
 
-                SupplierCardScreen supplierCardScreen = new SupplierCardScreen(this.out, this.in, supplier);
-                userInput = supplierCardScreen.handleMsg();
+        SupplierCardScreen supplierCardScreen = new SupplierCardScreen(this.out, this.in, supplier);
+        userInput = supplierCardScreen.handleMsg();
 
-                int size = supplier.contracts().size();
-                if (userInput >= size + 2 || userInput < 0) {
-                    this.out.println(SuppliersConstants.INVALID_INPUT);
-                } else if (userInput == size) {
-                    supplier.addContract(Contract.getContractFromIO(io, supplier));
-                } else if (userInput == size + 1) {
-                    break;
-                }
-                ContractScreen contractScreen = new ContractScreen(this.out, this.in, supplier, userInput);
-                contractScreen.handleMsg();
-                break;
+        int size = supplier.contracts().size();
+
+        // First 2 options are for adding contract or returning the rest is numbering of contracts.
+        if (userInput >= supplier.contracts().size() + 2 || userInput < 0) {
+            this.out.println(SuppliersConstants.INVALID_INPUT);
+        }
+        switch (userInput){
+            case SuppliersConstants.ADD_CONTRACT_INDEX: {
+                supplier.addContract(Contract.getContractFromIO(io, supplier));
             }
-
-            case SuppliersConstants.ADD_SUPPLIER_INDEX: {
-                Controller.controllerInstance().addSupplier(io);
-                break;
-            }
-
-            case SuppliersConstants.RETURN_TO_MAIN_MENU_SUPPLIERS_INDEX: {
-                return;
+            case SuppliersConstants.RETURN_INDEX: {
+                displaySuppliers();
             }
             default: {
-                this.out.println(SuppliersConstants.INVALID_INPUT);
-                break;
+                ContractScreen contractScreen = new ContractScreen(this.out, this.in, supplier.contracts().get(userInput + 2));
+                contractScreen.handleMsg();
             }
         }
-
     }
 }

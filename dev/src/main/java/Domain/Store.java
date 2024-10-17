@@ -24,6 +24,7 @@ public class Store {
 
     // One-to-One relationship with Storage
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "store")
+
     private Storage storage;
 
     public Store() {
