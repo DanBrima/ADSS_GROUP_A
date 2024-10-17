@@ -4,12 +4,12 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!-- Database connection settings -->
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://aws-0-eu-central-2.pooler.supabase.com:6543/postgres?user=postgres.govkudhcejddnzjggbhv&amp;password=ADSS_GROUP_A</property>
-
+        <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+        <property name="hibernate.connection.url">jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.password"></property>
         <!-- Specify dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 
         <property name="hibernate.connection.autocommit">true</property>
 
@@ -27,6 +27,13 @@
         <mapping class="Domain.ProductInStore"/>
         <mapping class="Domain.StackLocation"/>
         <mapping class="Domain.Supplier"/>
+        <mapping class="Domain.Store"/>
+        <mapping class="Domain.ItemStack"/>
+        <mapping class="Domain.Storage"/>
+        <mapping class="Domain.Shelf"/>
+        <mapping class="Domain.Order"/>
+        <mapping class="Domain.ProductInOrder"/>
+
     </session-factory>
 </hibernate-configuration>
 

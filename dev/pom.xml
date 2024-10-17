@@ -11,7 +11,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <hibernate.version>5.6.15.Final</hibernate.version>
-    <postgres.version>42.6.0</postgres.version>
+    <h2.version>2.1.214</h2.version>
   </properties>
 
   <dependencies>
@@ -22,18 +22,11 @@
       <version>${hibernate.version}</version>
     </dependency>
 
-    <!-- Hibernate Entity Manager -->
+    <!-- H2 Database -->
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
-
-    <!-- PostgreSQL JDBC Driver -->
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>${postgres.version}</version>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
     </dependency>
 
     <!-- Hibernate C3P0 Connection Pool -->
@@ -57,7 +50,7 @@
       <version>1.7.36</version>
     </dependency>
 
-    <!-- SLF4J Simple (you may want to use a different logger in production) -->
+    <!-- SLF4J Simple -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
