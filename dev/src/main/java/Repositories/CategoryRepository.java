@@ -44,28 +44,24 @@ public class CategoryRepository {
         }
     }
 
-    public Category get(String name) {
-        return HibernateUtil.getSession().get(Category.class, name) ;
-    }
-
-    public Category getFromDB(String name) {
+    public void setParent(Category category, Category parent) {
         Session session = HibernateUtil.getSession();
-        session.beginTransaction();
-        Category categoryFromDB = null;
-
+        Transaction transaction = null;
         try {
-            categoryFromDB = session.createQuery(
-                            "SELECT c FROM Category c LEFT JOIN FETCH c.discounts WHERE c.name = :name",
-                            Category.class)
-                    .setParameter("name", name)
-                    .uniqueResult();;
+            transaction = session.beginTransaction();
+            category.setParent(parent);
+            session.update(category);
+            transaction.commit();
         } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();
         }
+    }
 
-        return categoryFromDB;
+    public Category get(String name) {
+        return HibernateUtil.getSession().get(Category.class, name) ;
     }
 
     public List<Category> getAll() {

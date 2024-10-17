@@ -47,13 +47,6 @@ public class Shelf {
         return shelfId;
     }
 
-//    public ArrayList<ItemStack> getItemsOnShelf() {
-//        ArrayList<ItemStack> itemCopies = new ArrayList<>();
-//        for (ItemStack itemStack : this.itemsOnShelf) {
-//            itemCopies.add(itemStack.deepCopy());
-//        }
-//        return itemCopies;
-
     public List<ItemStack> getItemsOnShelf() {
         return new ArrayList<>(itemsOnShelf);
     }
