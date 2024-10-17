@@ -1,4 +1,5 @@
-#### Store management system - Suppliers and Inventory
+### Store management system - Suppliers and Inventory
+---
 עידן אביעד 212420327
 
 אופק וילקרסטון 212712608
